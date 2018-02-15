@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -20,14 +21,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
+
+import java.util.UUID;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
@@ -42,6 +50,8 @@ public class Home extends AppCompatActivity
     FButton btnUpload,btnSelect;
     Category newCategory;
     Uri saveUri;
+    private final int PICK_IMAGE_REQUEST= 71;
+    DrawerLayout drawer;
 
     //firebase init
     FirebaseDatabase database;
@@ -77,7 +87,7 @@ public class Home extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -116,10 +126,17 @@ public class Home extends AppCompatActivity
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
 
         //event for button
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();   //select image from galery and save url
+            }
+        });
+
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseImage();   //select image from galary and save url
+                uploadImage();   //select image from galary and save url
             }
         });
 
@@ -131,6 +148,13 @@ public class Home extends AppCompatActivity
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                //create a new category
+                if(newCategory != null)
+                {
+                    categories.push().setValue(newCategory);
+                    Snackbar.make(drawer,"New Category "+newCategory.getName()+" was added",Snackbar.LENGTH_LONG).show();
+                    //Toast.makeText(Home.this,"New Category Created!!",Toast.LENGTH_LONG).show();
+                }
             }
         });
         alertDailog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -142,8 +166,66 @@ public class Home extends AppCompatActivity
         alertDailog.show();
     }
 
-    private void chooseImage() {
+    private void uploadImage() {
 
+        if(saveUri != null)
+        {
+            String imageName = UUID.randomUUID().toString();
+            final StorageReference imageFolder = storageReference.child("images/"+imageName);
+            imageFolder.putFile(saveUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                           // dialog.dismiss();
+                            Toast.makeText(Home.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                  //set value of new category to get download link
+                                  newCategory = new Category(edtName.getText().toString(),uri.toString());
+
+                                }
+                            });
+                        }
+
+                    })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // dialog.dismiss();
+                    Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            })
+            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    // dialog.setMessage("Uploaded"+progress+"%");
+
+                }
+            });
+
+
+        }
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
+            saveUri = data.getData();
+            btnSelect.setText("IMAGE SELECTED!");
+        }
+    }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"),PICK_IMAGE_REQUEST);
 
     }
 
