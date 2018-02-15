@@ -17,8 +17,8 @@ import a123.vaidya.nihal.foodcrunchserver.R;
 public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnCreateContextMenuListener
 {
 
-    public TextView txtMenuName;
-    public ImageView imageView;
+    public TextView food_name;
+    public ImageView food_image;
     private ItemClickListener itemClickListener;
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -28,8 +28,8 @@ public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public FoodViewHolder(View itemView) {
         super(itemView);
 
-        txtMenuName = itemView.findViewById(R.id.food_name);
-        imageView = itemView.findViewById(R.id.food_image);
+        food_name = itemView.findViewById(R.id.food_name);
+        food_image = itemView.findViewById(R.id.food_image);
 
         itemView.setOnCreateContextMenuListener(this);
         itemView.setOnClickListener(this);

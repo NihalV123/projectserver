@@ -1,31 +1,49 @@
 package a123.vaidya.nihal.foodcrunchserver;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.clans.fab.FloatingActionButton;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.google.firebase.storage.UploadTask;
+import com.rengwuxian.materialedittext.MaterialEditText;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
+import a123.vaidya.nihal.foodcrunchserver.Common.Common;
+import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
+import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Food;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.FoodViewHolder;
+import info.hoang8f.widget.FButton;
 
 public class FoodList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     FloatingActionButton fab;
-
+    MaterialEditText edtName,edtDescription,edtPrice,edtDiscount;
+    FButton btnSelect,btnUpload;
+    Food newFood;
 
     FirebaseDatabase db;
     DatabaseReference foodList;
@@ -33,13 +51,10 @@ public class FoodList extends AppCompatActivity {
     StorageReference storageReference;
 
     String categoryId="";
-
+    Uri saveUri;
+    private final int PICK_IMAGE_REQUEST= 71;
+    RelativeLayout rootLayout;
     FirebaseRecyclerAdapter<Food,FoodViewHolder> adapter;
-
-    //for searching firebase
-    FirebaseRecyclerAdapter<Food,FoodViewHolder> searchAdapter;
-    List<String> suggestList = new ArrayList<>();
-    MaterialSearchBar materialSearchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +64,22 @@ public class FoodList extends AppCompatActivity {
         //firebase code
         db = FirebaseDatabase.getInstance();
         foodList =db.getReference("Foods");
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         recyclerView = findViewById(R.id.recycler_food);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        rootLayout = (RelativeLayout)findViewById(R.id.rootLayout);
+
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddFoodDialog();
+            }
+        });
 
         //get intent
         if (getIntent()!=null)
@@ -63,143 +89,147 @@ public class FoodList extends AppCompatActivity {
             loadListFood(categoryId);
         }
 
-        //search
-        materialSearchBar = (MaterialSearchBar)findViewById(R.id.searchBar);
-        materialSearchBar.setHint("Enter the name of your food");
-//        materialSearchBar.setSpeechMode(false);
-        loadSuggest();
-        materialSearchBar.setLastSuggestions(suggestList);
-        materialSearchBar.setCardViewElevation(10);
-        materialSearchBar.addTextChangeListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
 
+    private void showAddFoodDialog() {
+        AlertDialog.Builder alertDailog = new AlertDialog.Builder(FoodList.this);
+        alertDailog.setTitle("Add New Food");
+        alertDailog.setMessage("Please fill all fields");
+
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View add_menu_layout = inflater.inflate(R.layout.add_new_food_layout,null);
+        edtName = add_menu_layout.findViewById(R.id.edtName);
+        edtDescription = add_menu_layout.findViewById(R.id.edtDescription);
+        edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
+        edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
+
+        btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
+        btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+
+        //event for button
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();   //select image from galery and save url
             }
+        });
 
+        btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                List<String> suggest = new ArrayList<>();
-                for(String search:suggestList)
+            public void onClick(View v) {
+                uploadImage();   //select image from galary and save url
+            }
+        });
+
+        alertDailog.setView(add_menu_layout);
+        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+
+        //set button
+        alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //create a new category
+                if(newFood != null)
                 {
-                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
-                        suggest.add(search);
+                    foodList.push().setValue(newFood);
+                    //Snackbar.make(rootLayout,"New Category "+newFood.getName()+" was added",Snackbar.LENGTH_LONG).show();
+                    Toast.makeText(FoodList.this,"New Category Created!!",Toast.LENGTH_LONG).show();
                 }
-                materialSearchBar.setLastSuggestions(suggest);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
-
-        materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+        alertDailog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
-            public void onSearchStateChanged(boolean enabled) {
-                //disable and enable for ui effect
-//                if(!enabled)
-//                    recycler_menu.setAdapter(adapter);
-            }
-
-            @Override
-            public void onSearchConfirmed(CharSequence text) {
-                startSearch(text);
-            }
-
-            @Override
-            public void onButtonClicked(int buttonCode) {
-
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
             }
         });
-    }
-
-    private void startSearch(CharSequence text) {
-//        searchAdapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(
-//                Food.class,
-//                R.layout.food_item,
-//                FoodViewHolder.class,
-//                foodList.orderByChild("Name").equalTo(text.toString()) //used to compaire name while search
-//        ) {
-//            @Override
-//            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
-//                viewHolder.food_name.setText(model.getName());
-//                viewHolder.food_name.setText(model.getName());
-//                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
-//
-//                final Food local = model;
-//                viewHolder.setItemClickListener(new ItemClickListener() {
-//                    @Override
-//                    public void onClick(View v, int position, boolean isLongClick) {
-//                        //Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
-//                        //this is the third activity
-//                        Intent foodDetail = new Intent(FoodList.this,FoodDetail.class);
-//                        //send to new activity
-//                        foodDetail.putExtra("FoodId",searchAdapter.getRef(position).getKey());
-//                        startActivity(foodDetail);
-//
-//
-//                    }
-//                });
-//
-//            }
-//        };
-//
-//        recycler_menu.setAdapter(searchAdapter);
-
+        alertDailog.show();
 
     }
 
-    private void loadSuggest() {
-//        foodList.orderByChild("MenuId").equalTo(categoryId)
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot postDnapshot:dataSnapshot.getChildren())
-//                        {
-//                            Food item = postDnapshot.getValue(Food.class);
-//                            suggestList.add(item.getName());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
+    private void uploadImage() {
+
+        if(saveUri != null)
+        {
+            String imageName = UUID.randomUUID().toString();
+            final StorageReference imageFolder = storageReference.child("images/"+imageName);
+            imageFolder.putFile(saveUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // dialog.dismiss();
+                            Toast.makeText(FoodList.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            Snackbar.make(rootLayout,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
+
+                            imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    //set value of new category to get download link
+                                    newFood = new Food();
+                                    newFood.setName(edtName.getText().toString());
+                                    newFood.setDescription(edtDescription.getText().toString());
+                                    newFood.setPrice(edtPrice.getText().toString());
+                                    newFood.setDiscount(edtDiscount.getText().toString());
+                                    newFood.setMenuId(categoryId);
+                                    newFood.setImage(uri.toString());
+                                }
+                            });
+                        }
+
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // dialog.dismiss();
+                            Toast.makeText(FoodList.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                            Snackbar.make(rootLayout,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
+                        }
+                    });
+
+        }
+
+    }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"), Common.PICK_IMAGE_REQUEST);
+
     }
 
     //select * from foods where menuid=&
     private void loadListFood(String categoryId) {
-//        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
-//                R.layout.food_item,FoodViewHolder.class,foodList.orderByChild("MenuId")
-//                .equalTo(categoryId)) {
-//            @Override
-//            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
-//                viewHolder.food_name.setText(model.getName());
-//                viewHolder.food_name.setText(model.getName());
-//                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
-//
-//                final Food local = model;
-//                viewHolder.setItemClickListener(new ItemClickListener() {
-//                    @Override
-//                    public void onClick(View v, int position, boolean isLongClick) {
-//                        //Toast.makeText(FoodList.this,""+local.getName(),Toast.LENGTH_SHORT).show();
-//                        //this is the third activity
-//                        Intent foodDetail = new Intent(FoodList.this,FoodDetail.class);
-//                        //send to new activity
-//                        foodDetail.putExtra("FoodId",adapter.getRef(position).getKey());
-//                        startActivity(foodDetail);
-//
-//
-//                    }
-//                });
-//
-//            }
-//        };
-//
-//        //set adapter
-//        recycler_menu.setAdapter(adapter);
+        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
+                R.layout.food_item, FoodViewHolder.class, foodList.orderByChild("menuId")
+                .equalTo(categoryId)) {
+            @Override
+            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
+                viewHolder.food_name.setText(model.getName());
+                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
 
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View v, int position, boolean isLongClick) {
 
+                    }
+                });
+
+            }
+        };
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
+            saveUri = data.getData();
+            btnSelect.setText("IMAGE SELECTED!");
+        }
     }
 }

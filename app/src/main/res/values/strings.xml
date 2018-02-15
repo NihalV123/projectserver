@@ -52,5 +52,9 @@
     <string name="enter_the_name">Enter The Name</string>
     <string name="enter_Category_name">ENTER CATEGORY NAME</string>
     <string name="Category_name">Category Name</string>
+    <string name="Food_name">Food Name</string>
+    <string name="Description">Description</string>
+    <string name="Price">Price</string>
+    <string name="Discount">Discount in %</string>
 </resources>
 
