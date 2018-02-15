@@ -178,6 +178,8 @@ public class Home extends AppCompatActivity
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                            // dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
+
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -194,6 +196,7 @@ public class Home extends AppCompatActivity
                 public void onFailure(@NonNull Exception e) {
                     // dialog.dismiss();
                     Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                    Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
                 }
             })
             .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -254,6 +257,12 @@ public class Home extends AppCompatActivity
 //                    }
 //                }
                 //);
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View v, int position, boolean isLongClick) {
+                        //loooool
+                    }
+                });
             }
         };
         adapter.notifyDataSetChanged();   // for refreshing data
@@ -300,10 +309,136 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //code for update and delete
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if(item.getTitle().equals(Common.UPDATE))
+        {
+            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(),adapter.getItem(item.getOrder()));
+        }else  if(item.getTitle().equals(Common.DELETE))
+        {
+           deleteCategory(adapter.getRef(item.getOrder()).getKey());
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    private void deleteCategory(String key) {
+        categories.child(key).removeValue();
+        //Toast.makeText(this,"Item deleted",Toast.LENGTH_LONG).show();
+       Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
+
+    }
+
+
+    private void showUpdateDialog(final String key, final Category item) {
+
+        AlertDialog.Builder alertDailog = new AlertDialog.Builder(Home.this);
+        alertDailog.setTitle("Update the Category");
+        alertDailog.setMessage("Please fill all fields");
+
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View add_menu_layout = inflater.inflate(R.layout.add_new_menu_layout,null);
+        edtName = add_menu_layout.findViewById(R.id.edtName);
+        btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
+        btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+
+        //set default name
+        edtName.setText(item.getName());
+
+        //event for button
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();   //select image from galery and save url
+            }
+        });
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeImage(item);   //select image from galary and save url
+            }
+        });
+
+        alertDailog.setView(add_menu_layout);
+        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+
+        //set button
+        alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //create a new category
+//                if(newCategory != null)
+//                {
+//                    categories.push().setValue(newCategory);
+//                    Snackbar.make(drawer,"New Category "+newCategory.getName()+" was added",Snackbar.LENGTH_LONG).show();
+//                    //Toast.makeText(Home.this,"New Category Created!!",Toast.LENGTH_LONG).show();
+//                }
+                item.setName(edtName.getText().toString());
+                categories.child(key).setValue(item);
+            }
+        });
+        alertDailog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDailog.show();
+    }
+
+    private void changeImage(final Category item) {
+
+        if(saveUri != null)
+        {
+            String imageName = UUID.randomUUID().toString();
+            final StorageReference imageFolder = storageReference.child("images/"+imageName);
+            imageFolder.putFile(saveUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // dialog.dismiss();
+                            Toast.makeText(Home.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    //set value of new category to get download link
+                                    item.setImage(uri.toString());
+                                    // /newCategory = new Category(edtName.getText().toString(),uri.toString());
+
+                                }
+                            });
+                        }
+
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // dialog.dismiss();
+                            Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                            Snackbar.make(drawer,"Something gone wrong check logs",Snackbar.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            // dialog.setMessage("Uploaded"+progress+"%");
+
+                        }
+                    });
+
+
+        }
+
     }
 }
