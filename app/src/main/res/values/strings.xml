@@ -56,5 +56,8 @@
     <string name="Description">Description</string>
     <string name="Price">Price</string>
     <string name="Discount">Discount in %</string>
+    <string name="UploadImage">Upload Image</string>
+    <string name="SelectImage"><![CDATA[Select Image ->]]></string>
+    <string name="ordersreport">Order Report</string>
 </resources>
 

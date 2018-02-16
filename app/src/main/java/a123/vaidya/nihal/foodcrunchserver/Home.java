@@ -156,7 +156,7 @@ public class Home extends AppCompatActivity
                 {
                     categories.push().setValue(newCategory);
                     Snackbar.make(drawer,"New Category "+newCategory.getName()+" was added",Snackbar.LENGTH_LONG).show();
-                    //Toast.makeText(Home.this,"New Category Created!!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Home.this,"New Category Created!!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -180,7 +180,7 @@ public class Home extends AppCompatActivity
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                            // dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -201,15 +201,8 @@ public class Home extends AppCompatActivity
                     Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
                     Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
                 }
-            })
-            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    // dialog.setMessage("Uploaded"+progress+"%");
-
-                }
             });
+
 
 
         }
@@ -247,19 +240,7 @@ public class Home extends AppCompatActivity
                 viewHolder.txtMenuName.setText(model.getName());
                 Picasso.with(Home.this).load(model.getImage())
                         .into(viewHolder.imageView);
-//                final Category clickItem = model;
-//                viewHolder.setItemClickListener(new ItemClickListener() {
-//                    @Override
-//                    public void onClick(View v, int position, boolean isLongClick) {
-//                        //category is key
-//                        Intent foodList = new Intent (Home.this,FoodList.class);
-//                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
-//                        startActivity(foodList);
-//
-//                        //Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-                //);
+
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View v, int position, boolean isLongClick) {
@@ -338,7 +319,7 @@ public class Home extends AppCompatActivity
 
     private void deleteCategory(String key) {
         categories.child(key).removeValue();
-        //Toast.makeText(this,"Item deleted",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"The category was  deleted",Toast.LENGTH_LONG).show();
        Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
 
     }
@@ -356,6 +337,8 @@ public class Home extends AppCompatActivity
         edtName = add_menu_layout.findViewById(R.id.edtName);
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+
+
 
         //set default name
         edtName.setText(item.getName());
@@ -383,15 +366,11 @@ public class Home extends AppCompatActivity
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                //create a new category
-//                if(newCategory != null)
-//                {
-//                    categories.push().setValue(newCategory);
-//                    Snackbar.make(drawer,"New Category "+newCategory.getName()+" was added",Snackbar.LENGTH_LONG).show();
-//                    //Toast.makeText(Home.this,"New Category Created!!",Toast.LENGTH_LONG).show();
-//                }
+                //updating info
                 item.setName(edtName.getText().toString());
                 categories.child(key).setValue(item);
+                Snackbar.make(drawer,"New Category "+item.getName()+" was updated",Snackbar.LENGTH_LONG).show();
+                Toast.makeText(Home.this,"The Category was updated!!",Toast.LENGTH_LONG).show();
             }
         });
         alertDailog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -414,7 +393,8 @@ public class Home extends AppCompatActivity
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded !!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
+                            Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -434,15 +414,8 @@ public class Home extends AppCompatActivity
                             Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"Something gone wrong check logs",Snackbar.LENGTH_LONG).show();
                         }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                            // dialog.setMessage("Uploaded"+progress+"%");
-
-                        }
                     });
+
 
 
         }
