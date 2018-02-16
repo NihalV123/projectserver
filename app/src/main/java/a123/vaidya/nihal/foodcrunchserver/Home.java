@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -296,7 +297,18 @@ public class Home extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        if (id == R.id.nav_menu) {
+        } else if (id == R.id.nav_cart) {
+            //Intent cartIntent = new Intent (Home.this,Cart.class);
+            //startActivity(cartIntent);
+        } else if (id == R.id.nav_orders) {
+            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
+            startActivity(orderIntent);
+        } else if (id == R.id.nav_logout) {
+            Intent signIn = new Intent (Home.this,Signin.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signIn);
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
