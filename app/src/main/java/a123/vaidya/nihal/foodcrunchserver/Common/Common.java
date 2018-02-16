@@ -1,9 +1,15 @@
 package a123.vaidya.nihal.foodcrunchserver.Common;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.net.Uri;
 
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
+import a123.vaidya.nihal.foodcrunchserver.Remote.RetrofitClient;
+import a123.vaidya.nihal.foodcrunchserver.Remote.iGeoCoordinates;
 
 /**
  * Created by nnnn on 26/12/2017.
@@ -24,5 +30,28 @@ public class Common {
         else
             return "Shipped!!";
     }
+
+    public static final String baseUrl = "https://maps.googleapis.com";
+    public static iGeoCoordinates getGeoCodeService()
+    {
+        return RetrofitClient.getClient(baseUrl).create(iGeoCoordinates.class);
+    }
     public static final int PICK_IMAGE_REQUEST= 71;
+
+    public static Bitmap scaleBitmap (Bitmap bitmap,int newWidth,int newHeight) {
+        Bitmap scaleBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
+        float scaleX = newWidth/(float)bitmap.getWidth();
+        float scaleY = newHeight/(float)bitmap.getHeight();
+        float pivotX=0,pivotY=0;
+
+        Matrix scaleMatrix = new Matrix();
+        scaleMatrix.setScale(scaleX,scaleY,pivotX,pivotY);
+
+        Canvas canvas = new Canvas(scaleBitmap);
+        canvas.setMatrix(scaleMatrix);
+        canvas.drawBitmap(bitmap,0,0,new Paint(Paint.FILTER_BITMAP_FLAG));
+        return scaleBitmap;
+
+
+    }
 }
