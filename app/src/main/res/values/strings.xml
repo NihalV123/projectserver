@@ -59,5 +59,6 @@
     <string name="UploadImage">Upload Image</string>
     <string name="SelectImage"><![CDATA[Select Image ->]]></string>
     <string name="ordersreport">Order Report</string>
+    <string name="title_activity_tracking_order">Map</string>
 </resources>
 

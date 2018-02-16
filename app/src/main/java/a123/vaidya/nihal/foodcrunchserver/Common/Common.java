@@ -2,6 +2,7 @@ package a123.vaidya.nihal.foodcrunchserver.Common;
 
 import android.net.Uri;
 
+import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 /**
@@ -10,6 +11,7 @@ import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 public class Common {
     public static User currentUser;
+    public static Request currentRequest;
 
     public static final String UPDATE = "Update";
     public static final String DELETE = "Delete";
