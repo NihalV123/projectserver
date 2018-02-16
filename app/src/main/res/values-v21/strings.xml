@@ -4,4 +4,6 @@
     <string name="_0">0</string>
     <string name="Category_name">Category Name</string>
     <string name="ordersreport">Order Report</string>
+    <string name="refresh">Refresh</string>
+    <string name="RememberMe">Remember Me</string>
 </resources>

@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 public class Signup extends AppCompatActivity {
@@ -37,19 +38,14 @@ public class Signup extends AppCompatActivity {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("User");
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
         BtnSignup.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
+                if (Common.isConnectedToInternet(getBaseContext())) {
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -80,6 +76,12 @@ public class Signup extends AppCompatActivity {
 
                     }
                 });
+                }else
+                {
+                    Toast.makeText(Signup.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
             }
         });
 

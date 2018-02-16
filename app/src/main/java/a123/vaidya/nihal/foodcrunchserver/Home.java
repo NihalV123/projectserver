@@ -44,6 +44,7 @@ import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import info.hoang8f.widget.FButton;
+import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -111,9 +112,15 @@ public class Home extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
+        if (Common.isConnectedToInternet(this)) {
 
-        loadMenu();
-
+            loadMenu();
+        }
+        else
+        {
+            Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+            return;
+        }
 
     }
 
@@ -279,15 +286,12 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (item.getItemId() == R.id.refresh)
+        {
+            loadMenu();
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -305,6 +309,8 @@ public class Home extends AppCompatActivity
             Intent orderIntent = new Intent (Home.this,OrderStatus.class);
             startActivity(orderIntent);
         } else if (id == R.id.nav_logout) {
+            //delete remmbered user details
+            Paper.book().destroy();
             Intent signIn = new Intent (Home.this,Signin.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);

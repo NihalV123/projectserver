@@ -13,9 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rey.material.widget.CheckBox;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
+import io.paperdb.Paper;
 
 public class Signin extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class Signin extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference users;
     DrawerLayout drawer;
+    CheckBox remember_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,9 @@ public class Signin extends AppCompatActivity {
         edtPasswd= findViewById(R.id.edtPasswd);
         edtPhone= findViewById(R.id.edtPhone);
         BtnSignin = findViewById(R.id.btnSignin);
+        remember_button =(CheckBox)findViewById(R.id.remember_button);
 
+        Paper.init(this);
         db =  FirebaseDatabase.getInstance();
         users = db.getReference("User");
 
@@ -44,18 +49,20 @@ public class Signin extends AppCompatActivity {
                 };
 
         });
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
+
     }
     private void signinUser(String phone, String password) {
         final String localphone = phone;
         final String localpassword = password;
-        users.addValueEventListener(new ValueEventListener() {
+
+        if (Common.isConnectedToInternet(getBaseContext())) {
+            //save user name and password
+            if(remember_button.isChecked())
+            {
+                Paper.book().write(Common.USER_KEY,edtPhone.getText().toString());
+                Paper.book().write(Common.PWD_KEY,edtPasswd.getText().toString());
+            }
+            users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //check if user doesnt exist in db
@@ -95,6 +102,11 @@ public class Signin extends AppCompatActivity {
 
             }
         });
+        }else
+        {
+            Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+            return;
+        }
     }
 };
 

@@ -311,12 +311,12 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private class ParserTask extends AsyncTask<String,Integer,List<List<HashMap<String,String>>>>{
-        ProgressDialog mDialog = new ProgressDialog(TrackingOrder.this);
+//        ProgressDialog mDialog = new ProgressDialog(TrackingOrder.this);
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mDialog.setMessage("Please wait");
-            mDialog.show();
+//            mDialog.setMessage("Please wait");
+//            mDialog.show();
             Toast.makeText(TrackingOrder.this,"Getting your location Please wait ....",Toast.LENGTH_LONG).show();
         }
 

@@ -1,9 +1,12 @@
 package a123.vaidya.nihal.foodcrunchserver.Common;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
@@ -37,7 +40,8 @@ public class Common {
         return RetrofitClient.getClient(baseUrl).create(iGeoCoordinates.class);
     }
     public static final int PICK_IMAGE_REQUEST= 71;
-
+    public static final String USER_KEY = "User";
+    public static final String PWD_KEY = "Password";
     public static Bitmap scaleBitmap (Bitmap bitmap,int newWidth,int newHeight) {
         Bitmap scaleBitmap = Bitmap.createBitmap(newWidth, newHeight, Bitmap.Config.ARGB_8888);
         float scaleX = newWidth/(float)bitmap.getWidth();
@@ -54,4 +58,24 @@ public class Common {
 
 
     }
+
+    public static boolean isConnectedToInternet(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager != null)
+        {
+            NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
+            if(info != null)
+            {
+                for(int i =0; i<info.length;i++)
+                {
+                    if(info[i].getState() == NetworkInfo.State.CONNECTED)
+                        return true;
+
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

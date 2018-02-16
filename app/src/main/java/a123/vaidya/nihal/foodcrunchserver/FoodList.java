@@ -87,7 +87,12 @@ public class FoodList extends AppCompatActivity {
             categoryId = getIntent().getStringExtra("CategoryId");
         if (!categoryId.isEmpty()&&categoryId != null)
         {
-            loadListFood(categoryId);
+            if (Common.isConnectedToInternet(getBaseContext()))
+
+                loadListFood(categoryId);
+            else
+                Toast.makeText(FoodList.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+            return;
         }
 
     }
