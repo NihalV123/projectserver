@@ -21,7 +21,7 @@ import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 public class Signup extends AppCompatActivity {
 
-    MaterialEditText edtNmae,edtPhone,edtPasswd;
+    MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode;
     Button BtnSignup;
     private FirebaseAuth mAuth;
     DrawerLayout drawer;
@@ -33,6 +33,7 @@ public class Signup extends AppCompatActivity {
 
         edtNmae= findViewById(R.id.edtName);
         edtPasswd= findViewById(R.id.edtPasswd);
+        edtSecureCode=findViewById(R.id.edtSecureCode);
         edtPhone= findViewById(R.id.edtPhone);
         BtnSignup = findViewById(R.id.btnSignup);
 
@@ -61,7 +62,7 @@ public class Signup extends AppCompatActivity {
                         }
                         else
                         {
-                            User user = new User(edtNmae.getText().toString(),edtPasswd.getText().toString());
+                            User user = new User(edtNmae.getText().toString(),edtPasswd.getText().toString(),edtSecureCode.getText().toString());
                             table_user.child(edtPhone.getText().toString()).setValue(user);
                             DatabaseReference myRef = database.getReference("message");
 

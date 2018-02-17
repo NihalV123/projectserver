@@ -1,8 +1,11 @@
 package a123.vaidya.nihal.foodcrunchserver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.rey.material.widget.CheckBox;
+import com.rey.material.widget.TextView;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
@@ -27,6 +31,9 @@ public class Signin extends AppCompatActivity {
     DatabaseReference users;
     DrawerLayout drawer;
     CheckBox remember_button;
+    android.widget.TextView txtForgetPwd;
+//    FirebaseDatabase db;
+//    DatabaseReference users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +44,17 @@ public class Signin extends AppCompatActivity {
         edtPhone= findViewById(R.id.edtPhone);
         BtnSignin = findViewById(R.id.btnSignin);
         remember_button =(CheckBox)findViewById(R.id.remember_button);
+        txtForgetPwd = (android.widget.TextView) findViewById(R.id.forget_password_txt);
 
         Paper.init(this);
         db =  FirebaseDatabase.getInstance();
         users = db.getReference("User");
-
+        txtForgetPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showForgetPwdDailog();
+            }
+        });
         BtnSignin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                     signinUser(edtPhone.getText().toString(),edtPasswd.getText().toString());
@@ -107,6 +120,49 @@ public class Signin extends AppCompatActivity {
             Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
             return;
         }
+    }
+    private void showForgetPwdDailog() {
+        final AlertDialog.Builder builder =  new AlertDialog.Builder(this);
+        builder.setTitle("Forgot Password");
+        builder.setMessage("Please enter your secure code");
+        LayoutInflater inflater = this.getLayoutInflater();
+        View forget_view =inflater.inflate(R.layout.forgot_password_layout,null);
+        builder.setView(forget_view);
+        builder.setIcon(R.drawable.ic_security_black_24dp);
+        final MaterialEditText edtPhone = (MaterialEditText)forget_view.findViewById(R.id.edtPhone);
+        final MaterialEditText edtSecureCode = (MaterialEditText)forget_view.findViewById(R.id.edtSecureCode);
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                users.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
+                        if(user.getSecureCode().equals(edtSecureCode.getText().toString()))
+                        {
+                            Toast.makeText(Signin.this,"Your passwrod is "+user.getPassword(),Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(Signin.this,"WRONG SECURE CODE !!!",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
+
     }
 };
 

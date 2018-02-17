@@ -17,6 +17,7 @@
     <string name="test7">test7</string>
     <string name="test8">test8</string>
     <string name="title_activity_home">Home</string>
+    <string name="forget_pwd"><u>Forget Password??!</u></string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -62,5 +63,6 @@
     <string name="title_activity_tracking_order">Map</string>
     <string name="refresh">Refresh</string>
     <string name="RememberMe">Remember Me</string>
+    <string name="SecureCode">Secure Code</string>
 </resources>
 

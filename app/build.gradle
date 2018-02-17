@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-wallet:11.8.0'
     implementation 'com.google.android.gms:play-services-wearable:11.8.0'
     implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation 'com.stepstone.apprating:app-rating:2.2.0'
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.github.rey5137:material:1.2.4'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
