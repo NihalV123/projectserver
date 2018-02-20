@@ -56,18 +56,30 @@ public class OrderStatus extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(OrderViewHolder viewHolder, final Request model, int position) {
-                viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
-                viewHolder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
-                viewHolder.txtOrderAddress.setText(model.getAddress());
-                viewHolder.txtOrderPhonw.setText(model.getPhone());
+                viewHolder.txtOrderId.setText("Order Id : "+adapter.getRef(position).getKey());
+                viewHolder.txtOrderStatus.setText("Status : "+Common.convertCodeToStatus(model.getStatus()));
+                viewHolder.txtOrderAddress.setText("\n Address : "+model.getAddress());
+                viewHolder.txtOrderPhonw.setText("Phone No : "+model.getPhone());
+                viewHolder.txtOrderComment.setText("\n Comment : "+model.getComment());
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View v, int position, boolean isLongClick) {
-                        //the map code
-                        Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
-                        Common.currentRequest = model;
-                        startActivity(trackingOrder);
+                        if(!isLongClick)
+                        {
+                            //the map code
+                            Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
+                            Common.currentRequest = model;
+                            startActivity(trackingOrder);
+                        }
+                        else
+                        {
+                            //the map code
+                            Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
+                            Common.currentRequest = model;
+                            orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
+                            startActivity(orderDetail);
+                        }
                     }
                 });
             }

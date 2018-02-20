@@ -30,7 +30,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.birin:gridlistviewadapters:1.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.okhttp:okhttp:2.7.2'
     implementation 'com.google.android.gms:play-services-plus:11.8.0'
     implementation 'com.google.android.gms:play-services-auth:11.8.0'

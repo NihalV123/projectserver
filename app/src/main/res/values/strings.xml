@@ -64,5 +64,14 @@
     <string name="refresh">Refresh</string>
     <string name="RememberMe">Remember Me</string>
     <string name="SecureCode">Secure Code</string>
+    <string name="Write_comment">Write Comment</string>
+    <string name="Order_name">Order Name</string>
+    <string name="Details">Details Of Your Order</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_quantity">Product Quantity</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_discount">Product Discount</string>
+    <string name="ontheway">On The Way</string>
+    <string name="my_new_address">MY NEW ADDRESS</string>
 </resources>
 

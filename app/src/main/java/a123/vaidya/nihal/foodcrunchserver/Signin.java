@@ -126,7 +126,7 @@ public class Signin extends AppCompatActivity {
         builder.setTitle("Forgot Password");
         builder.setMessage("Please enter your secure code");
         LayoutInflater inflater = this.getLayoutInflater();
-        View forget_view =inflater.inflate(R.layout.forgot_password_layout,null);
+        View forget_view =inflater.inflate(R.layout.forgot_passowrd_layout,null);
         builder.setView(forget_view);
         builder.setIcon(R.drawable.ic_security_black_24dp);
         final MaterialEditText edtPhone = (MaterialEditText)forget_view.findViewById(R.id.edtPhone);

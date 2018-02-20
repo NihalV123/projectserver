@@ -11,16 +11,18 @@ public class Request {
     private String name;
     private String address;
     private String total;
+    private String comment;
     private String status;
     private List<Order>foods;
 
     public Request() {
     }
 
-    public Request(String phone, String name, String address, String total, List<Order> foods) {
+    public Request(String phone, String name, String address, String total,String comment,String status, List<Order> foods) {
         this.phone = phone;
         this.name = name;
         this.address = address;
+        this.comment = comment;
         this.total = total;
         this.foods = foods;
         this.status = "0";
@@ -41,6 +43,14 @@ public class Request {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getAddress() {
@@ -66,7 +76,15 @@ public class Request {
     public String getStatus() {
         return status;
     }
-
+    public static String convertCodeToStatus(String code)
+    {
+        if (code.equals("0"))
+            return "Placed";
+        else if (code.equals("1"))
+            return "Your food is on the way ";
+        else
+            return "Shipped!!";
+    }
     public void setStatus(String status) {
         this.status = status;
     }

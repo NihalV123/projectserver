@@ -149,7 +149,9 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
             }
             else
             {
-                Toast.makeText(this,"Sorry we could not get your location",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Please Calibrate Your Compass In Google Maps ",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Trying To Get Your Location ",Toast.LENGTH_LONG).show();
+
             }
         }
     }
@@ -199,7 +201,7 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(TrackingOrder.this,"Searching ..... ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(TrackingOrder.this,"Searching ....",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -339,7 +341,7 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
         @Override
         protected void onPostExecute(List<List<HashMap<String, String>>> lists) {
             super.onPostExecute(lists);
-            Toast.makeText(TrackingOrder.this,"Almost finished ......",Toast.LENGTH_LONG).show();
+            Toast.makeText(TrackingOrder.this,"All Done !!!",Toast.LENGTH_LONG).show();
 
             ArrayList points = null;
             PolylineOptions lineOptions = null;

@@ -14,7 +14,15 @@ public class Order {
     public Order() {
 
     }
-
+    public static String convertCodeToStatus(String code)
+    {
+        if (code.equals("0"))
+            return "Placed";
+        else if (code.equals("1"))
+            return "Your food is on the way ";
+        else
+            return "Shipped!!";
+    }
     public Order(String productId, String productName,String quantity, String price, String discount) {
         ProductId = productId;
         ProductName = productName;

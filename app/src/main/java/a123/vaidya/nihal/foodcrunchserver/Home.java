@@ -43,7 +43,6 @@ import java.util.UUID;
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
-import a123.vaidya.nihal.foodcrunchserver.Service.ListenOrder;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import info.hoang8f.widget.FButton;
 import io.paperdb.Paper;
@@ -125,8 +124,8 @@ public class Home extends AppCompatActivity
             Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
             return;
         }
-        Intent services = new Intent(Home.this, ListenOrder.class);
-        startService(services);
+//        Intent services = new Intent(Home.this, ListenOrder.class);
+//        startService(services);
     }
 
     private void showDialog() {
@@ -307,10 +306,11 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_menu) {
-        } else if (id == R.id.nav_cart) {
+        }
+        //else if (id == R.id.nav_cart) {
             //Intent cartIntent = new Intent (Home.this,Cart.class);
-            //startActivity(cartIntent);
-        } else if (id == R.id.nav_orders) {
+            //startActivity(cartIntent); }
+         else if (id == R.id.nav_orders) {
             Intent orderIntent = new Intent (Home.this,OrderStatus.class);
             startActivity(orderIntent);
         } else if (id == R.id.nav_logout) {
