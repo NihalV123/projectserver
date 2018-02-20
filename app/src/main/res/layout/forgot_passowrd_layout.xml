@@ -18,6 +18,7 @@
             android:text="@string/_7208680470"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
+            android:gravity="center"
             android:inputType="phone"
             app:met_baseColor="@color/colorPrimary"
             app:met_floatingLabel="highlight"
@@ -29,6 +30,7 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:id="@+id/edtSecureCode"
             android:hint="@string/SecureCode"
             android:text="@string/_11111111"

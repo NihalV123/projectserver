@@ -73,5 +73,11 @@
     <string name="product_discount">Product Discount</string>
     <string name="ontheway">On The Way</string>
     <string name="my_new_address">MY NEW ADDRESS</string>
+    <string name="Your_cart">YOUR CART</string>
+    <string name="SELECT_YOUR_FOOD">SELECT YOUR FOOD</string>
+    <string name="Your_orders_from_Today">RECENT ORDERS</string>
+    <string name="LONG_CLICK_TO_UPDATE">LONG CLICK TO UPDATE</string>
+    <string name="LONG_CLICK_FOR_INFO">TAP FOR DIRECTIONS LONG CLICK FOR DETAILS</string>
+    <string name="SETHIGHERRESOLUTION">SET RESOLUTION HIGHER</string>
 </resources>
 

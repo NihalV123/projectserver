@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a123.vaidya.nihal.foodcrunchclient.FoodDetail">
+    tools:context="a123.vaidya.nihal.foodcrunchserver.FoodDetail">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -45,21 +45,9 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
-    android:id="@+id/btnCart"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
-    android:src="@drawable/ic_shopping_cart_black_24dp"
-    app:elevation="6dp"
-    app:layout_anchor="@+id/app_bar_layout"
-    app:layout_anchorGravity="right|bottom"
-    app:pressedTranslationZ="12dp"
-    app:useCompatPadding="true" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:src="@drawable/ic_shopping_cart_black_24dp"
         app:elevation="6dp"
@@ -67,6 +55,8 @@
         app:layout_anchorGravity="right|bottom"
         app:pressedTranslationZ="12dp"
         app:useCompatPadding="true" />
+
+
 
 <android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
