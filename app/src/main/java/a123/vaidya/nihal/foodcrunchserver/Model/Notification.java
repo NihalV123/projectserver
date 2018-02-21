@@ -1,4 +1,4 @@
-package a123.vaidya.nihal.foodcrunchclient.Model;
+package a123.vaidya.nihal.foodcrunchserver.Model;
 
 public class Notification {
     public String body;

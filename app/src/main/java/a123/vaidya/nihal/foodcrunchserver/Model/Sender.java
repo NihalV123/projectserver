@@ -2,9 +2,14 @@ package a123.vaidya.nihal.foodcrunchserver.Model;
 
 public class Sender {
     public String to;
-    public a123.vaidya.nihal.foodcrunchclient.Model.Notification notification;
+    public Notification notification;
 
-    public Sender(String token, a123.vaidya.nihal.foodcrunchclient.Model.Notification notification) {
+    public Sender() {
+    }
+
+    public Sender(String to, Notification notification) {
+        this.to =to;
+        this.notification = notification;
     }
 
     public String getTo() {
@@ -15,11 +20,11 @@ public class Sender {
         this.to = to;
     }
 
-    public a123.vaidya.nihal.foodcrunchclient.Model.Notification getNotification() {
+    public Notification getNotification() {
         return notification;
     }
 
-    public void setNotification(a123.vaidya.nihal.foodcrunchclient.Model.Notification notification) {
+    public void setNotification(Notification notification) {
         this.notification = notification;
     }
 }

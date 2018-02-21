@@ -11,6 +11,8 @@ import android.net.Uri;
 
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
+import a123.vaidya.nihal.foodcrunchserver.Remote.APIService;
+import a123.vaidya.nihal.foodcrunchserver.Remote.FCMRetrofitClient;
 import a123.vaidya.nihal.foodcrunchserver.Remote.RetrofitClient;
 import a123.vaidya.nihal.foodcrunchserver.Remote.iGeoCoordinates;
 
@@ -22,8 +24,9 @@ public class Common {
     public static User currentUser;
     public static Request currentRequest;
 
-    public static final String UPDATE = "Update";
-    public static final String DELETE = "Delete";
+    public static final String UPDATE = "UPDATE";
+    public static final String DELETE = "DELETE";
+    //update and delete master witch
     public static String convertCodeToStatus(String code)
     {
         if (code.equals("0"))
@@ -35,10 +38,20 @@ public class Common {
     }
 
     public static final String baseUrl = "https://maps.googleapis.com";
+
+    public static final String fcmUrl = "https://fcm.googleapis.com";
+
+    public static APIService getFCMClient()
+    {
+        return FCMRetrofitClient.getClient(fcmUrl).create(APIService.class);
+    }
+
     public static iGeoCoordinates getGeoCodeService()
     {
         return RetrofitClient.getClient(baseUrl).create(iGeoCoordinates.class);
     }
+
+
     public static final int PICK_IMAGE_REQUEST= 71;
     public static final String USER_KEY = "User";
     public static final String PWD_KEY = "Password";

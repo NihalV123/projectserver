@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +44,7 @@ import java.util.UUID;
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
+import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import info.hoang8f.widget.FButton;
 import io.paperdb.Paper;
@@ -117,6 +119,8 @@ public class Home extends AppCompatActivity
 
             loadMenu();
 
+            //send to token
+            updateToken(FirebaseInstanceId.getInstance().getToken());
 
         }
         else
@@ -126,6 +130,14 @@ public class Home extends AppCompatActivity
         }
 //        Intent services = new Intent(Home.this, ListenOrder.class);
 //        startService(services);
+    }
+
+    private void updateToken(String token) {
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference tokens = db.getReference("Tokens");
+        Token data = new Token(token,true); //false as this reads frm client
+        tokens.child(Common.currentUser.getPhone()).setValue(data);
+        Toast.makeText(Home.this,"Welcome !!!",Toast.LENGTH_LONG).show();
     }
 
     private void showDialog() {

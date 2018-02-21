@@ -13,7 +13,7 @@ import a123.vaidya.nihal.foodcrunchserver.R;
  */
 
 public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener ,
-        View.OnLongClickListener,
+        //View.OnLongClickListener,
         View.OnCreateContextMenuListener{
 
     public TextView txtOrderId,txtOrderStatus,txtOrderPhonw,txtOrderAddress,txtOrderComment;
@@ -31,7 +31,7 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
         itemView.setOnClickListener(this);
         itemView.setOnCreateContextMenuListener(this);
-        itemView.setOnLongClickListener(this);
+        //itemView.setOnLongClickListener(this);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -46,14 +46,14 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         menu.setHeaderTitle("Select The Action");
-        menu.add(0,0,getAdapterPosition(),"Update");
-        menu.add(0,1,getAdapterPosition(),"Update");
+        menu.add(0,0,getAdapterPosition(),"UPDATE");
+        menu.add(0,1,getAdapterPosition(),"DELETE");
 
     }
 
-    @Override
-    public boolean onLongClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition(),true);
-        return true;
-    }
+//    @Override
+//    public boolean onLongClick(View v) {
+//        itemClickListener.onClick(v,getAdapterPosition(),true);
+//        return true;
+//    }
 }

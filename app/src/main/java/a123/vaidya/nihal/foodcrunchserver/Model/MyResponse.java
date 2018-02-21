@@ -11,6 +11,14 @@ public class MyResponse {
     public MyResponse() {
     }
 
+    public MyResponse(long multicast_id, int success, int failure, int canonical_ids, List<Result> results) {
+        this.multicast_id = multicast_id;
+        this.success = success;
+        this.failure = failure;
+        this.canonical_ids = canonical_ids;
+        this.results = results;
+    }
+
     public long getMulticast_id() {
         return multicast_id;
     }
@@ -51,13 +59,6 @@ public class MyResponse {
         this.results = results;
     }
 
-    public MyResponse(long multicast_id, int success, int failure, int canonical_ids, List<Result> results) {
-        this.multicast_id = multicast_id;
-        this.success = success;
-        this.failure = failure;
-        this.canonical_ids = canonical_ids;
-        this.results = results;
-    }
 
     public List<Result> results;
 }
