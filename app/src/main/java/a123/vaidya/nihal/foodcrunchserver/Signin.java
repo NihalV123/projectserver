@@ -3,7 +3,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +21,7 @@ import com.rey.material.widget.TextView;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
+import dmax.dialog.SpotsDialog;
 import io.paperdb.Paper;
 
 public class Signin extends AppCompatActivity {
@@ -90,10 +91,12 @@ public class Signin extends AppCompatActivity {
                         {
                             DatabaseReference myRef = db.getReference("message");
                             myRef.setValue("Hello from sign in ");
-
+                            final SpotsDialog dialog = new SpotsDialog(Signin.this);
+                            dialog.show();
                             Intent homeIntent = new Intent(Signin.this,Home.class);
                             Common.currentUser = user;
                             startActivity(homeIntent);
+                            dialog.dismiss();
 
                         } else {
                             DatabaseReference myRef = db.getReference("message");

@@ -3,7 +3,7 @@ package a123.vaidya.nihal.foodcrunchserver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,6 +30,7 @@ import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.Remote.APIService;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.OrderViewHolder;
+import dmax.dialog.SpotsDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -96,18 +97,24 @@ public class OrderStatus extends AppCompatActivity {
                 viewHolder.btnDetails.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
+                        dialog.show();
                         Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
                         Common.currentRequest = model;
                         orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
                         startActivity(orderDetail);
+                        dialog.dismiss();
                     }
                 });
                 viewHolder.btnDirections.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
+                        dialog.show();
                         Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
                         Common.currentRequest = model;
                         startActivity(trackingOrder);
+                        dialog.dismiss();
                     }
                 });
             }

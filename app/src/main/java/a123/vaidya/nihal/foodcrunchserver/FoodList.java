@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +35,7 @@ import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Food;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.FoodViewHolder;
+import dmax.dialog.SpotsDialog;
 import info.hoang8f.widget.FButton;
 
 public class FoodList extends AppCompatActivity {
@@ -158,16 +159,17 @@ public class FoodList extends AppCompatActivity {
     private void uploadImage() {
 
         if(saveUri != null)
-        {
-            Toast.makeText(FoodList.this,"Just a sec",Toast.LENGTH_LONG).show();
+        {final SpotsDialog dialog = new SpotsDialog(FoodList.this);
+            dialog.show();
+            //Toast.makeText(FoodList.this,"Just a sec",Toast.LENGTH_LONG).show();
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            Toast.makeText(FoodList.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                            Toast.makeText(FoodList.this,"Uploaded Successfully !!!",Toast.LENGTH_LONG).show();
                             Snackbar.make(rootLayout,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -339,14 +341,16 @@ public class FoodList extends AppCompatActivity {
 
         if(saveUri != null)
         {
+            final SpotsDialog dialog = new SpotsDialog(FoodList.this);
+            dialog.show();
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // dialog.dismiss();
-                            Toast.makeText(FoodList.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                            Toast.makeText(FoodList.this,"Uploaded Successfully!!!",Toast.LENGTH_LONG).show();
                             Snackbar.make(rootLayout,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
 

@@ -8,18 +8,31 @@
             android:id="@+id/nav_menu"
             android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="@string/menu" />
-        <!--android:iconTint="@android:color/white"-->
 
+        <item
+            android:id="@+id/nav_emailaddress2"
+            android:icon="@drawable/ic_email_black_24dp"
+            android:title="@string/email_address" />
 
-        <!--<item-->
-            <!--android:id="@+id/nav_cart"-->
-            <!--android:icon="@drawable/ic_shopping_cart_black_24dp"-->
-            <!--android:title="@string/cart" />-->
+        <item
+            android:id="@+id/nav_presetLocatipon"
+            android:icon="@drawable/ic_add_location_black_24dp"
+            android:title="@string/home_address" />
+
+        <item
+            android:id="@+id/nav_password"
+            android:icon="@drawable/ic_security_black_24dp"
+            android:title="@string/change_password" />
 
         <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/ic_access_time_black_24dp"
             android:title="@string/ordersreport" />
+
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="@string/action_settings" />
 
         <item
             android:id="@+id/nav_logout"

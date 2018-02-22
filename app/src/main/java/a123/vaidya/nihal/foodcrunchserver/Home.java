@@ -11,7 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,8 +46,10 @@ import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
+import dmax.dialog.SpotsDialog;
 import info.hoang8f.widget.FButton;
 import io.paperdb.Paper;
+import retrofit2.http.Headers;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -197,14 +199,16 @@ public class Home extends AppCompatActivity
 
         if(saveUri != null)
         {
-            Toast.makeText(Home.this,"Just a sec",Toast.LENGTH_LONG).show();
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
+            //Toast.makeText(Home.this,"Just a sec",Toast.LENGTH_LONG).show();
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                           // dialog.dismiss();
+                            dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
@@ -332,40 +336,58 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_menu) {
+            Toast.makeText(Home.this,"You are already in main menu",Toast.LENGTH_LONG).show();
         }
-        //else if (id == R.id.nav_cart) {
-            //Intent cartIntent = new Intent (Home.this,Cart.class);
-            //startActivity(cartIntent); }
          else if (id == R.id.nav_orders) {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
             Intent orderIntent = new Intent (Home.this,OrderStatus.class);
             startActivity(orderIntent);
-        } else if (id == R.id.nav_logout) {
+            dialog.dismiss();
+        }
+        else if (id == R.id.nav_presetLocatipon) {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
+            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
+            startActivity(orderIntent);
+            dialog.dismiss();
+        }
+        else if (id == R.id.nav_emailaddress2) {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
+            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
+            startActivity(orderIntent);
+            dialog.dismiss();
+        }
+        else if (id == R.id.nav_password) {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
+            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
+            startActivity(orderIntent);
+            dialog.dismiss();
+        }
+        else if (id == R.id.settings) {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
+            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
+            startActivity(orderIntent);
+            dialog.dismiss();
+        }
+        else if (id == R.id.nav_logout) {
             //delete remmbered user details
             Paper.book().destroy();
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
             Intent signIn = new Intent (Home.this,Signin.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);
+            dialog.dismiss();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    //code for update and delete
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//
-//        if(item.getTitle().equals(Common.UPDATE))
-//        {
-//            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(),adapter.getItem(item.getOrder()));
-//        }else  if(item.getTitle().equals(Common.DELETE))
-//        {
-//           deleteCategory(adapter.getRef(item.getOrder()).getKey());
-//
-//        }
-//
-//        return super.onContextItemSelected(item);
-//    }
 
     private void deleteCategory(String key) {
         categories.child(key).removeValue();
@@ -453,13 +475,15 @@ public class Home extends AppCompatActivity
 
         if(saveUri != null)
         {
+            final SpotsDialog dialog = new SpotsDialog(Home.this);
+            dialog.show();
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // dialog.dismiss();
+                             dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

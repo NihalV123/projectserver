@@ -23,6 +23,7 @@ import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
+import dmax.dialog.SpotsDialog;
 import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,40 +60,22 @@ public class MainActivity extends AppCompatActivity {
         Paper.init(this);
         BtnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                dialog.show();
                 Intent Signup= new Intent(MainActivity.this,Signup.class);
                 startActivity(Signup);
+                dialog.dismiss();
             }
         });
         BtnSignIn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                dialog.show();
                 Intent Signin= new Intent(MainActivity.this,Signin.class);
                 startActivity(Signin);
+                dialog.dismiss();
             }
         });
-//        btnTest1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signup= new Intent(MainActivity.this,Signup.class);
-//                startActivity(Signup);
-//            }
-//        });
-//        btnTest2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signin= new Intent(MainActivity.this,Signin.class);
-//                startActivity(Signin);
-//            }
-//        });
-//        btnTest3.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signup= new Intent(MainActivity.this,Signup.class);
-//                startActivity(Signup);
-//            }
-//        });
-//        btnTest4.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signin= new Intent(MainActivity.this,Signin.class);
-//                startActivity(Signin);
-//            }
-//        });
         String user = Paper.book().read(Common.USER_KEY);
         String pwd = Paper.book().read(Common.PWD_KEY);
         if(user != null && pwd != null)
@@ -124,10 +107,12 @@ public class MainActivity extends AppCompatActivity {
                         if ((user.getPassword().equals(pwd))) {
                             DatabaseReference myRef = database.getReference("message");
                             myRef.setValue("Hello from sign in ");
-
+                            final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                            dialog.show();
                             Intent homeIntent = new Intent(MainActivity.this, Home.class);
                             Common.currentUser = user;
                             startActivity(homeIntent);
+                            dialog.dismiss();
 
                         } else {
                             DatabaseReference myRef = database.getReference("message");
