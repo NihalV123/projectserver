@@ -10,12 +10,14 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,6 +40,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
+import com.twitter.sdk.android.core.DefaultLogger;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
 
 import java.util.UUID;
 
@@ -66,7 +72,7 @@ public class Home extends AppCompatActivity
     DatabaseReference categories;
     FirebaseStorage storage;
     StorageReference storageReference;
-
+    SwipeRefreshLayout swipeRefreshLayout;
     FirebaseRecyclerAdapter<Category,MenuViewHolder> adapter;
     RecyclerView recycler_menu;
     RecyclerView.LayoutManager layoutManager;
@@ -81,8 +87,56 @@ public class Home extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //firebase code
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh1);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_red_dark,
+                android.R.color.holo_blue_dark);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+          @Override
+           public void onRefresh() {
 
-        database = FirebaseDatabase.getInstance();
+              if (Common.isConnectedToInternet(getBaseContext())) {
+
+                  loadMenu();
+
+                  //send to token
+                  updateToken(FirebaseInstanceId.getInstance().getToken());
+              }
+              else
+              {
+                  Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
+                  return;
+              }
+          }
+        });
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                if (Common.isConnectedToInternet(getBaseContext())) {
+
+                    loadMenu();
+
+                    //send to token
+                    updateToken(FirebaseInstanceId.getInstance().getToken());
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+        Twitter.initialize(this);
+        TwitterConfig config = new TwitterConfig.Builder(this)
+                .logger(new DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(new TwitterAuthConfig("6ep60jj09lvUcHncYM3yCoIMr", "WXvH93jw1urHD9IzIk6FDRmKW0X5LGZgmMCDo67XFk2uDf2LGJ"))
+                .debug(true)
+                .build();
+        Twitter.initialize(config);
+        Paper.init(this);
+                database = FirebaseDatabase.getInstance();
         categories =database.getReference("Category");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -298,6 +352,7 @@ public class Home extends AppCompatActivity
         adapter.notifyDataSetChanged();   // for refreshing data
         recycler_menu.setAdapter(adapter);
 
+        swipeRefreshLayout.setRefreshing(false);
 
     }
 

@@ -92,5 +92,6 @@
     <string name="Please_enter_your_address">ENTER YOUR ADDRESS</string>
     <string name="repeat_new_passowrd">REPEAT NEW PASSOWRD</string>
     <string name="enter_new_password">ENTER NEW PASSWORD</string>
+    <string name="Please_select_a_category">SELECT CATEGORY</string>
 </resources>
 
