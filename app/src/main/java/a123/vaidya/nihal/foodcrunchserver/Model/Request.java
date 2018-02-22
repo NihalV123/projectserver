@@ -10,23 +10,25 @@ public class Request {
     private String phone;
     private String name;
     private String address;
-    private String total;
-    private String comment;
     private String status;
-    private List<Order>foods;
+    private String comment;
+    //private String email;
+    private String total;
+    private List<Order> foods;
+    private String paymentState;
 
     public Request() {
     }
 
-    public Request(String phone, String name, String address, String total,String comment,String status, List<Order> foods) {
+    public Request(String phone, String name, String address, String status, String comment, String total, List<Order> foods, String paymentState) {
         this.phone = phone;
         this.name = name;
         this.address = address;
+        this.status = status;
         this.comment = comment;
         this.total = total;
         this.foods = foods;
-        this.status = "0";
-        //0 is placed 1 is shiping 2 is shipped
+        this.paymentState = paymentState;
     }
 
     public String getPhone() {
@@ -45,20 +47,28 @@ public class Request {
         this.name = name;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getTotal() {
@@ -73,23 +83,15 @@ public class Request {
         return foods;
     }
 
-    public String getStatus() {
-        return status;
-    }
-    public static String convertCodeToStatus(String code)
-    {
-        if (code.equals("0"))
-            return "Placed";
-        else if (code.equals("1"))
-            return "Your food is on the way ";
-        else
-            return "Shipped!!";
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public void setFoods(List<Order> foods) {
         this.foods = foods;
+    }
+
+    public String getPaymentState() {
+        return paymentState;
+    }
+
+    public void setPaymentState(String paymentState) {
+        this.paymentState = paymentState;
     }
 }
