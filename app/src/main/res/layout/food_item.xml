@@ -2,11 +2,15 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:minHeight="200dp"
+    android:background="@drawable/background"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/linearLayout3"
+        android:background="@drawable/background"
+        android:minHeight="200dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,6 +18,7 @@
         <ImageView
             android:id="@+id/food_image"
             android:layout_width="match_parent"
+            android:minHeight="200dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/food_crunch"
             android:scaleType="centerCrop"
@@ -37,22 +42,9 @@
             android:layout_weight="4"
             android:background="@color/overlayBackground"
             android:orientation="horizontal"
-            android:paddingBottom="30dp">
-
-            <info.hoang8f.widget.FButton
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="2"
-                android:text="@string/UPDATE"
-                android:textColor="@android:color/white"
-                app:buttonColor="@color/colorAccent"
-                app:shadowColor="@android:color/black"
-                app:shadowHeight="5dp" />
+            android:paddingBottom="30dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
 
             <info.hoang8f.widget.FButton
                 android:id="@+id/btnRemove"
@@ -64,6 +56,21 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="2"
                 android:text="@string/REMOVE"
+                android:textColor="@android:color/white"
+                app:buttonColor="@color/colorAccent"
+                app:shadowColor="@android:color/black"
+                app:shadowHeight="5dp" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:text="@string/UPDATE"
                 android:textColor="@android:color/white"
                 app:buttonColor="@color/colorAccent"
                 app:shadowColor="@android:color/black"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.app.AlertDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -45,6 +47,8 @@ public class FoodList extends AppCompatActivity {
     FloatingActionButton fab;
     MaterialEditText edtName,edtDescription,edtPrice,edtDiscount;
     FButton btnSelect,btnUpload;
+    TextView textView;
+    SwipeRefreshLayout rootLayout;
     Food newFood;
 
     FirebaseDatabase db;
@@ -55,7 +59,6 @@ public class FoodList extends AppCompatActivity {
     String categoryId="";
     Uri saveUri;
     private final int PICK_IMAGE_REQUEST= 71;
-    RelativeLayout rootLayout;
     FirebaseRecyclerAdapter<Food,FoodViewHolder> adapter;
 
     @Override
@@ -68,12 +71,51 @@ public class FoodList extends AppCompatActivity {
         foodList =db.getReference("Foods");
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        rootLayout = (SwipeRefreshLayout) findViewById(R.id.rootLayout);
+        rootLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_red_dark,
+                android.R.color.holo_blue_dark);
+        rootLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (getIntent()!=null)
+                    categoryId = getIntent().getStringExtra("CategoryId");
+                if (!categoryId.isEmpty()&&categoryId != null)
+                {
+                    if (Common.isConnectedToInternet(getBaseContext()))
+                        loadListFood(categoryId);
+                    else
+                        Toast.makeText(FoodList.this,"Please check your" +
+                                " internet connection",Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
 
+        rootLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                if (getIntent()!=null)
+                    categoryId = getIntent().getStringExtra("CategoryId");
+                if (!categoryId.isEmpty()&&categoryId != null)
+                {
+                    if (Common.isConnectedToInternet(getBaseContext()))
+                        loadListFood(categoryId);
+                    else
+                        Toast.makeText(FoodList.this,"Please check your" +
+                                " internet connection",Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
         recyclerView = findViewById(R.id.recycler_food);
         recyclerView.setHasFixedSize(true);
+        textView = findViewById(R.id.textView3);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        rootLayout = (RelativeLayout)findViewById(R.id.rootLayout);
+
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -237,6 +279,7 @@ public class FoodList extends AppCompatActivity {
         };
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+        rootLayout.setRefreshing(false);
     }
 
     @Override

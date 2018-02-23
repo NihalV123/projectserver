@@ -87,7 +87,7 @@ public class Home extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //firebase code
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh1);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipelayout1);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,

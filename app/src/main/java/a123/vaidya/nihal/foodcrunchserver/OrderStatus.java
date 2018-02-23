@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.app.AlertDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,6 +45,7 @@ public class OrderStatus extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference requests;
     MaterialSpinner spinner;
+    SwipeRefreshLayout swipeRefreshLayout;
     APIService mAPIService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,24 @@ public class OrderStatus extends AppCompatActivity {
         mAPIService = Common.getFCMClient();
 
         //firebase
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_order_list);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_red_dark,
+                android.R.color.holo_blue_dark);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadOrders(Common.currentUser.getPhone());
+            }
+        });
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                loadOrders(Common.currentUser.getPhone());
+            }
+        });
         db = FirebaseDatabase.getInstance();
         requests = db.getReference("Requests");
 
@@ -122,6 +142,7 @@ public class OrderStatus extends AppCompatActivity {
         };
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

@@ -93,5 +93,6 @@
     <string name="repeat_new_passowrd">REPEAT NEW PASSOWRD</string>
     <string name="enter_new_password">ENTER NEW PASSWORD</string>
     <string name="Please_select_a_category">SELECT CATEGORY</string>
+    <string name="EMPTY_LIST">THIS SEEMS TO BE EMPTY</string>
 </resources>
 
