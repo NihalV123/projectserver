@@ -22,10 +22,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -312,14 +314,20 @@ public class Home extends AppCompatActivity
     }
 
     private void loadMenu() {
-        adapter= new FirebaseRecyclerAdapter<Category, MenuViewHolder>(
-                Category.class,
-                R.layout.menu_item,
-                MenuViewHolder.class,
-                categories
-        ) {
+        //new firebase code
+        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
+                .setQuery(categories, Category.class)
+                .build();
+
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
             @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Category model, final int position) {
+            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View itemView = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.menu_item,parent,false);
+                return  new MenuViewHolder(itemView);
+            }
+            @Override
+            protected void onBindViewHolder(@NonNull MenuViewHolder viewHolder, final int position, @NonNull Category model) {
                 viewHolder.txtMenuName.setText(model.getName());
                 Picasso.with(Home.this).load(model.getImage())
                         .into(viewHolder.imageView);
@@ -349,12 +357,41 @@ public class Home extends AppCompatActivity
 
             }
         };
-        adapter.notifyDataSetChanged();   // for refreshing data
+        adapter.startListening();
+        recycler_menu.setAdapter(adapter);
+        swipeRefreshLayout.setRefreshing(false);
+//            @Override
+//            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//                View itemview = LayoutInflater.from(parent.getContext())
+//                        .inflate(R.layout.menu_item,parent,false);
+//                return new MenuViewHolder(itemview);
+//            }
+    };
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadMenu();
+        adapter.startListening();
+        adapter.notifyDataSetChanged();
+        recycler_menu.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        loadMenu();
+        adapter.startListening();
+        adapter.notifyDataSetChanged();
         recycler_menu.setAdapter(adapter);
 
-        swipeRefreshLayout.setRefreshing(false);
-
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 
     @Override
     public void onBackPressed() {

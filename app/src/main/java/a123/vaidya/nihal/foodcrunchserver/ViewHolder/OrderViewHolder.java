@@ -16,15 +16,16 @@ import a123.vaidya.nihal.foodcrunchserver.R;
  */
 
 public class OrderViewHolder extends RecyclerView.ViewHolder
-        //implements
-        //View.OnClickListener ,
-        //View.OnLongClickListener,
+//        implements
+//        View.OnClickListener {
+        //,View.OnLongClickListener,
        // View.OnCreateContextMenuListener
-{
+        {
 
     public TextView txtOrderId,txtOrderStatus,txtOrderPhonw,txtOrderAddress,txtOrderComment;
     public android.widget.Button btnEdit,btnRemove,btnDirections,btnDetails;
-   // private ItemClickListener itemClickListener;
+    //private ItemClickListener itemClickListener;
+
 
 
     public OrderViewHolder(View itemView) {
@@ -42,10 +43,16 @@ public class OrderViewHolder extends RecyclerView.ViewHolder
         btnRemove = (android.widget.Button)itemView.findViewById(R.id.btnRemove);
 
 
-//        itemView.setOnClickListener(this);
+        //itemView.setOnClickListener(this);
 //        itemView.setOnCreateContextMenuListener(this);
         //itemView.setOnLongClickListener(this);
     }
+
+//    public void setItemClickListener(ItemClickListener itemClickListener) {
+//        this.itemClickListener = itemClickListener;
+//    }
+
+
 
 //    public void setItemClickListener(ItemClickListener itemClickListener) {
 //        this.itemClickListener = itemClickListener;

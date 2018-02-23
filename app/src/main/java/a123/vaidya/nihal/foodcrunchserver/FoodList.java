@@ -13,16 +13,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -70,6 +73,7 @@ public class FoodList extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         foodList =db.getReference("Foods");
         storage = FirebaseStorage.getInstance();
+
         storageReference = storage.getReference();
         rootLayout = (SwipeRefreshLayout) findViewById(R.id.rootLayout);
         rootLayout.setColorSchemeResources(R.color.colorPrimary,
@@ -253,11 +257,21 @@ public class FoodList extends AppCompatActivity {
 
     //select * from foods where menuid=&
     private void loadListFood(String categoryId) {
-        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
-                R.layout.food_item, FoodViewHolder.class, foodList.orderByChild("menuId")
-                .equalTo(categoryId)) {
+        Query searchbyname =foodList.orderByChild("menuId").equalTo(categoryId);
+        //options
+        FirebaseRecyclerOptions<Food> foodoptions = new FirebaseRecyclerOptions.Builder<Food>()
+                .setQuery(searchbyname,Food.class)
+                .build();
+        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(foodoptions) {
             @Override
-            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, final int position) {
+            public FoodViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View itemView = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.food_item,parent,false);
+                return new FoodViewHolder(itemView);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull final FoodViewHolder viewHolder, final int position, @NonNull final Food model) {
                 viewHolder.food_name.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
                 //event buttons
@@ -275,13 +289,39 @@ public class FoodList extends AppCompatActivity {
                     }
                 });
 
-            }
+                    }
         };
-        adapter.notifyDataSetChanged();
+        adapter.startListening();
+
+        //set adapter
         recyclerView.setAdapter(adapter);
+
         rootLayout.setRefreshing(false);
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadListFood(categoryId);
+        adapter.startListening();
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+    }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        loadListFood(categoryId);
+        adapter.startListening();
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //searchAdapter.stopListening();
+        //adapter.stopListening();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
