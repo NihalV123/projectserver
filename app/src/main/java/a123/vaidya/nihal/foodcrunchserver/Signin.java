@@ -17,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.rey.material.widget.CheckBox;
-import com.rey.material.widget.TextView;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
@@ -44,8 +43,8 @@ public class Signin extends AppCompatActivity {
         edtPasswd= findViewById(R.id.edtPasswd);
         edtPhone= findViewById(R.id.edtPhone);
         BtnSignin = findViewById(R.id.btnSignin);
-        remember_button =(CheckBox)findViewById(R.id.remember_button);
-        txtForgetPwd = (android.widget.TextView) findViewById(R.id.forget_password_txt);
+        remember_button = findViewById(R.id.remember_button);
+        txtForgetPwd = findViewById(R.id.forget_password_txt);
 
         Paper.init(this);
         db =  FirebaseDatabase.getInstance();
@@ -60,14 +59,13 @@ public class Signin extends AppCompatActivity {
             public void onClick(View v) {
                     signinUser(edtPhone.getText().toString(),edtPasswd.getText().toString());
 
-                };
+                }
 
         });
 
     }
     private void signinUser(String phone, String password) {
         final String localphone = phone;
-        final String localpassword = password;
 
         if (Common.isConnectedToInternet(getBaseContext())) {
             //save user name and password
@@ -121,7 +119,6 @@ public class Signin extends AppCompatActivity {
         }else
         {
             Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-            return;
         }
     }
     private void showForgetPwdDailog() {
@@ -132,8 +129,8 @@ public class Signin extends AppCompatActivity {
         View forget_view =inflater.inflate(R.layout.forgot_passowrd_layout,null);
         builder.setView(forget_view);
         builder.setIcon(R.drawable.ic_security_black_24dp);
-        final MaterialEditText edtPhone = (MaterialEditText)forget_view.findViewById(R.id.edtPhone);
-        final MaterialEditText edtSecureCode = (MaterialEditText)forget_view.findViewById(R.id.edtSecureCode);
+        final MaterialEditText edtPhone = forget_view.findViewById(R.id.edtPhone);
+        final MaterialEditText edtSecureCode = forget_view.findViewById(R.id.edtSecureCode);
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -167,6 +164,6 @@ public class Signin extends AppCompatActivity {
         builder.show();
 
     }
-};
+}
 
 

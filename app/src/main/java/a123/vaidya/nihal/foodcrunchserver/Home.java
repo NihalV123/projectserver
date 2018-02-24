@@ -23,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,14 +52,12 @@ import com.twitter.sdk.android.core.TwitterConfig;
 import java.util.UUID;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import dmax.dialog.SpotsDialog;
 import info.hoang8f.widget.FButton;
 import io.paperdb.Paper;
-import retrofit2.http.Headers;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,12 +84,12 @@ public class Home extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Menu Management");
         setSupportActionBar(toolbar);
 
         //firebase code
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipelayout1);
+        swipeRefreshLayout = findViewById(R.id.swipelayout1);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
@@ -109,7 +109,6 @@ public class Home extends AppCompatActivity
               else
               {
                   Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
-                  return;
               }
           }
         });
@@ -126,7 +125,6 @@ public class Home extends AppCompatActivity
                 else
                 {
                     Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
-                    return;
                 }
             }
         });
@@ -140,11 +138,54 @@ public class Home extends AppCompatActivity
         Paper.init(this);
                 database = FirebaseDatabase.getInstance();
         categories =database.getReference("Category");
+
+        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
+                .setQuery(categories, Category.class)
+                .build();
+
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
+            @Override
+            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View itemView = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.menu_item,parent,false);
+                return  new MenuViewHolder(itemView);
+            }
+            @Override
+            protected void onBindViewHolder(@NonNull MenuViewHolder viewHolder, final int position, @NonNull Category model) {
+                viewHolder.txtMenuName.setText(model.getName());
+                Picasso.with(Home.this).load(model.getImage())
+                        .into(viewHolder.imageView);
+                //event buttons
+                viewHolder.btnRemove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteCategory(adapter.getRef(position).getKey());
+
+                    }
+                });
+                viewHolder.btnGoIn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //start new category adding activity
+                        Intent foodList = new Intent(Home.this,FoodList.class);
+                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
+                        startActivity(foodList);
+                    }
+                });
+                viewHolder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
+                    }
+                });
+
+            }
+        };
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,27 +193,30 @@ public class Home extends AppCompatActivity
             }
         });
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //set name for user
         View headerView = navigationView.getHeaderView(0);
-        txtfullname = (TextView)headerView.findViewById(R.id.txtFullName);
+        txtfullname = headerView.findViewById(R.id.txtFullName);
         txtfullname.setText(Common.currentUser.getName());
 
 
         //new view for server
-        recycler_menu = (RecyclerView)findViewById(R.id.recycler_menu);
+        recycler_menu = findViewById(R.id.recycler_menu);
         recycler_menu.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
-
+        //animation code
+        LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(recycler_menu.getContext(),
+                R.anim.layout_fall_down);
+        recycler_menu.setLayoutAnimation(controller);
         if (Common.isConnectedToInternet(this)) {
 
             loadMenu();
@@ -184,7 +228,6 @@ public class Home extends AppCompatActivity
         else
         {
             Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-            return;
         }
 //        Intent services = new Intent(Home.this, ListenOrder.class);
 //        startService(services);
@@ -194,8 +237,14 @@ public class Home extends AppCompatActivity
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference tokens = db.getReference("Tokens");
         Token data = new Token(token,true); //false as this reads frm client
-        tokens.child(Common.currentUser.getPhone()).setValue(data);
-        Toast.makeText(Home.this,"Welcome !!!",Toast.LENGTH_LONG).show();
+        try {
+            tokens.child(Common.currentUser.getPhone()).setValue(data);
+            Toast.makeText(Home.this,"Welcome ",Toast.LENGTH_LONG).show();
+
+        }
+        catch(Exception e){
+            Toast.makeText(Home.this,"your phone no is missing",Toast.LENGTH_LONG).show();
+        }
     }
 
     private void showDialog() {
@@ -314,59 +363,57 @@ public class Home extends AppCompatActivity
     }
 
     private void loadMenu() {
-        //new firebase code
-        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
-                .setQuery(categories, Category.class)
-                .build();
-
-        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
-            @Override
-            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View itemView = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.menu_item,parent,false);
-                return  new MenuViewHolder(itemView);
-            }
-            @Override
-            protected void onBindViewHolder(@NonNull MenuViewHolder viewHolder, final int position, @NonNull Category model) {
-                viewHolder.txtMenuName.setText(model.getName());
-                Picasso.with(Home.this).load(model.getImage())
-                        .into(viewHolder.imageView);
-                //event buttons
-                viewHolder.btnRemove.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteCategory(adapter.getRef(position).getKey());
-
-                    }
-                });
-                viewHolder.btnGoIn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //start new category adding activity
-                        Intent foodList = new Intent(Home.this,FoodList.class);
-                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
-                        startActivity(foodList);
-                    }
-                });
-                viewHolder.btnUpdate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
-                    }
-                });
-
-            }
-        };
+//        //new firebase code
+//        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
+//                .setQuery(categories, Category.class)
+//                .build();
+//
+//        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
+//            @Override
+//            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//                View itemView = LayoutInflater.from(parent.getContext())
+//                        .inflate(R.layout.menu_item,parent,false);
+//                return  new MenuViewHolder(itemView);
+//            }
+//            @Override
+//            protected void onBindViewHolder(@NonNull MenuViewHolder viewHolder, final int position, @NonNull Category model) {
+//                viewHolder.txtMenuName.setText(model.getName());
+//                Picasso.with(Home.this).load(model.getImage())
+//                        .into(viewHolder.imageView);
+//                //event buttons
+//                viewHolder.btnRemove.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        deleteCategory(adapter.getRef(position).getKey());
+//
+//                    }
+//                });
+//                viewHolder.btnGoIn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        //start new category adding activity
+//                        Intent foodList = new Intent(Home.this,FoodList.class);
+//                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
+//                        startActivity(foodList);
+//                    }
+//                });
+//                viewHolder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
+//                    }
+//                });
+//
+//            }
+//        };
         adapter.startListening();
         recycler_menu.setAdapter(adapter);
         swipeRefreshLayout.setRefreshing(false);
-//            @Override
-//            public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//                View itemview = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.menu_item,parent,false);
-//                return new MenuViewHolder(itemview);
-//            }
-    };
+        //aniamtion begins
+        recycler_menu.getAdapter().notifyDataSetChanged();
+        recycler_menu.scheduleLayoutAnimation();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -377,10 +424,11 @@ public class Home extends AppCompatActivity
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
         loadMenu();
-        adapter.startListening();
+        if (adapter!= null){
+            adapter.startListening();}
         adapter.notifyDataSetChanged();
         recycler_menu.setAdapter(adapter);
 
@@ -395,7 +443,7 @@ public class Home extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -424,58 +472,74 @@ public class Home extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_menu) {
-            Toast.makeText(Home.this,"You are already in main menu",Toast.LENGTH_LONG).show();
+        switch (id) {
+            case R.id.nav_menu:
+                Toast.makeText(Home.this, "You are already in main menu", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_orders: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.nav_presetLocatipon: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.nav_emailaddress2: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.nav_password: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.settings: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.nav_removeuser: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;
+            }
+            case R.id.nav_logout: {
+                //delete remmbered user details
+                Paper.book().destroy();
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent signIn = new Intent(Home.this, Signin.class);
+                signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(signIn);
+                dialog.dismiss();
+                break;
+            }
         }
-         else if (id == R.id.nav_orders) {
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-            dialog.dismiss();
-        }
-        else if (id == R.id.nav_presetLocatipon) {
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-            dialog.dismiss();
-        }
-        else if (id == R.id.nav_emailaddress2) {
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-            dialog.dismiss();
-        }
-        else if (id == R.id.nav_password) {
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-            dialog.dismiss();
-        }
-        else if (id == R.id.settings) {
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-            dialog.dismiss();
-        }
-        else if (id == R.id.nav_logout) {
-            //delete remmbered user details
-            Paper.book().destroy();
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-            Intent signIn = new Intent (Home.this,Signin.class);
-            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(signIn);
-            dialog.dismiss();
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

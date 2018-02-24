@@ -5,7 +5,6 @@
     android:background="@drawable/background"
     android:layout_height="match_parent"
     android:id="@+id/rootLayout"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="a123.vaidya.nihal.foodcrunchserver.FoodList">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:paddingTop="5dp"
             android:text="@string/EMPTY_LIST"
             android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:textSize="25sp" />
     <!--<com.mancj.materialsearchbar.MaterialSearchBar-->
         <!--android:id="@+id/searchBar"-->
         <!--android:layout_width="match_parent"-->
@@ -38,14 +37,14 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_food"
             android:layout_width="match_parent"
-            android:minHeight="200dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
+            android:minHeight="200dp"
             android:scrollbars="vertical">
 
         </android.support.v7.widget.RecyclerView>
 
-    <com.github.clans.fab.FloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -66,6 +65,6 @@
             android:paddingTop="5dp"
             android:text="@string/SELECT_YOUR_FOOD"
             android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:textSize="25sp" />
 </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

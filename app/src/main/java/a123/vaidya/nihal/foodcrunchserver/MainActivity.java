@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         }else
         {
             Toast.makeText(MainActivity.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-            return;
         }
 
 

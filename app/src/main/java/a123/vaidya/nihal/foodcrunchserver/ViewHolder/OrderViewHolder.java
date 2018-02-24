@@ -1,14 +1,9 @@
 package a123.vaidya.nihal.foodcrunchserver.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.View;
 import android.widget.TextView;
 
-import com.rey.material.widget.Button;
-
-import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.R;
 
 /**
@@ -31,16 +26,16 @@ public class OrderViewHolder extends RecyclerView.ViewHolder
     public OrderViewHolder(View itemView) {
         super(itemView);
 
-        txtOrderId =(TextView)itemView.findViewById(R.id.order_id);
-        txtOrderStatus=(TextView)itemView.findViewById(R.id.order_status);
-        txtOrderPhonw=(TextView)itemView.findViewById(R.id.order_phone);
-        txtOrderAddress=(TextView)itemView.findViewById(R.id.order_address);
-        txtOrderComment=(TextView)itemView.findViewById(R.id.comment_details);
+        txtOrderId = itemView.findViewById(R.id.order_id);
+        txtOrderStatus= itemView.findViewById(R.id.order_status);
+        txtOrderPhonw= itemView.findViewById(R.id.order_phone);
+        txtOrderAddress= itemView.findViewById(R.id.order_address);
+        txtOrderComment= itemView.findViewById(R.id.comment_details);
         //order bottom buton
-        btnEdit = (android.widget.Button)itemView.findViewById(R.id.btnEdit);
-        btnDetails = (android.widget.Button)itemView.findViewById(R.id.btnDetails);
-        btnDirections = (android.widget.Button)itemView.findViewById(R.id.btnDirections);
-        btnRemove = (android.widget.Button)itemView.findViewById(R.id.btnRemove);
+        btnEdit = itemView.findViewById(R.id.btnEdit);
+        btnDetails = itemView.findViewById(R.id.btnDetails);
+        btnDirections = itemView.findViewById(R.id.btnDirections);
+        btnRemove = itemView.findViewById(R.id.btnRemove);
 
 
         //itemView.setOnClickListener(this);

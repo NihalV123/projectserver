@@ -77,7 +77,7 @@
     <string name="LONG_CLICK_TO_UPDATE">LONG CLICK TO UPDATE</string>
     <string name="LONG_CLICK_FOR_INFO">TAP FOR DIRECTIONS LONG CLICK FOR DETAILS</string>
     <string name="SETHIGHERRESOLUTION">SET RESOLUTION HIGHER</string>
-    <string name="DIRECTIONS">DIRECTIONS</string>
+    <string name="DIRECTIONS">DIRECTION</string>
     <string name="DETAILS">DETAILS</string>
     <string name="REMOVE">REMOVE</string>
     <string name="edit">EDIT</string>
@@ -94,5 +94,7 @@
     <string name="enter_new_password">ENTER NEW PASSWORD</string>
     <string name="Please_select_a_category">SELECT CATEGORY</string>
     <string name="EMPTY_LIST">THIS SEEMS TO BE EMPTY</string>
+    <string name="delete_user_data">DELETE USER DATA</string>
+    <string name="_9769539742">9769539742</string>
 </resources>
 

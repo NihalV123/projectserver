@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
@@ -23,7 +22,7 @@ import a123.vaidya.nihal.foodcrunchserver.Remote.iGeoCoordinates;
 public class Common {
     public static User currentUser;
     public static Request currentRequest;
-
+    public static String PHONE_TEXT = "userPhone";
     public static final String UPDATE = "UPDATE";
     public static final String DIRECTIONS = "DIRECTIONS";
     public static final String DELETE = "DELETE";
@@ -31,12 +30,14 @@ public class Common {
     //update and delete master witch
     public static String convertCodeToStatus(String code)
     {
-        if (code.equals("0"))
-            return "Placed";
-        else if (code.equals("1"))
-            return "Your food is on the way ";
-        else
-            return "Shipped!!";
+        switch (code) {
+            case "0":
+                return "Placed";
+            case "1":
+                return "Your food is on the way ";
+            default:
+                return "Shipped!!";
+        }
     }
 
     public static final String baseUrl = "https://maps.googleapis.com";
@@ -81,9 +82,8 @@ public class Common {
             NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
             if(info != null)
             {
-                for(int i =0; i<info.length;i++)
-                {
-                    if(info[i].getState() == NetworkInfo.State.CONNECTED)
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED)
                         return true;
 
                 }

@@ -3,7 +3,6 @@ package a123.vaidya.nihal.foodcrunchserver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.app.AlertDialog;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
 import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
@@ -59,7 +57,7 @@ public class OrderStatus extends AppCompatActivity {
         mAPIService = Common.getFCMClient();
 
         //firebase
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_order_list);
+        swipeRefreshLayout = findViewById(R.id.swipe_order_list);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
@@ -68,30 +66,32 @@ public class OrderStatus extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadOrders(Common.currentUser.getPhone());
+                //loadOrders(Common.currentUser.getPhone());
+                loadOrders();
             }
         });
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                loadOrders(Common.currentUser.getPhone());
+                //loadOrders(Common.currentUser.getPhone());
+                loadOrders();
             }
         });
         db = FirebaseDatabase.getInstance();
         requests = db.getReference("Requests");
 
-        recyclerView = (RecyclerView)findViewById(R.id.listOrders);
+        recyclerView = findViewById(R.id.listOrders);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        loadOrders(Common.currentUser.getPhone());
+        //loadOrders(Common.currentUser.getPhone());
+        loadOrders();
 
 
     }
 
-    private void loadOrders(String phone) {
-
-        Query getOrderByUserQuery = requests.orderByChild("phone").equalTo(phone);
+    private void loadOrders() {
+        Query getOrderByUserQuery = requests;
         FirebaseRecyclerOptions<Request> orderoptions = new FirebaseRecyclerOptions.Builder<Request>()
                 .setQuery(getOrderByUserQuery, Request.class)
                 .build();
@@ -105,7 +105,7 @@ public class OrderStatus extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull OrderViewHolder viewHolder,@NonNull final int position, @NonNull final Request model) {
+            protected void onBindViewHolder(@NonNull OrderViewHolder viewHolder, final int position, @NonNull final Request model) {
                 viewHolder.txtOrderId.setText("Order Id : " + adapter.getRef(position).getKey());
                 viewHolder.txtOrderStatus.setText("Status : " + Common.convertCodeToStatus(model.getStatus()));
                 viewHolder.txtOrderAddress.setText("\n Address : " + model.getAddress());
@@ -156,7 +156,89 @@ public class OrderStatus extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
-            }
+
+    }
+
+//    private void loadOrders(String phone) {
+//
+//        Query getOrderByUserQuery = requests.orderByChild("phone").equalTo(phone);
+//        FirebaseRecyclerOptions<Request> orderoptions = new FirebaseRecyclerOptions.Builder<Request>()
+//                .setQuery(getOrderByUserQuery, Request.class)
+//                .build();
+//
+//        adapter = new FirebaseRecyclerAdapter<Request, OrderViewHolder>(orderoptions) {
+//            @Override
+//            public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//                View itemview = LayoutInflater.from(parent.getContext())
+//                        .inflate(R.layout.order_layout, parent, false);
+//                return new OrderViewHolder(itemview);
+//            }
+//
+//            @Override
+//            protected void onBindViewHolder(@NonNull OrderViewHolder viewHolder, final int position, @NonNull final Request model) {
+//                viewHolder.txtOrderId.setText("Order Id : " + adapter.getRef(position).getKey());
+//                viewHolder.txtOrderStatus.setText("Status : " + Common.convertCodeToStatus(model.getStatus()));
+//                viewHolder.txtOrderAddress.setText("\n Address : " + model.getAddress());
+//                viewHolder.txtOrderPhonw.setText("Phone No : " + model.getPhone());
+//                viewHolder.txtOrderComment.setText("\n Comment : " + model.getComment());
+//
+//                //event button
+//                viewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
+//                    }
+//                });
+//                viewHolder.btnRemove.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        deleteOrder(adapter.getRef(position).getKey(),adapter.getItem(position));
+//                        adapter.notifyDataSetChanged();//update view
+//                    }
+//                });
+//                viewHolder.btnDetails.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
+//                        dialog.show();
+//                        Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
+//                        Common.currentRequest = model;
+//                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
+//                        startActivity(orderDetail);
+//                        dialog.dismiss();
+//                    }
+//                });
+//                viewHolder.btnDirections.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
+//                        dialog.show();
+//                        Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
+//                        Common.currentRequest = model;
+//                        startActivity(trackingOrder);
+//                        dialog.dismiss();
+//                    }
+//                });
+//            }
+//
+//        };
+//                adapter.startListening();
+//                adapter.notifyDataSetChanged();
+//                recyclerView.setAdapter(adapter);
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //loadOrders(Common.currentUser.getPhone());
+        loadOrders();
+        if (adapter!= null){
+            adapter.startListening();}
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+
+    }
+
 
     @Override
     protected void onStop() {
@@ -177,10 +259,9 @@ public class OrderStatus extends AppCompatActivity {
 
 
     private void deleteOrder(String key, final Request item) {
-        final String localKey = key;
         //final Request item = null;
         requests.child(key).removeValue();
-        sendorderstatustoUSER(localKey,item);
+        sendorderstatustoUSER(key,item);
         Toast.makeText(OrderStatus.this,"   The order was deleted   ",Toast.LENGTH_LONG).show();
 
     }
@@ -192,7 +273,7 @@ public class OrderStatus extends AppCompatActivity {
         alertDialog.setMessage("Please choose status");
         final LayoutInflater inflater = this.getLayoutInflater();
         final View view = inflater.inflate(R.layout.update_order_layout,null);
-        spinner = (MaterialSpinner)view.findViewById(R.id.statusspinner);
+        spinner = view.findViewById(R.id.statusspinner);
         spinner.setItems("Placed","On the way","Shipped!!");
         alertDialog.setView(view);
         final String localKey = key;
@@ -231,19 +312,19 @@ public class OrderStatus extends AppCompatActivity {
                             mAPIService.sendNotification(content)
                                     .enqueue(new Callback<MyResponse>() {
                                         @Override
-                                        public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                        public void onResponse(@NonNull Call<MyResponse> call, @NonNull Response<MyResponse> response) {
                                             if(response.code() == 200){
                                                 if(response.body().success ==1)
                                                 {
-                                                    Toast.makeText(OrderStatus.this,"   Your order was updated   ",Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(OrderStatus.this, "Order updated notification sent",Toast.LENGTH_LONG).show();
                                                 }else{
-                                                    Toast.makeText(OrderStatus.this,"Your order was updated...\n\nFailed to send notification",Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(OrderStatus.this,"Updated but Failed to send notification",Toast.LENGTH_LONG).show();
                                                 }}
                                         }
 
                                         @Override
-                                        public void onFailure(Call<MyResponse> call, Throwable t) {
-                                            Toast.makeText(OrderStatus.this,"Background Notification Refresh",Toast.LENGTH_LONG).show();
+                                        public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
+                                            Toast.makeText(OrderStatus.this,"notification failure",Toast.LENGTH_LONG).show();
                                         }
                                     });
                         }

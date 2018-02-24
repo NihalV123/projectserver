@@ -16,7 +16,7 @@
         android:paddingTop="30dp"
         android:text="@string/EMPTY_LIST"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="25sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="@string/Your_cart"
             android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -70,7 +70,7 @@
                     android:textSize="20sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:contentDescription="@string/todo"

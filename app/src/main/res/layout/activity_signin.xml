@@ -26,7 +26,7 @@
             android:gravity="center"
             android:hint="@string/enter_your_phone_number"
             android:inputType="phone"
-            android:text="@string/_7208680470"
+            android:text="@string/_9769539742"
             android:textColor="@android:color/white"
             android:textSize="36sp"
             app:met_baseColor="@android:color/white"

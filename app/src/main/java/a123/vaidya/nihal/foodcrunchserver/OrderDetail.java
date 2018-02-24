@@ -15,7 +15,6 @@ import com.twitter.sdk.android.core.TwitterConfig;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.OrderDetailsAdapter;
-import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 
 public class OrderDetail extends AppCompatActivity {
 
@@ -29,13 +28,13 @@ public class OrderDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
-        order_id = (TextView)findViewById(R.id.order_id);
-        order_phone = (TextView)findViewById(R.id.order_phone);
-        order_address = (TextView)findViewById(R.id.order_address);
-        order_total = (TextView)findViewById(R.id.order_total);
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_order_det);
-        comment_details = (TextView)findViewById(R.id.comment_details);
-        order_status = (TextView)findViewById(R.id.order_status);
+        order_id = findViewById(R.id.order_id);
+        order_phone = findViewById(R.id.order_phone);
+        order_address = findViewById(R.id.order_address);
+        order_total = findViewById(R.id.order_total);
+        swipeRefreshLayout = findViewById(R.id.swipe_order_det);
+        comment_details = findViewById(R.id.comment_details);
+        order_status = findViewById(R.id.order_status);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
@@ -48,7 +47,7 @@ public class OrderDetail extends AppCompatActivity {
                 .twitterAuthConfig(new TwitterAuthConfig("6ep60jj09lvUcHncYM3yCoIMr", "WXvH93jw1urHD9IzIk6FDRmKW0X5LGZgmMCDo67XFk2uDf2LGJ"))
                 .debug(true)
                 .build();
-        listFood = (RecyclerView)findViewById(R.id.listFood);
+        listFood = findViewById(R.id.listFood);
         listFood.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         listFood.setLayoutManager(layoutManager);

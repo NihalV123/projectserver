@@ -16,10 +16,10 @@ class MyViewHolder extends RecyclerView.ViewHolder{
 
     public MyViewHolder(View itemView) {
         super(itemView);
-        name = (TextView)itemView.findViewById(R.id.product_name);
-        quantity = (TextView)itemView.findViewById(R.id.product_quantitiy);
-        price = (TextView)itemView.findViewById(R.id.product_price);
-        discount = (TextView)itemView.findViewById(R.id.product_discount);
+        name = itemView.findViewById(R.id.product_name);
+        quantity = itemView.findViewById(R.id.product_quantitiy);
+        price = itemView.findViewById(R.id.product_price);
+        discount = itemView.findViewById(R.id.product_discount);
 
     }
 }
@@ -31,7 +31,7 @@ public class OrderDetailsAdapter  extends RecyclerView.Adapter<MyViewHolder>{
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.order_detail_layout,parent,false);
         return new MyViewHolder(itemView);
-    };
+    }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {

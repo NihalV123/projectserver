@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -36,8 +34,6 @@ import com.squareup.picasso.Picasso;
 import java.util.UUID;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
-import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Food;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.FoodViewHolder;
 import dmax.dialog.SpotsDialog;
@@ -75,7 +71,7 @@ public class FoodList extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
 
         storageReference = storage.getReference();
-        rootLayout = (SwipeRefreshLayout) findViewById(R.id.rootLayout);
+        rootLayout = findViewById(R.id.rootLayout);
         rootLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
@@ -93,7 +89,6 @@ public class FoodList extends AppCompatActivity {
                     else
                         Toast.makeText(FoodList.this,"Please check your" +
                                 " internet connection",Toast.LENGTH_LONG).show();
-                    return;
                 }
             }
         });
@@ -110,7 +105,6 @@ public class FoodList extends AppCompatActivity {
                     else
                         Toast.makeText(FoodList.this,"Please check your" +
                                 " internet connection",Toast.LENGTH_LONG).show();
-                    return;
                 }
             }
         });
@@ -139,7 +133,6 @@ public class FoodList extends AppCompatActivity {
                 loadListFood(categoryId);
             else
                 Toast.makeText(FoodList.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-            return;
         }
 
     }
@@ -308,10 +301,11 @@ public class FoodList extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
         loadListFood(categoryId);
-        adapter.startListening();
+        if (adapter!= null){
+            adapter.startListening();}
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 

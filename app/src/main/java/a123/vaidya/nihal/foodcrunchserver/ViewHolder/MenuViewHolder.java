@@ -1,13 +1,10 @@
 package a123.vaidya.nihal.foodcrunchserver.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
 import a123.vaidya.nihal.foodcrunchserver.R;
 
 /**
@@ -31,9 +28,9 @@ import a123.vaidya.nihal.foodcrunchserver.R;
 
         txtMenuName = itemView.findViewById(R.id.menu_name);
         imageView = itemView.findViewById(R.id.menu_image);
-        btnUpdate = (android.widget.Button)itemView.findViewById(R.id.btnUpdate);
-        btnGoIn = (android.widget.Button)itemView.findViewById(R.id.btnGoIn);
-        btnRemove = (android.widget.Button)itemView.findViewById(R.id.btnRemove);
+        btnUpdate = itemView.findViewById(R.id.btnUpdate);
+        btnGoIn = itemView.findViewById(R.id.btnGoIn);
+        btnRemove = itemView.findViewById(R.id.btnRemove);
         //itemView.setOnCreateContextMenuListener(this);
         //itemView.setOnClickListener(this);
 
