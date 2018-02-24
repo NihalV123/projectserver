@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.app.AlertDialog;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -263,6 +264,7 @@ public class OrderStatus extends AppCompatActivity {
         requests.child(key).removeValue();
         sendorderstatustoUSER(key,item);
         Toast.makeText(OrderStatus.this,"   The order was deleted   ",Toast.LENGTH_LONG).show();
+        Snackbar.make(swipeRefreshLayout, " The order was deleted  ",Snackbar.LENGTH_LONG).show();
 
     }
 
@@ -312,19 +314,22 @@ public class OrderStatus extends AppCompatActivity {
                             mAPIService.sendNotification(content)
                                     .enqueue(new Callback<MyResponse>() {
                                         @Override
-                                        public void onResponse(@NonNull Call<MyResponse> call, @NonNull Response<MyResponse> response) {
+                                        public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
                                             if(response.code() == 200){
                                                 if(response.body().success ==1)
                                                 {
                                                     Toast.makeText(OrderStatus.this, "Order updated notification sent",Toast.LENGTH_LONG).show();
+                                                    Snackbar.make(swipeRefreshLayout,"Order updated notification sent",Snackbar.LENGTH_LONG).show();
                                                 }else{
                                                     Toast.makeText(OrderStatus.this,"Updated but Failed to send notification",Toast.LENGTH_LONG).show();
+                                                    Snackbar.make(swipeRefreshLayout,"Updated but Failed to send notification",Snackbar.LENGTH_LONG).show();
                                                 }}
                                         }
 
                                         @Override
-                                        public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
+                                        public void onFailure(Call<MyResponse> call, Throwable t) {
                                             Toast.makeText(OrderStatus.this,"notification failure",Toast.LENGTH_LONG).show();
+                                            Snackbar.make(swipeRefreshLayout,"notification failure",Snackbar.LENGTH_LONG).show();
                                         }
                                     });
                         }
