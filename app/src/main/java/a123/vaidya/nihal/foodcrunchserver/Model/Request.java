@@ -10,25 +10,29 @@ public class Request {
     private String phone;
     private String name;
     private String address;
+    private String total;
     private String status;
     private String comment;
-    //private String email;
-    private String total;
-    private List<Order> foods;
+    private String email;
+    private String latlng;
     private String paymentState;
+    private List<Order> foods;
+
 
     public Request() {
     }
 
-    public Request(String phone, String name, String address, String status, String comment, String total, List<Order> foods, String paymentState) {
+    public Request(String phone, String name, String address, String total, String status, String comment, String email, String latlng, String paymentState, List<Order> foods) {
         this.phone = phone;
         this.name = name;
         this.address = address;
+        this.total = total;
         this.status = status;
         this.comment = comment;
-        this.total = total;
-        this.foods = foods;
+        this.email = email;
+        this.latlng = latlng;
         this.paymentState = paymentState;
+        this.foods = foods;
     }
 
     public String getPhone() {
@@ -55,6 +59,14 @@ public class Request {
         this.address = address;
     }
 
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -71,20 +83,20 @@ public class Request {
         this.comment = comment;
     }
 
-    public String getTotal() {
-        return total;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTotal(String total) {
-        this.total = total;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public List<Order> getFoods() {
-        return foods;
+    public String getLatlng() {
+        return latlng;
     }
 
-    public void setFoods(List<Order> foods) {
-        this.foods = foods;
+    public void setLatlng(String latlng) {
+        this.latlng = latlng;
     }
 
     public String getPaymentState() {
@@ -93,5 +105,13 @@ public class Request {
 
     public void setPaymentState(String paymentState) {
         this.paymentState = paymentState;
+    }
+
+    public List<Order> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(List<Order> foods) {
+        this.foods = foods;
     }
 }

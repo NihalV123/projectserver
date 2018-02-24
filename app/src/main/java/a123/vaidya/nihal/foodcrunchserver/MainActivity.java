@@ -2,9 +2,14 @@ package a123.vaidya.nihal.foodcrunchserver;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
@@ -34,7 +42,22 @@ public class MainActivity extends AppCompatActivity {
     TextView txtSlogan;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    //important for social logins search key in logcat for sha1
+    private void printKeyHash() {
+        try{
+            PackageInfo info =getPackageManager().getPackageInfo("a123.vaidya.nihal.foodcrunchclient",
+                    PackageManager.GET_SIGNATURES);
 
+            for(Signature signature:info.signatures)
+            {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
     //firebase init
     FirebaseDatabase database;
     DatabaseReference categories;
@@ -51,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 //        btnTest2= findViewById(R.id.btntest2);
 //        btnTest3= findViewById(R.id.btntest3);
 //        btnTest4= findViewById(R.id.btntest4);
-
+        printKeyHash();
 
         txtSlogan= findViewById(R.id.txtslogan);
         Typeface face = Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
