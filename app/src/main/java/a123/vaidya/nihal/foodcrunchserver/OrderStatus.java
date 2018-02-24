@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -309,7 +310,9 @@ public class OrderStatus extends AppCompatActivity {
                         {
                             Token token = postSnapshot.getValue(Token.class);
                             //raw payload for notification
-                            Notification notification = new Notification("Food-Crunch","Your order"+key+"was updated");
+
+                            Notification notification = new Notification("By "+Common.currentUser.getName().toString()+" tap " +
+                                    "to check it out!!","Your order  "+key+"  was updated ");
                             Sender content = new Sender(token.getToken(),notification);
                             mAPIService.sendNotification(content)
                                     .enqueue(new Callback<MyResponse>() {
