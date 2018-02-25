@@ -30,8 +30,10 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,6 +51,8 @@ import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
@@ -96,21 +100,21 @@ public class Home extends AppCompatActivity
                 android.R.color.holo_red_dark,
                 android.R.color.holo_blue_dark);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-          @Override
-           public void onRefresh() {
+            @Override
+            public void onRefresh() {
 
-              if (Common.isConnectedToInternet(getBaseContext())) {
+                if (Common.isConnectedToInternet(getBaseContext())) {
 
-                  loadMenu();
+                    loadMenu();
 
-                  //send to token
-                  updateToken(FirebaseInstanceId.getInstance().getToken());
-              }
-              else
-              {
-                  Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
-              }
-          }
+                    //send to token
+                    updateToken(FirebaseInstanceId.getInstance().getToken());
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(),"Please check your internet connection",Toast.LENGTH_LONG).show();
+                }
+            }
         });
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -136,7 +140,7 @@ public class Home extends AppCompatActivity
                 .build();
         Twitter.initialize(config);
         Paper.init(this);
-                database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();
         categories =database.getReference("Category");
 
         FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
@@ -189,7 +193,7 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               showDialog();
+                showDialog();
             }
         });
 
@@ -320,22 +324,22 @@ public class Home extends AppCompatActivity
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                  //set value of new category to get download link
-                                  newCategory = new Category(edtName.getText().toString(),uri.toString());
+                                    //set value of new category to get download link
+                                    newCategory = new Category(edtName.getText().toString(),uri.toString());
 
                                 }
                             });
                         }
 
                     })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    // dialog.dismiss();
-                    Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
-                    Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
-                }
-            });
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // dialog.dismiss();
+                            Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                            Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
+                        }
+                    });
 
 
 
@@ -487,46 +491,14 @@ public class Home extends AppCompatActivity
                 dialog.dismiss();
                 break;
             }
-            case R.id.nav_presetLocatipon: {
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                dialog.show();
-                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-                startActivity(orderIntent);
-                dialog.dismiss();
-                break;
-            }
-            case R.id.nav_emailaddress2: {
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                dialog.show();
-                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-                startActivity(orderIntent);
-                dialog.dismiss();
-                break;
-            }
+
+
             case R.id.nav_password: {
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                dialog.show();
-                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-                startActivity(orderIntent);
-                dialog.dismiss();
+                showChangePasswordDialog();
                 break;
             }
-            case R.id.settings: {
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                dialog.show();
-                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-                startActivity(orderIntent);
-                dialog.dismiss();
-                break;
-            }
-            case R.id.nav_removeuser: {
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                dialog.show();
-                Intent orderIntent = new Intent(Home.this, OrderStatus.class);
-                startActivity(orderIntent);
-                dialog.dismiss();
-                break;
-            }
+
+
             case R.id.nav_logout: {
                 //delete remmbered user details
                 Paper.book().destroy();
@@ -544,11 +516,89 @@ public class Home extends AppCompatActivity
         return true;
     }
 
+    private void showChangePasswordDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
+        alertDialog.setTitle("CHANGE PASSWORD");
+        alertDialog.setMessage("One time per session");
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View email_address_layout = inflater.inflate(R.layout.email_address_layout,null);
+        View layout_pwd = inflater.inflate(R.layout.change_password_layout,null);
+        final MaterialEditText edtPassword = layout_pwd.findViewById(R.id.edtPassword);
+        final MaterialEditText edtNewPassword = layout_pwd.findViewById(R.id.edtNewPassword);
+        final MaterialEditText edtRepeatPassword = layout_pwd.findViewById(R.id.edtRepeatNewPassword);
+
+        alertDialog.setView(layout_pwd);
+        alertDialog.setPositiveButton("UPDATE!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final SpotsDialog dialog1 = new SpotsDialog(Home.this);
+                dialog1.show();
+                //check old password
+                if(edtPassword.getText().toString().equals(Common.currentUser.getPassword()))
+                {
+                    //check new password
+                    if((edtNewPassword.getText().toString().equals(edtRepeatPassword.getText().toString()))
+                            &&(! edtNewPassword.getText().toString().isEmpty())
+                            )
+                    {
+                        if(! edtNewPassword.getText().toString().equals(edtPassword.getText().toString()))
+                        {
+                            Map<String, Object> passwordUpdate = new HashMap<>();
+                            passwordUpdate.put("Password", edtNewPassword.getText().toString());
+                            DatabaseReference user = FirebaseDatabase.getInstance().getReference("User");
+                            user.child(Common.currentUser.getPhone())
+                                    .updateChildren(passwordUpdate)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            dialog1.dismiss();
+                                            Toast.makeText(Home.this, "Your password was updated", Toast.LENGTH_LONG).show();
+
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            dialog1.dismiss();
+                                            Toast.makeText(Home.this, "Problem updating password buddy", Toast.LENGTH_LONG).show();
+
+                                        }
+                                    })
+                            ;
+                        }
+                        else
+                        {
+                            dialog1.dismiss();
+                            Toast.makeText(Home.this,"New password is same as the old one",Toast.LENGTH_LONG).show();
+                        }
+                    }else
+                    {
+                        dialog1.dismiss();
+                        Toast.makeText(Home.this,"Password doesnt match!\n Please try again",Toast.LENGTH_LONG).show();
+
+                    }
+                }else
+                {
+                    dialog1.dismiss();
+                    Toast.makeText(Home.this,"Wrong Password!!\n Please try Again",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
 
     private void deleteCategory(String key) {
         categories.child(key).removeValue();
         Toast.makeText(this,"The category was  deleted",Toast.LENGTH_LONG).show();
-       Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
+       // Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
         DatabaseReference foods = database.getReference("Foods");//get all list of food from database
 
         Query foodInCategory = foods.orderByChild("menuId").equalTo(key);
@@ -639,7 +689,7 @@ public class Home extends AppCompatActivity
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                             dialog.dismiss();
+                            dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

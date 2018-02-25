@@ -50,12 +50,13 @@ public class Signup extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         //check if user doesnt exist in db
 
-                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()&&(edtPasswd.getText().toString() != null)
+                                &&(edtNmae.getText().toString() != null)&&(edtSecureCode.getText().toString() != null)&&(edtPhone.getText().toString() != null)) {
+
                             DatabaseReference myRef = database.getReference("message");
 
                             myRef.setValue("Hello from sign up");
-
-                            Toast.makeText(Signup.this, "Phone Number already registered!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup.this, "User cannot be added \nPlease fill all fields\n User already exists", Toast.LENGTH_LONG).show();
 
                         }
                         else
@@ -65,7 +66,7 @@ public class Signup extends AppCompatActivity {
                             DatabaseReference myRef = database.getReference("message");
 
                             myRef.setValue("everythink ok");
-                            Toast.makeText(Signup.this, "SIGN UP successfull welcome to the crew!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup.this, "SIGN UP successfull \n please restart app for signing in", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }

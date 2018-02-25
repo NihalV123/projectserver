@@ -9,15 +9,15 @@
             android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="@string/menu" />
 
-        <item
-            android:id="@+id/nav_emailaddress2"
-            android:icon="@drawable/ic_email_black_24dp"
-            android:title="@string/email_address" />
+        <!--<item-->
+            <!--android:id="@+id/nav_emailaddress2"-->
+            <!--android:icon="@drawable/ic_email_black_24dp"-->
+            <!--android:title="@string/email_address" />-->
 
-        <item
-            android:id="@+id/nav_presetLocatipon"
-            android:icon="@drawable/ic_add_location_black_24dp"
-            android:title="@string/home_address" />
+        <!--<item-->
+            <!--android:id="@+id/nav_presetLocatipon"-->
+            <!--android:icon="@drawable/ic_add_location_black_24dp"-->
+            <!--android:title="@string/home_address" />-->
 
         <item
             android:id="@+id/nav_password"
@@ -34,15 +34,15 @@
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/sign_out" />
 
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/ic_power_settings_new_black_24dp"
-            android:title="@string/action_settings" />
+        <!--<item-->
+            <!--android:id="@+id/settings"-->
+            <!--android:icon="@drawable/ic_power_settings_new_black_24dp"-->
+            <!--android:title="@string/action_settings" />-->
 
-        <item
-            android:id="@+id/nav_removeuser"
-            android:icon="@drawable/ic_delete_forever_black_24dp"
-            android:title="@string/delete_user_data" />
+        <!--<item-->
+            <!--android:id="@+id/nav_removeuser"-->
+            <!--android:icon="@drawable/ic_delete_forever_black_24dp"-->
+            <!--android:title="@string/delete_user_data" />-->
     </group>
 
 </menu>

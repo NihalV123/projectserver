@@ -22,9 +22,12 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -208,7 +211,7 @@ public class FoodList extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             dialog.dismiss();
-                            Toast.makeText(FoodList.this,"Uploaded Successfully !!!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(FoodList.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
                             Snackbar.make(rootLayout,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -343,8 +346,25 @@ public class FoodList extends AppCompatActivity {
 
     private void deleteFood(String key) {
         foodList.child(key).removeValue();
-        Snackbar.make(rootLayout,"The Food "+ newFood.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
-        Toast.makeText(FoodList.this,"The Food  was deleted",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"The food was  deleted",Toast.LENGTH_LONG).show();
+        // Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
+        DatabaseReference foods = db.getReference("Foods");//get all list of food from database
+
+        Query foodInCategory = foods.orderByChild("menuId").equalTo(key);
+        foodInCategory.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapShot:dataSnapshot.getChildren() )
+
+                    postSnapShot.getRef().removeValue();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void showUpdateFoodDoalog(final String key, final Food item) {

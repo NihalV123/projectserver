@@ -56,7 +56,7 @@ public class Signin extends AppCompatActivity {
             }
         });
         BtnSignin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                public void onClick(View v) {
                     signinUser(edtPhone.getText().toString(),edtPasswd.getText().toString());
 
                 }
@@ -75,47 +75,47 @@ public class Signin extends AppCompatActivity {
                 Paper.book().write(Common.PWD_KEY,edtPasswd.getText().toString());
             }
             users.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //check if user doesnt exist in db
-                if (dataSnapshot.child(localphone).exists()) {
-                    //get user info
-                    User user = dataSnapshot.child(localphone).getValue(User.class);
-                    user.setPhone(localphone);
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    //check if user doesnt exist in db
+                    if (dataSnapshot.child(localphone).exists()) {
+                        //get user info
+                        User user = dataSnapshot.child(localphone).getValue(User.class);
+                        user.setPhone(localphone);
 
-                    if(Boolean.parseBoolean(user.getIsStaff())) {
-                        if ((user.getPassword().equals(edtPasswd.getText().toString())) )
+                        if(Boolean.parseBoolean(user.getIsStaff())) {
+                            if ((user.getPassword().equals(edtPasswd.getText().toString())) )
                             //&&(user.getName().equals(edtNmae.getText().toString())) for verifying name and password
-                        {
-                            DatabaseReference myRef = db.getReference("message");
-                            myRef.setValue("Hello from sign in ");
-                            final SpotsDialog dialog = new SpotsDialog(Signin.this);
-                            dialog.show();
-                            Intent homeIntent = new Intent(Signin.this,Home.class);
-                            Common.currentUser = user;
-                            startActivity(homeIntent);
-                            dialog.dismiss();
+                            {
+                                DatabaseReference myRef = db.getReference("message");
+                                myRef.setValue("Hello from sign in ");
+                                final SpotsDialog dialog = new SpotsDialog(Signin.this);
+                                dialog.show();
+                                Intent homeIntent = new Intent(Signin.this,Home.class);
+                                Common.currentUser = user;
+                                startActivity(homeIntent);
+                                dialog.dismiss();
 
+                            } else {
+                                DatabaseReference myRef = db.getReference("message");
+                                myRef.setValue("user doesnt exist check phone");
+                                Toast.makeText(Signin.this, "Sign in FAILED login with staff account!!", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             DatabaseReference myRef = db.getReference("message");
-                            myRef.setValue("user doesnt exist check phone");
-                            Toast.makeText(Signin.this, "Sign in FAILED login with staff account!!", Toast.LENGTH_SHORT).show();
+                            myRef.setValue("user doesnt exist from sign in ");
+                            Toast.makeText(Signin.this, "User Doesnt exist Please SIGN UP", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        DatabaseReference myRef = db.getReference("message");
-                        myRef.setValue("user doesnt exist from sign in ");
-                        Toast.makeText(Signin.this, "User Doesnt exist Please SIGN UP", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
         }else
         {
             Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
@@ -165,5 +165,3 @@ public class Signin extends AppCompatActivity {
 
     }
 }
-
-

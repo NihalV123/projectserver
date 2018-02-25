@@ -2,6 +2,7 @@ package a123.vaidya.nihal.foodcrunchserver;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.app.AlertDialog;
 import android.support.design.widget.Snackbar;
@@ -126,6 +127,7 @@ public class OrderStatus extends AppCompatActivity {
                     public void onClick(View v) {
                         deleteOrder(adapter.getRef(position).getKey(),adapter.getItem(position));
                         adapter.notifyDataSetChanged();//update view
+
                     }
                 });
                 viewHolder.btnDetails.setOnClickListener(new View.OnClickListener() {
@@ -161,74 +163,6 @@ public class OrderStatus extends AppCompatActivity {
 
     }
 
-//    private void loadOrders(String phone) {
-//
-//        Query getOrderByUserQuery = requests.orderByChild("phone").equalTo(phone);
-//        FirebaseRecyclerOptions<Request> orderoptions = new FirebaseRecyclerOptions.Builder<Request>()
-//                .setQuery(getOrderByUserQuery, Request.class)
-//                .build();
-//
-//        adapter = new FirebaseRecyclerAdapter<Request, OrderViewHolder>(orderoptions) {
-//            @Override
-//            public OrderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//                View itemview = LayoutInflater.from(parent.getContext())
-//                        .inflate(R.layout.order_layout, parent, false);
-//                return new OrderViewHolder(itemview);
-//            }
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull OrderViewHolder viewHolder, final int position, @NonNull final Request model) {
-//                viewHolder.txtOrderId.setText("Order Id : " + adapter.getRef(position).getKey());
-//                viewHolder.txtOrderStatus.setText("Status : " + Common.convertCodeToStatus(model.getStatus()));
-//                viewHolder.txtOrderAddress.setText("\n Address : " + model.getAddress());
-//                viewHolder.txtOrderPhonw.setText("Phone No : " + model.getPhone());
-//                viewHolder.txtOrderComment.setText("\n Comment : " + model.getComment());
-//
-//                //event button
-//                viewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        showUpdateDialog(adapter.getRef(position).getKey(),adapter.getItem(position));
-//                    }
-//                });
-//                viewHolder.btnRemove.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        deleteOrder(adapter.getRef(position).getKey(),adapter.getItem(position));
-//                        adapter.notifyDataSetChanged();//update view
-//                    }
-//                });
-//                viewHolder.btnDetails.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
-//                        dialog.show();
-//                        Intent orderDetail = new Intent(OrderStatus.this,OrderDetail.class);
-//                        Common.currentRequest = model;
-//                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
-//                        startActivity(orderDetail);
-//                        dialog.dismiss();
-//                    }
-//                });
-//                viewHolder.btnDirections.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        final SpotsDialog dialog = new SpotsDialog(OrderStatus.this);
-//                        dialog.show();
-//                        Intent trackingOrder = new Intent(OrderStatus.this,TrackingOrder.class);
-//                        Common.currentRequest = model;
-//                        startActivity(trackingOrder);
-//                        dialog.dismiss();
-//                    }
-//                });
-//            }
-//
-//        };
-//                adapter.startListening();
-//                adapter.notifyDataSetChanged();
-//                recyclerView.setAdapter(adapter);
-//                swipeRefreshLayout.setRefreshing(false);
-//            }
     @Override
     protected void onResume() {
         super.onResume();
@@ -288,6 +222,7 @@ public class OrderStatus extends AppCompatActivity {
                 requests.child(localKey).setValue(item);
                 adapter.notifyDataSetChanged();//to update item size
                 sendorderstatustoUSER(localKey,item);
+                sendordersemailUSER(localKey,item);
             }
         });
         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -298,6 +233,63 @@ public class OrderStatus extends AppCompatActivity {
         });
 
         alertDialog.show();
+    }
+
+    private void sendordersemailUSER(String localKey, final Request item) {
+        DatabaseReference tokens = db.getReference("Tokens");
+        tokens.orderByKey().equalTo(item.getPhone())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                        {
+
+                            Common.currentRequest = item;
+                            Token token = postSnapshot.getValue(Token.class);
+                            String[] TO = {item.getEmail().toString()};
+                            String[] CC = {""};
+                            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                            emailIntent.setData(Uri.parse("mailto:"));
+                            emailIntent.setType("text/plain");
+                            emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+                            emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your order has been updated");
+                            emailIntent.putExtra(Intent.EXTRA_TEXT, "Here are your order details \n"+
+                                    "The order for user  \n" +
+                                    (item.getName())+
+                                    "\nwith phone no \n" +
+                                    (item.getPhone())+
+                                    "\nhas been updated to \n" +
+                                    (Common.convertCodeToStatus(item.getStatus()))+
+                                    "\nand has been sent for address\n" +
+                                    (item.getAddress())+
+                                    "\nwith coordinates\n" +
+                                    (item.getLatlng())+
+                                    "\nand your comment\n" +
+                                    (item.getComment())+
+                                    "\nhas been noted\n" +
+                                    "\nyour total ammount\n" +
+                                    (item.getTotal())+
+                                    "\nhas the status\n" +
+                                    (item.getPaymentState())+
+                                    "\nthank you for shopping");
+                            try {
+                                startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                            } catch (android.content.ActivityNotFoundException ex) {
+                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                            }
+                        }                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+
     }
 
     private void sendorderstatustoUSER(final String key, final Request item) {
@@ -343,5 +335,6 @@ public class OrderStatus extends AppCompatActivity {
 
                     }
                 });
+
     }
 }
