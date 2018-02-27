@@ -39,6 +39,17 @@ public class Common {
                 return "Shipped!!";
         }
     }
+    public static String convertstaffToStatus(String code)
+    {
+        switch (code) {
+            case "0":
+                return "Placed";
+            case "1":
+                return "Your food is on the way ";
+            default:
+                return "Shipped!!";
+        }
+    }
 
     public static final String baseUrl = "https://maps.googleapis.com";
 

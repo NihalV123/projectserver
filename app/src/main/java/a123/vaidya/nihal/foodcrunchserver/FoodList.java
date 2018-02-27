@@ -203,7 +203,7 @@ public class FoodList extends AppCompatActivity {
         if(saveUri != null)
         {final SpotsDialog dialog = new SpotsDialog(FoodList.this);
             dialog.show();
-            //Toast.makeText(FoodList.this,"Just a sec",Toast.LENGTH_LONG).show();
+
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
@@ -325,7 +325,7 @@ public class FoodList extends AppCompatActivity {
         if(requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             saveUri = data.getData();
-            btnSelect.setText("IMAGE SELECTED!");
+            btnSelect.setText("IMAGE SELECTED! ->>");
         }
     }
 
@@ -344,9 +344,16 @@ public class FoodList extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-    private void deleteFood(String key) {
-        foodList.child(key).removeValue();
-        Toast.makeText(this,"The food was  deleted",Toast.LENGTH_LONG).show();
+    private void deleteFood(final String key) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(FoodList.this);
+        alertDialog.setTitle("SURE YOU WANT TO DELETE?");
+        alertDialog.setCancelable(false);
+        alertDialog.setIcon(R.drawable.ic_delete_forever_black_24dp);
+        alertDialog.setMessage("Deleting a food cannot be undone!!");
+        alertDialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                foodList.child(key).removeValue();
+        Toast.makeText(FoodList.this,"The food was  deleted",Toast.LENGTH_LONG).show();
         // Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
         DatabaseReference foods = db.getReference("Foods");//get all list of food from database
 
@@ -365,7 +372,18 @@ public class FoodList extends AppCompatActivity {
 
             }
         });
+            }})
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
+
     }
+
 
     private void showUpdateFoodDoalog(final String key, final Food item) {
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(FoodList.this);

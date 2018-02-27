@@ -277,9 +277,9 @@ public class Home extends AppCompatActivity
                 uploadImage();   //select image from galary and save url
             }
         });
-
+        alertDailog.setCancelable(false);
         alertDailog.setView(add_menu_layout);
-        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+        alertDailog.setIcon(R.drawable.ic_add_to_photos_black_24dp);
 
         //set button
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -310,7 +310,7 @@ public class Home extends AppCompatActivity
         {
             final SpotsDialog dialog = new SpotsDialog(Home.this);
             dialog.show();
-            //Toast.makeText(Home.this,"Just a sec",Toast.LENGTH_LONG).show();
+
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
@@ -318,7 +318,7 @@ public class Home extends AppCompatActivity
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -354,7 +354,7 @@ public class Home extends AppCompatActivity
         if(requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             saveUri = data.getData();
-            btnSelect.setText("IMAGE SELECTED!");
+            btnSelect.setText("IMAGE SELECTED! ->>");
         }
     }
 
@@ -367,6 +367,8 @@ public class Home extends AppCompatActivity
     }
 
     private void loadMenu() {
+        //started from swipeview
+        //keep it commented
 //        //new firebase code
 //        FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
 //                .setQuery(categories, Category.class)
@@ -519,7 +521,9 @@ public class Home extends AppCompatActivity
     private void showChangePasswordDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
         alertDialog.setTitle("CHANGE PASSWORD");
+        alertDialog.setCancelable(false);
         alertDialog.setMessage("One time per session");
+        alertDialog.setIcon(R.drawable.ic_security_black_24dp);
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View email_address_layout = inflater.inflate(R.layout.email_address_layout,null);
@@ -595,27 +599,38 @@ public class Home extends AppCompatActivity
     }
 
 
-    private void deleteCategory(String key) {
-        categories.child(key).removeValue();
-        Toast.makeText(this,"The category was  deleted",Toast.LENGTH_LONG).show();
+    private void deleteCategory(final String key) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
+        alertDialog.setTitle("SURE YOU WANT TO DELETE?");
+        alertDialog.setCancelable(false);
+        alertDialog.setIcon(R.drawable.ic_delete_forever_black_24dp);
+        alertDialog.setMessage("Deleting a category WILL DELETE ALL \nfood items inside it!!\n \nThis cannot be undone!!");
+        alertDialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+         public void onClick(DialogInterface dialog, int whichButton) {
+             categories.child(key).removeValue();
+             Toast.makeText(Home.this,"Category was deleted",Toast.LENGTH_LONG).show();
        // Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
         DatabaseReference foods = database.getReference("Foods");//get all list of food from database
-
         Query foodInCategory = foods.orderByChild("menuId").equalTo(key);
         foodInCategory.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapShot:dataSnapshot.getChildren() )
-
                     postSnapShot.getRef().removeValue();
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
+         }})
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
 
     }
 
@@ -624,6 +639,7 @@ public class Home extends AppCompatActivity
 
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(Home.this);
         alertDailog.setTitle("Update the Category");
+        alertDailog.setCancelable(false);
         alertDailog.setMessage("Please fill all fields");
 
 
@@ -654,7 +670,7 @@ public class Home extends AppCompatActivity
         });
 
         alertDailog.setView(add_menu_layout);
-        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
+        alertDailog.setIcon(R.drawable.ic_playlist_add_black_24dp);
 
         //set button
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -690,7 +706,7 @@ public class Home extends AppCompatActivity
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override

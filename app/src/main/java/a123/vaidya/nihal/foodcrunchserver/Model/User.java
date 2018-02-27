@@ -7,19 +7,29 @@ public class User {
     private String Phone;
     private String IsStaff;
     private String secureCode;
+    private String Email;
 
     public User (){
     }
 
-    public User (String name, String password,String secureCode) {
+    public User (String name, String password,String secureCode,String email) {
         Name = name;
         IsStaff="true";
         Password = password;
         this.secureCode = secureCode;
+        Email = email;
     }
 
     public String getSecureCode() {
         return secureCode;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public void setSecureCode(String secureCode) {
