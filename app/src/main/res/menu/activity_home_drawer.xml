@@ -27,17 +27,17 @@
         <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/ic_access_time_black_24dp"
-            android:title="@string/ordersreport" />
+            android:title="@string/all_orders" />
 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/sign_out" />
 
-        <!--<item-->
-            <!--android:id="@+id/settings"-->
-            <!--android:icon="@drawable/ic_power_settings_new_black_24dp"-->
-            <!--android:title="@string/action_settings" />-->
+        <item
+            android:id="@+id/nav_send_login_details"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:title="@string/resend_login_details" />
 
         <!--<item-->
             <!--android:id="@+id/nav_removeuser"-->

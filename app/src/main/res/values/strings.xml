@@ -97,5 +97,8 @@
     <string name="delete_user_data">DELETE USER DATA</string>
     <string name="_9769539742">9769539742</string>
     <string name="welcome">WELCOME</string>
+    <string name="all_orders">ALL ORDERS</string>
+    <string name="resend_login_details">RESEND LOGIN</string>
+    <string name="enter_your_email_addressil">enter email</string>
 </resources>
 

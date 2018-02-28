@@ -25,7 +25,7 @@ import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 public class Signup extends AppCompatActivity {
 
-    MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode,edtEmail;
+    MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode,edtEmail,edtHomeAddress;
     Button BtnSignup;
     private FirebaseAuth mAuth;
     DrawerLayout drawer;
@@ -41,6 +41,7 @@ public class Signup extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         edtEmail = findViewById(R.id.edtEmails);
         BtnSignup = findViewById(R.id.btnSignup);
+        edtHomeAddress= findViewById(R.id.edtShopAddress);
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("User");
@@ -71,19 +72,22 @@ public class Signup extends AppCompatActivity {
                         else
                         {
                             Toast.makeText(Signup.this, "Select the way you want to be notified", Toast.LENGTH_SHORT).show();
-
-                            User user = new User(edtNmae.getText().toString(),edtPasswd.getText().toString(),edtSecureCode.getText().toString(),edtEmail.getText().toString());
+                            User user = new User(edtNmae.getText().toString(), edtPasswd.getText().toString(),
+                                    edtSecureCode.getText().toString(),
+                                    edtHomeAddress.getText().toString(),
+                                    edtEmail.getText().toString())
+                                    ;
                             table_user.child(edtPhone.getText().toString()).setValue(user);
                             DatabaseReference myRef = database.getReference("message");
                             myRef.setValue("everythink ok");
-                            String[] CC = {user.getEmail().toString()};
+                            //String[] CC = {user.getEmail().toString()};
                             String[] TO = {user.getEmail().toString()};
                             Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
                             emailIntent.setData(Uri.parse("mailto:"));
                             emailIntent.setType("text/plain");
                             emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-                            emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                            //emailIntent.putExtra(Intent.EXTRA_CC, CC);
                             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "You have created a staff account with FoodCrunch the anytime shopping app");
                             emailIntent.putExtra(Intent.EXTRA_TEXT, "Here are your account details \n"+
                                     "The new account is created for the staff member \t" +

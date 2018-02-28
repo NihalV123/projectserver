@@ -493,7 +493,10 @@ public class Home extends AppCompatActivity
                 dialog.dismiss();
                 break;
             }
-
+            case R.id.nav_send_login_details: {
+                sendemailUSER();
+                break;
+            }
 
             case R.id.nav_password: {
                 showChangePasswordDialog();
@@ -516,6 +519,34 @@ public class Home extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void sendemailUSER() {
+        //String[] CC = {user.getEmail().toString()};
+        String[] TO = {Common.currentUser.getEmail().toString()};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "You have created a staff account with FoodCrunch the anytime shopping app");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Here are your account details \n"+
+                "The new account is created for the staff member \t" +
+                (Common.currentUser.getName().toString())+
+                "\n with email \t" +
+                (Common.currentUser.getEmail().toString())+
+                "\nand has been linked to your phone number \n" +
+                "\n \n Your password is  \t" +
+                (Common.currentUser.getPassword().toString())+
+                "\n \n and your secure code is \t" +
+                (Common.currentUser.getSecureCode().toString())+
+                "\n\nPlease write down your secure code. \nIt will be used to recover your password");
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Toast.makeText(Signup.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showChangePasswordDialog() {
