@@ -36,7 +36,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.birin:gridlistviewadapters:1.0.0'    // Facebook Core only (Analytics)
     implementation 'com.facebook.android:facebook-core:4.28.0'
-
+    implementation 'com.github.lguipeng:BubbleView:1.0.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
     // Facebook Login only
     implementation 'com.facebook.android:facebook-login:4.28.0'
 
