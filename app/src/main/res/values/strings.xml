@@ -100,5 +100,10 @@
     <string name="all_orders">ALL ORDERS</string>
     <string name="resend_login_details">RESEND LOGIN</string>
     <string name="enter_your_email_addressil">enter email</string>
+    <string name="enter_your_message">enter your emssage</string>
+    <string name="double_press">double press in case of non response fromserver</string>
+    <string name="GORCERYLIST">godcery list</string>
+    <string name="CLEARLIST">clear list</string>
+    <string name="delete">delete</string>
 </resources>
 
