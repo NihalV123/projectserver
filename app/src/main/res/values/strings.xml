@@ -102,8 +102,17 @@
     <string name="enter_your_email_addressil">enter email</string>
     <string name="enter_your_message">enter your emssage</string>
     <string name="double_press">double press in case of non response fromserver</string>
-    <string name="GORCERYLIST">godcery list</string>
+    <string name="GORCERYLIST">TO DO LIST</string>
     <string name="CLEARLIST">clear list</string>
     <string name="delete">delete</string>
+    <string name="chanhe_email_address">UPDATE EMAIL</string>
+    <string name="change_name">CHANGE NAME</string>
+    <string name="shopping_list">TO DO LIST</string>
+    <string name="resend_login">RESEND LOGIN</string>
+    <string name="about">ABOUT</string>
+    <string name="ALLORDERS">ALL ORDERS</string>
+    <string name="example">example</string>
+    <string name="_9619662497">9769539742</string>
+    <string name="enter_youruser_name">ENTER USER NAME</string>
 </resources>
 

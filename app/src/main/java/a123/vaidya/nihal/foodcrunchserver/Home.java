@@ -65,7 +65,7 @@ import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TextView txtfullname;
+    private TextView txtFullName,txtemail,txtPhone;
     MaterialEditText edtName;
     FButton btnUpload,btnSelect;
     Category newCategory;
@@ -208,9 +208,12 @@ public class Home extends AppCompatActivity
 
         //set name for user
         View headerView = navigationView.getHeaderView(0);
-        txtfullname = headerView.findViewById(R.id.txtFullName);
-        txtfullname.setText(Common.currentUser.getName());
-
+        txtFullName = headerView.findViewById(R.id.txtFullName);
+        txtemail = headerView.findViewById(R.id.txtEmail);
+        txtPhone = headerView.findViewById(R.id.txtPhone);
+        txtFullName.setText(Common.currentUser.getName());//slider name
+        txtemail.setText(Common.currentUser.getEmail());
+        txtPhone.setText(Common.currentUser.getPhone());
 
         //new view for server
         recycler_menu = findViewById(R.id.recycler_menu);
@@ -497,13 +500,30 @@ public class Home extends AppCompatActivity
                 sendemailUSER();
                 break;
             }
-
+            case R.id.nav_about: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                Intent about = new Intent(Home.this, About.class);
+                startActivity(about);
+                dialog.dismiss();
+                break;
+            }
             case R.id.nav_password: {
                 showChangePasswordDialog();
                 break;
             }
 
-
+            case R.id.nav_list: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                Intent orderIntent = new Intent(Home.this, TodoList.class);
+                startActivity(orderIntent);
+                dialog.dismiss();
+                break;}
+            case R.id.nav_emailaddress:{
+                showEmailAddressDialog();
+                break;}
+            case R.id.nav_name:{
+                showChangeNameDialog();
+                break;}
             case R.id.nav_logout: {
                 //delete remmbered user details
                 Paper.book().destroy();
@@ -519,6 +539,89 @@ public class Home extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showChangeNameDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
+        alertDialog.setTitle("CHANGE NAME");
+        alertDialog.setCancelable(false);
+        alertDialog.setIcon(R.drawable.ic_child_care_black_24dp);
+        alertDialog.setMessage("One time per session");
+//        final SpotsDialog dialog1 = new SpotsDialog(Home.this);
+//        dialog1.show();
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View layout_name = inflater.inflate(R.layout.user_name_layout,null);
+        final MaterialEditText edtName = layout_name.findViewById(R.id.edtuser_name);
+        alertDialog.setView(layout_name);
+        alertDialog.setPositiveButton("UPDATE!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Map<String, Object> NameUpdate = new HashMap<>();
+                NameUpdate.put("name", edtName.getText().toString());
+                DatabaseReference user = FirebaseDatabase.getInstance().getReference("User");
+                user.child(Common.currentUser.getPhone())
+                        .updateChildren(NameUpdate)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+//                                dialog1.dismiss();
+                                if (task.isSuccessful())
+                                    Toast.makeText(Home.this, "Update name successful", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+            }
+        });
+        alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void showEmailAddressDialog() {
+        AlertDialog.Builder alertDailog = new AlertDialog.Builder(Home.this);
+        alertDailog.setTitle("CHANGE EMAIL ADDRESS");
+        alertDailog.setCancelable(false);
+        alertDailog.setIcon(R.drawable.ic_email_black_24dp);
+        alertDailog.setMessage("One time per session");
+        LayoutInflater inflater = LayoutInflater.from(this);
+//        final SpotsDialog dialog1 = new SpotsDialog(Home.this);
+//        dialog1.show();
+        View layout_email = inflater.inflate(R.layout.email_address_layout,null);
+        final MaterialEditText edtEmail = layout_email.findViewById(R.id.edtEmailAddress);
+        alertDailog.setView(layout_email);
+        alertDailog.setPositiveButton("UPDATE!!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Map<String, Object> EmailUpdate = new HashMap<>();
+                EmailUpdate.put("email", edtEmail.getText().toString());
+                DatabaseReference user = FirebaseDatabase.getInstance().getReference("User");
+                user.child(Common.currentUser.getPhone())
+                        .updateChildren(EmailUpdate)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+//                                dialog1.dismiss();
+                                if (task.isSuccessful())
+                                    Toast.makeText(Home.this, "Update email successful", Toast.LENGTH_LONG).show();
+
+                            }
+                        });
+            }
+        });
+        alertDailog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+        alertDailog.show();
     }
 
     private void sendemailUSER() {

@@ -47,12 +47,17 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
+        <activity android:name=".ShowComment" />
+        <activity android:name=".ShowFavorites" />
+        <activity android:name=".Utilities" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".About" />
+        <activity android:name=".TodoList"></activity>
         <activity
             android:name=".TrackingOrder"
             android:label="@string/title_activity_tracking_order" />
         <activity android:name=".OrderDetail" />
-        <activity android:name=".endactivity"></activity>
+       <!--// <activity android:name=".endactivity"></activity>-->
     </application>
 
 </manifest>
