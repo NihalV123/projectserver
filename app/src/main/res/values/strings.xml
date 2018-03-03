@@ -121,5 +121,6 @@
     <string name="foodname123">ENTER FOOD NAME</string>
     <string name="banner_items">ITEMS IN CLIENT BANNER</string>
     <string name="banerid">FOOD ID ATTACHED TO BANNER</string>
+    <string name="sendnotification">SEND NEWS</string>
 </resources>
 
