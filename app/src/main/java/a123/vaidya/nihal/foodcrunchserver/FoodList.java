@@ -153,7 +153,8 @@ public class FoodList extends AppCompatActivity {
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
         edtRecepie =  add_menu_layout.findViewById(R.id.edtRecepies);
-
+        edtNutrition =  add_menu_layout.findViewById(R.id.edtnutritionalvalue);
+        edtVideo=  add_menu_layout.findViewById(R.id.edtvideo);
 
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
@@ -225,6 +226,8 @@ public class FoodList extends AppCompatActivity {
                                     newFood.setDescription(edtDescription.getText().toString());
                                     newFood.setPrice(edtPrice.getText().toString());
                                     newFood.setDiscount(edtDiscount.getText().toString());
+                                    newFood.setVideo(edtVideo.getText().toString());
+                                    newFood.setEmail(edtNutrition.getText().toString());
                                     newFood.setRecepixes(edtRecepie.getText().toString());
                                     newFood.setMenuId(categoryId);
                                     newFood.setImage(uri.toString());
@@ -400,13 +403,16 @@ public class FoodList extends AppCompatActivity {
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
         edtRecepie = add_menu_layout.findViewById(R.id.edtRecepies);
-
+        edtNutrition =add_menu_layout.findViewById(R.id.edtnutritionalvalue);
+        edtVideo=add_menu_layout.findViewById(R.id.edtvideo);
         //default values
         edtName.setText(item.getName());
         edtDescription.setText(item.getDescription());
         edtPrice.setText(item.getPrice());
         edtDiscount.setText(item.getDiscount());
         edtRecepie.setText(item.getRecepixes());
+        edtVideo.setText(item.getVideo());
+        edtNutrition.setText(item.getEmail());
 
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
@@ -441,6 +447,8 @@ public class FoodList extends AppCompatActivity {
                     item.setDiscount(edtDiscount.getText().toString());
                     item.setRecepixes(edtRecepie.getText().toString());
                     item.setDescription(edtDescription.getText().toString());
+                    item.setEmail(edtNutrition.getText().toString());
+                    item.setVideo(edtVideo.getText().toString());
 
                     foodList.child(key).setValue(item);
                     Snackbar.make(rootLayout,"New Category "+item.getName()+" was updated",Snackbar.LENGTH_LONG).show();
