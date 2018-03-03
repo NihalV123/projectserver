@@ -9,21 +9,33 @@ public class User {
     private String secureCode;
     private String HomeAddress;
     private String Email;
+    private String Extra;
 
     public User (){
     }
 
-    public User (String name, String password,String secureCode,String homeAddress,String email) {
+    public User (String name, String password,String secureCode,String homeAddress,String email
+            //,String extra
+                ) {
         Name = name;
         IsStaff="true";
         Password = password;
         this.secureCode = secureCode;
         HomeAddress = homeAddress;
         Email = email;
+       // Extra= extra;
     }
 
     public String getSecureCode() {
         return secureCode;
+    }
+
+    public String getExtra() {
+        return Extra;
+    }
+
+    public void setExtra(String extra) {
+        Extra = extra;
     }
 
     public String getEmail() {

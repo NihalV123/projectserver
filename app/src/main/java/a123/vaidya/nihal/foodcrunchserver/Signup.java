@@ -77,6 +77,8 @@ public class Signup extends AppCompatActivity {
                                     edtHomeAddress.getText().toString(),
                                     edtEmail.getText().toString())
                                     ;
+                            user.setExtra("EXTRA");
+                            user.setPhone(edtPhone.getText().toString());
                             table_user.child(edtPhone.getText().toString()).setValue(user);
                             DatabaseReference myRef = database.getReference("message");
                             myRef.setValue("everythink ok");

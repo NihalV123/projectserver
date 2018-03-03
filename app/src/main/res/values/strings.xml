@@ -122,5 +122,10 @@
     <string name="banner_items">ITEMS IN CLIENT BANNER</string>
     <string name="banerid">FOOD ID ATTACHED TO BANNER</string>
     <string name="sendnotification">SEND NEWS</string>
+    <string name="extra">extra</string>
+    <string name="extra2">extra2</string>
+    <string name="nutritional_values">nutritional values</string>
+    <string name="video_url">video url</string>
+    <string name="add_recepe">ADD RECEPIE</string>
 </resources>
 

@@ -47,7 +47,7 @@ public class FoodList extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     FloatingActionButton fab;
-    MaterialEditText edtName,edtDescription,edtPrice,edtDiscount;
+    MaterialEditText edtName,edtDescription,edtPrice,edtDiscount,edtVideo,edtRecepie,edtNutrition;
     FButton btnSelect,btnUpload;
     TextView textView;
     SwipeRefreshLayout rootLayout;
@@ -152,6 +152,8 @@ public class FoodList extends AppCompatActivity {
         edtDescription = add_menu_layout.findViewById(R.id.edtDescription);
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
+        edtRecepie =  add_menu_layout.findViewById(R.id.edtRecepies);
+
 
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
@@ -223,6 +225,7 @@ public class FoodList extends AppCompatActivity {
                                     newFood.setDescription(edtDescription.getText().toString());
                                     newFood.setPrice(edtPrice.getText().toString());
                                     newFood.setDiscount(edtDiscount.getText().toString());
+                                    newFood.setRecepixes(edtRecepie.getText().toString());
                                     newFood.setMenuId(categoryId);
                                     newFood.setImage(uri.toString());
                                 }
@@ -396,12 +399,14 @@ public class FoodList extends AppCompatActivity {
         edtDescription = add_menu_layout.findViewById(R.id.edtDescription);
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
+        edtRecepie = add_menu_layout.findViewById(R.id.edtRecepies);
 
         //default values
         edtName.setText(item.getName());
         edtDescription.setText(item.getDescription());
         edtPrice.setText(item.getPrice());
         edtDiscount.setText(item.getDiscount());
+        edtRecepie.setText(item.getRecepixes());
 
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
@@ -434,6 +439,7 @@ public class FoodList extends AppCompatActivity {
                     item.setName(edtName.getText().toString());
                     item.setPrice(edtPrice.getText().toString());
                     item.setDiscount(edtDiscount.getText().toString());
+                    item.setRecepixes(edtRecepie.getText().toString());
                     item.setDescription(edtDescription.getText().toString());
 
                     foodList.child(key).setValue(item);

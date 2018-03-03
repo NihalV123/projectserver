@@ -507,6 +507,12 @@ public class Home extends AppCompatActivity
                 dialog.dismiss();
                 break;
             }
+            case R.id.nav_sendnotification:{
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                Intent about = new Intent(Home.this, About.class);
+                startActivity(about);
+                dialog.dismiss();
+            }
             case R.id.nav_password: {
                 showChangePasswordDialog();
                 break;

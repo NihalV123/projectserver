@@ -84,6 +84,56 @@
             app:met_primaryColor="@android:color/primary_text_light"
             app:met_singleLineEllipsis="true" />
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtnutritionalvalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nutritional_values"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="120"
+            android:inputType="textMultiLine"
+            android:text=""
+            android:visibility="gone"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="15sp"
+            app:met_baseColor="@android:color/primary_text_light"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/primary_text_light"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtvideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/video_url"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="120"
+            android:visibility="gone"
+            android:inputType="textMultiLine"
+            android:text=""
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="15sp"
+            app:met_baseColor="@android:color/primary_text_light"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/primary_text_light"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtRecepies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_recepe"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="120"
+            android:inputType="textMultiLine"
+            android:text=""
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="15sp"
+            app:met_baseColor="@android:color/primary_text_light"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/primary_text_light"
+            app:met_singleLineEllipsis="true" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

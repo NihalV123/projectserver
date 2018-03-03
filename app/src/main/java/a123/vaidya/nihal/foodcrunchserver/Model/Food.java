@@ -14,8 +14,8 @@ public class Food {
         Price = price;
         Discount = discount;
         MenuId = menuId;
-        Email = email;
-        Video = video;
+        Email = email;//extra
+        Video = video;//extra2
         Recepixes = recepixes;
     }
 
