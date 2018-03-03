@@ -11,20 +11,20 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
         <!--<TextView-->
-            <!--android:id="@+id/txtmanconesdstnthome"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-           <!---->
-            <!--android:text="@string/SETHIGHERRESOLUTION"-->
-            <!--android:textColor="@color/black"-->
-            <!--android:textSize="30dp" />-->
+        <!--android:id="@+id/txtmanconesdstnthome"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!---->
+        <!--android:text="@string/SETHIGHERRESOLUTION"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="30dp" />-->
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtfoodid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Food_name"
+            android:hint= "@string/banerid"
             android:inputType="textPersonName"
             android:text=""
             android:textColor="@android:color/primary_text_light"
@@ -37,46 +37,14 @@
             app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtDescription"
+            android:id="@+id/edtfoodname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Description"
+            android:hint="@string/foodname123"
             android:inputType="textMultiLine"
             android:text=""
             app:met_minCharacters="1"
-            app:met_maxCharacters="127"
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="15sp"
-            app:met_baseColor="@android:color/primary_text_light"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@android:color/primary_text_light"
-            app:met_singleLineEllipsis="true" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Price"
-            app:met_minCharacters="1"
-            app:met_maxCharacters="7"
-            android:inputType="number"
-            android:text=""
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="15sp"
-            app:met_baseColor="@android:color/primary_text_light"
-            app:met_floatingLabel="highlight"
-            app:met_primaryColor="@android:color/primary_text_light"
-            app:met_singleLineEllipsis="true" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtDiscount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Discount"
-            app:met_minCharacters="1"
-            app:met_maxCharacters="2"
-            android:inputType="number"
-            android:text=""
+            app:met_maxCharacters="30"
             android:textColor="@android:color/primary_text_light"
             android:textSize="15sp"
             app:met_baseColor="@android:color/primary_text_light"
@@ -91,7 +59,7 @@
             android:weightSum="2">
 
             <info.hoang8f.widget.FButton
-                android:id="@+id/btnSelect"
+                android:id="@+id/btnSelect1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -104,7 +72,7 @@
                 app:shadowHeight="5dp" />
 
             <info.hoang8f.widget.FButton
-                android:id="@+id/btnUpload"
+                android:id="@+id/btnUpload1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

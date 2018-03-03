@@ -16,6 +16,10 @@
                 android:id="@+id/nav_orders"
                 android:icon="@drawable/ic_access_time_black_24dp"
                 android:title="@string/ALLORDERS" />
+        <item
+            android:id="@+id/nav_banner"
+            android:icon="@drawable/ic_theaters_black_24dp"
+            android:title="@string/BANNER" />
 
         </menu></item>
     <item android:id="@+id/nav_menu2"

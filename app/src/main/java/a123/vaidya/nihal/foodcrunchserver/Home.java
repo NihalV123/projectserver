@@ -511,7 +511,14 @@ public class Home extends AppCompatActivity
                 showChangePasswordDialog();
                 break;
             }
-
+            case R.id.nav_banner: {
+                final SpotsDialog dialog = new SpotsDialog(Home.this);
+                dialog.show();
+                Intent bannerIntent = new Intent(Home.this,BannerActivity.class);
+                startActivity(bannerIntent);
+                dialog.dismiss();
+                break;
+            }
             case R.id.nav_list: {
                 final SpotsDialog dialog = new SpotsDialog(Home.this);
                 Intent orderIntent = new Intent(Home.this, TodoList.class);
