@@ -47,11 +47,12 @@ public class FoodList extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     FloatingActionButton fab;
-    MaterialEditText edtName,edtDescription,edtPrice,edtDiscount,edtVideo,edtRecepie,edtNutrition;
+    MaterialEditText edtName,edtDescription,edtPrice,edtDiscount,edtVideo,edtRecepie,edtNutrition,edtQuantity;
     FButton btnSelect,btnUpload;
     TextView textView;
     SwipeRefreshLayout rootLayout;
     Food newFood;
+    //Integer Quantity = 100;
 
     FirebaseDatabase db;
     DatabaseReference foodList;
@@ -142,9 +143,9 @@ public class FoodList extends AppCompatActivity {
 
     private void showAddFoodDialog() {
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(FoodList.this);
-        alertDailog.setTitle("Add New Food");
-        alertDailog.setMessage("Please fill all fields");
-
+//        alertDailog.setTitle("Add New Food");
+//        alertDailog.setMessage("Please fill all fields");
+//replace this now
 
         LayoutInflater inflater = this.getLayoutInflater();
         View add_menu_layout = inflater.inflate(R.layout.add_new_food_layout,null);
@@ -152,6 +153,7 @@ public class FoodList extends AppCompatActivity {
         edtDescription = add_menu_layout.findViewById(R.id.edtDescription);
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
+        edtQuantity = add_menu_layout.findViewById(R.id.edtQuantity);
         edtRecepie =  add_menu_layout.findViewById(R.id.edtRecepies);
         edtNutrition =  add_menu_layout.findViewById(R.id.edtnutritionalvalue);
         edtVideo=  add_menu_layout.findViewById(R.id.edtvideo);
@@ -230,6 +232,7 @@ public class FoodList extends AppCompatActivity {
                                     newFood.setEmail(edtNutrition.getText().toString());
                                     newFood.setRecepixes(edtRecepie.getText().toString());
                                     newFood.setMenuId(categoryId);
+                                    newFood.setQuantity(Integer.valueOf(edtQuantity.getText().toString()));
                                     newFood.setImage(uri.toString());
                                 }
                             });
@@ -393,8 +396,8 @@ public class FoodList extends AppCompatActivity {
 
     private void showUpdateFoodDoalog(final String key, final Food item) {
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(FoodList.this);
-        alertDailog.setTitle("Edit Food");
-        alertDailog.setMessage("Please fill all fields");
+//        alertDailog.setTitle("Edit Food");
+//        alertDailog.setMessage("Please fill all fields");
 
         LayoutInflater inflater = this.getLayoutInflater();
         View add_menu_layout = inflater.inflate(R.layout.add_new_food_layout,null);
@@ -403,6 +406,7 @@ public class FoodList extends AppCompatActivity {
         edtPrice = add_menu_layout.findViewById(R.id.edtPrice);
         edtDiscount = add_menu_layout.findViewById(R.id.edtDiscount);
         edtRecepie = add_menu_layout.findViewById(R.id.edtRecepies);
+        edtQuantity = add_menu_layout.findViewById(R.id.edtQuantity);
         edtNutrition =add_menu_layout.findViewById(R.id.edtnutritionalvalue);
         edtVideo=add_menu_layout.findViewById(R.id.edtvideo);
         //default values
@@ -410,6 +414,7 @@ public class FoodList extends AppCompatActivity {
         edtDescription.setText(item.getDescription());
         edtPrice.setText(item.getPrice());
         edtDiscount.setText(item.getDiscount());
+        edtQuantity.setText("'"+Integer.valueOf(item.getQuantity())+"'");
         edtRecepie.setText(item.getRecepixes());
         edtVideo.setText(item.getVideo());
         edtNutrition.setText(item.getEmail());
@@ -445,6 +450,7 @@ public class FoodList extends AppCompatActivity {
                     item.setName(edtName.getText().toString());
                     item.setPrice(edtPrice.getText().toString());
                     item.setDiscount(edtDiscount.getText().toString());
+                    item.setQuantity(Integer.valueOf(edtQuantity.getText().toString()));
                     item.setRecepixes(edtRecepie.getText().toString());
                     item.setDescription(edtDescription.getText().toString());
                     item.setEmail(edtNutrition.getText().toString());

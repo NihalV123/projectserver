@@ -127,5 +127,7 @@
     <string name="nutritional_values">nutritional values</string>
     <string name="video_url">video url</string>
     <string name="add_recepe">ADD RECEPIE</string>
+    <string name="add_quantity">add quantity</string>
+    <string name="add_food_using_red_button">ADD FOOD USING RED BUTTON</string>
 </resources>
 
