@@ -2,23 +2,28 @@ package a123.vaidya.nihal.foodcrunchserver.Model;
 
 
 public class Food {
-    private String Name,Image,Description,Price,Discount,MenuId,Email,Video,Recepixes;
-    private Integer Quantity;
+    private String FoodId,Name,Image,Description,Price,Discount,MenuId,Email,Video,Recepixes,rateValue;
+    private Double Quantity;
     public Food() {
     }
 
-    public Food(String name, String image, String description, String price,
-                String discount, String menuId, String email, String video, String recepixes,  Integer quantity) {
+    public Food(String foodId,String name, String image, String description, String price, String discount,
+                String menuId, String email, String video, String recepixes,String rateValue,
+                Double quantity
+    ) {
+        FoodId = foodId;
         Name = name;
         Image = image;
         Description = description;
         Price = price;
         Discount = discount;
         MenuId = menuId;
-        Email = email;//extra
-        Video = video;//extra2
+        Email = email;
+        Video = video;
         Recepixes = recepixes;
+        rateValue = rateValue;
         Quantity = quantity;
+
     }
 
     public String getName() {
@@ -29,12 +34,20 @@ public class Food {
         Name = name;
     }
 
-    public int getQuantity() {
+    public Double getQuantity() {
         return Quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Double quantity) {
         Quantity = quantity;
+    }
+
+    public String getFoodId() {
+        return FoodId;
+    }
+
+    public void setFoodId(String foodId) {
+        FoodId = foodId;
     }
 
     public String getImage() {
@@ -51,6 +64,14 @@ public class Food {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public String getRateValue() {
+        return rateValue;
+    }
+
+    public void setRateValue(String rateValue) {
+        this.rateValue = rateValue;
     }
 
     public String getPrice() {

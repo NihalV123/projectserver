@@ -232,7 +232,7 @@ public class FoodList extends AppCompatActivity {
                                     newFood.setEmail(edtNutrition.getText().toString());
                                     newFood.setRecepixes(edtRecepie.getText().toString());
                                     newFood.setMenuId(categoryId);
-                                    newFood.setQuantity(Integer.valueOf(edtQuantity.getText().toString()));
+                                    newFood.setQuantity(Double.valueOf(edtQuantity.getText().toString()));
                                     newFood.setImage(uri.toString());
                                 }
                             });
@@ -414,7 +414,7 @@ public class FoodList extends AppCompatActivity {
         edtDescription.setText(item.getDescription());
         edtPrice.setText(item.getPrice());
         edtDiscount.setText(item.getDiscount());
-        edtQuantity.setText("'"+Integer.valueOf(item.getQuantity())+"'");
+        edtQuantity.setText((Double.valueOf(item.getQuantity())).toString());
         edtRecepie.setText(item.getRecepixes());
         edtVideo.setText(item.getVideo());
         edtNutrition.setText(item.getEmail());
@@ -450,7 +450,7 @@ public class FoodList extends AppCompatActivity {
                     item.setName(edtName.getText().toString());
                     item.setPrice(edtPrice.getText().toString());
                     item.setDiscount(edtDiscount.getText().toString());
-                    item.setQuantity(Integer.valueOf(edtQuantity.getText().toString()));
+                    item.setQuantity(Double.valueOf(edtQuantity.getText().toString()));
                     item.setRecepixes(edtRecepie.getText().toString());
                     item.setDescription(edtDescription.getText().toString());
                     item.setEmail(edtNutrition.getText().toString());
