@@ -58,6 +58,7 @@ import java.util.UUID;
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
+import a123.vaidya.nihal.foodcrunchserver.Service.BackgroundSoundService;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import dmax.dialog.SpotsDialog;
 import info.hoang8f.widget.FButton;
@@ -99,6 +100,8 @@ public class Home extends AppCompatActivity
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_red_dark,
                 android.R.color.holo_blue_dark);
+        Intent svc=new Intent(this, BackgroundSoundService.class);
+        startService(svc);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -508,10 +511,11 @@ public class Home extends AppCompatActivity
                 break;
             }
             case R.id.nav_sendnotification:{
-                final SpotsDialog dialog = new SpotsDialog(Home.this);
-                Intent about = new Intent(Home.this, About.class);
-                startActivity(about);
-                dialog.dismiss();
+                //final SpotsDialog dialog = new SpotsDialog(Home.this);
+                Intent aboutnoti = new Intent(Home.this, SendMessage.class);
+                startActivity(aboutnoti);
+                //dialog.dismiss();
+                break;
             }
             case R.id.nav_password: {
                 showChangePasswordDialog();

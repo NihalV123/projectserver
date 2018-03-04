@@ -22,6 +22,7 @@ import a123.vaidya.nihal.foodcrunchserver.Remote.iGeoCoordinates;
 public class Common {
     public static User currentUser;
     public static Request currentRequest;
+    public static String topicName = "News";
     public static String PHONE_TEXT = "userPhone";
     public static final String UPDATE = "UPDATE";
     public static final String DIRECTIONS = "DIRECTIONS";

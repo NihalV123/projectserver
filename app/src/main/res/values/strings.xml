@@ -129,5 +129,8 @@
     <string name="add_recepe">ADD RECEPIE</string>
     <string name="add_quantity">add quantity</string>
     <string name="add_food_using_red_button">ADD FOOD USING RED BUTTON</string>
+    <string name="add_title_of_message">ADD TITLE OF MESSAGE</string>
+    <string name="add_body_of_message">ADD BODY OF MESSAGE</string>
+    <string name="Send">SEND</string>
 </resources>
 
