@@ -484,6 +484,7 @@ public class Home extends AppCompatActivity
             Toast.makeText(Home.this, "THIS IS THE TUTORIAL FOR MAIN MENU", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
