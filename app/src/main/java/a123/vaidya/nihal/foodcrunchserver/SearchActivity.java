@@ -103,15 +103,23 @@ public class SearchActivity extends AppCompatActivity {
 
                 for(String search:suggestList)
                 {
-                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
+                    try{if (search.toLowerCase().contains(materialSearchBar.getText().toUpperCase()))
                         suggest.add(search);
+                    else return;}catch (Exception e){}
                 }
                 materialSearchBar.setLastSuggestions(suggest);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                List<String> suggest = new ArrayList<>();
+                for(String search:suggestList)
+                {
+                    try{if (search.toLowerCase().contains(materialSearchBar.getText().toUpperCase()))
+                        suggest.add(search);
+                    else return;}catch (Exception e){}
+                }
+                materialSearchBar.setLastSuggestions(suggest);
             }
         });
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
