@@ -178,6 +178,8 @@ public class TodoList extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         dbHelper.clearTask();
+        Toast.makeText(TodoList.this, "TO DO LIST CLEARED!",
+                Toast.LENGTH_LONG).show();
     }
 
 }

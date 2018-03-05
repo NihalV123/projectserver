@@ -13,24 +13,25 @@
         android:text="@string/example"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true">
 
         <info.hoang8f.widget.FButton
             android:id="@+id/btndelete2"
-            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:gravity="center"
-            android:textColorHighlight="@color/fbutton_color_orange"
-            android:text="@string/delete"
             android:onClick="deleteTask"
+            android:text="@string/delete"
             android:textColor="@android:color/white"
+            android:textColorHighlight="@color/fbutton_color_orange"
             app:shadowColor="@android:color/black"
             app:shadowHeight="5dp" />
-
 
 
     </android.support.v7.widget.LinearLayoutCompat>

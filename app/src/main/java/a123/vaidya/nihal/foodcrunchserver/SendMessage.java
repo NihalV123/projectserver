@@ -38,7 +38,7 @@ public class SendMessage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //create notification message
-                Notification notification = new Notification(edtTitle.getText().toString(),edtMessage.getText().toString());
+                Notification notification = new Notification(edtTitle.getText().toString()+"  TAP TO LOG IN","FOOD CRUNCH : "+edtMessage.getText().toString());
                 Sender toTopic =new Sender();
                 toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
                 toTopic.notification = notification;

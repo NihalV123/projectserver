@@ -16,7 +16,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar23"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         app:titleTextColor="@color/transparentBlack"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -37,6 +37,7 @@
     <!--android:gravity="center"-->
     <!--android:textColorHighlight="@color/fbutton_color_orange"-->
     <!--android:text="@string/delete"-->
+        <!--android:onClick="deleteTask"-->
     <!--android:textColor="@android:color/white"-->
     <!--app:shadowColor="@android:color/black"-->
     <!--app:shadowHeight="5dp" />-->
@@ -44,7 +45,7 @@
         android:id="@+id/lstTask"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="120dp"
         android:layout_marginBottom="80dp"
         android:layout_below="@+id/toolbar23"
         android:layout_alignParentTop="true"

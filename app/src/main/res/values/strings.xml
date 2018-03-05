@@ -102,7 +102,7 @@
     <string name="enter_your_email_addressil">enter email</string>
     <string name="enter_your_message">enter your emssage</string>
     <string name="double_press">double press in case of non response fromserver</string>
-    <string name="GORCERYLIST">TO DO LIST</string>
+    <string name="GORCERYLIST">NOTE : TO DO LIST CLEARED ON BACK PRESS AND ADD USING +</string>
     <string name="CLEARLIST">clear list</string>
     <string name="delete">delete</string>
     <string name="chanhe_email_address">UPDATE EMAIL</string>
