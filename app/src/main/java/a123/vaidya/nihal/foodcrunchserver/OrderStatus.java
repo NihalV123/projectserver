@@ -28,11 +28,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
+import a123.vaidya.nihal.foodcrunchserver.Model.DataMessage;
 import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
-import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
-import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.Remote.APIService;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.OrderViewHolder;
@@ -303,10 +307,18 @@ public class OrderStatus extends AppCompatActivity {
                             Token token = postSnapshot.getValue(Token.class);
                             //raw payload for notification
 
-                            Notification notification = new Notification("By "+Common.currentUser.getName().toString()+" tap " +
-                                    "to check it out!!","Your order  "+key+"  was updated ");
-                            Sender content = new Sender(token.getToken(),notification);
-                            mAPIService.sendNotification(content)
+//                            Notification notification = new Notification("By "+Common.currentUser.getName().toString()+" tap " +
+//                                    "to check it out!!","Your order  "+key+"  was updated ");
+//                            Sender content = new Sender(token.getToken(),notification);
+
+                            Map<String,String> datasend = new HashMap<>();
+                            datasend.put("title","By "+Common.currentUser.getName().toString()+" tap to check it out!!");
+                            datasend.put("message","Your order  "+key+"  was updated ");
+                            DataMessage dataMessage = new DataMessage(token.getToken(),datasend);
+
+
+
+                            mAPIService.sendNotification(dataMessage)
                                     .enqueue(new Callback<MyResponse>() {
                                         @Override
                                         public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
