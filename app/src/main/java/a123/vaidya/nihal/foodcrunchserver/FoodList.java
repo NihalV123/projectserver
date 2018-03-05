@@ -276,7 +276,8 @@ public class FoodList extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull final FoodViewHolder viewHolder, final int position, @NonNull final Food model) {
+            protected void onBindViewHolder(@NonNull final FoodViewHolder viewHolder,
+                                            final int position, @NonNull final Food model) {
                 viewHolder.food_name.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.food_image);
                 //event buttons
