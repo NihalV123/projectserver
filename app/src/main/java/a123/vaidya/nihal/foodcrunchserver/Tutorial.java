@@ -105,7 +105,7 @@ public class Tutorial extends TutorialActivity {
         addFragment(new Step.Builder().setTitle("ABOUT OPTION")
                 .setContent("YOU CAN VIEW DETAILS ABOUT THE CREATOR OF THIS APP WITH THIS OPTION")
                       .setBackgroundColor(R.color.colorPrimary)  // int background color
-                .setDrawable(R.drawable.about_icon_email) // int top drawable
+                .setDrawable(R.drawable.ic_info_black_24dp) // int top drawable
                 .setSummary("YOU CAN ALSO FIND LINKS FOR OTHER PLATFORMS I USE :)")
                 .build());
 
