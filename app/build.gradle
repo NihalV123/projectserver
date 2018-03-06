@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.github.apl-devs:appintro:v4.2.3'
     implementation 'com.github.armcha:AutoLinkTextView:0.3.0'
     implementation 'com.antonionicolaspina:revealtextview:2.0'
-    implementation  'com.github.msayan:tutorial-view:v1.0.4'
+    implementation 'com.github.msayan:tutorial-view:v1.0.4'
     implementation 'com.jaredrummler:material-spinner:1.2.4'
     implementation 'com.github.medyo:android-about-page:1.2.2'
     implementation 'com.github.andremion:counterfab:1.0.1'

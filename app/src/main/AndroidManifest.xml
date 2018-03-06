@@ -63,7 +63,8 @@
         <activity android:name=".OrderDetail" />
         <activity android:name=".BannerActivity" />
         <activity android:name=".SendMessage" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".Tutorial" />
     </application>
 
 </manifest>

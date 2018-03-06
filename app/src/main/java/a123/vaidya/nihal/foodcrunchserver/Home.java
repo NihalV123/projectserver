@@ -481,7 +481,9 @@ public class Home extends AppCompatActivity
             startActivity(new Intent(Home.this,SearchActivity.class));
         }else if (item.getItemId() == R.id.menu_info)
         {
-            Toast.makeText(Home.this, "THIS IS THE TUTORIAL FOR MAIN MENU", Toast.LENGTH_LONG).show();
+            Intent tutorial = new Intent(Home.this, Tutorial.class);
+            startActivity(tutorial);
+
         }
         return super.onOptionsItemSelected(item);
 
