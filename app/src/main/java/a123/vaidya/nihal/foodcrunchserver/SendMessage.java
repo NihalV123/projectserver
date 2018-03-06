@@ -15,6 +15,8 @@ import a123.vaidya.nihal.foodcrunchserver.Model.DataMessage;
 import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
 //import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
 //import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
 import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.Remote.APIService;
 import info.hoang8f.widget.FButton;
@@ -42,20 +44,22 @@ public class SendMessage extends AppCompatActivity {
         btnsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //create notification message
+                //create new stylee notification message
 //                Token serverToken = postSnapShot.getValue(Token.class);
-//                Map<String,String> datasend = new HashMap<>();
-//                datasend.put("title","From "+Common.currentUser.getName().toString()+" tap to manage it!!!");
-//                datasend.put("message","You have new Order : "+order_number);
-//                DataMessage dataMessage = new DataMessage(serverToken.getToken(),datasend);
+                Map<String,String> datasend = new HashMap<>();
+                DataMessage toTopic =new DataMessage();
+                toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
+                datasend.put("title","FOOD CRUNCH : "+edtMessage.getText().toString());
+                datasend.put("message",edtTitle.getText().toString()+"  TAP TO LOG IN");
+                DataMessage dataMessage = new DataMessage(  toTopic.to ,datasend);
 
+//old style notificstion
+              //  Notification notification = new Notification(edtTitle.getText().toString()+"  TAP TO LOG IN","FOOD CRUNCH : "+edtMessage.getText().toString());
+              //  Sender toTopic =new Sender();
+               // toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
+               // toTopic.notification = notification;
 
-//                Notification notification = new Notification(edtTitle.getText().toString()+"  TAP TO LOG IN","FOOD CRUNCH : "+edtMessage.getText().toString());
-//                Sender toTopic =new Sender();
-//                toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
-//                toTopic.notification = notification;
-
-//                mservice.sendNotification(toTopic)
+//                mservice.sendNotification(datasend)
 //                        .enqueue(new Callback<MyResponse>() {
 //                            @Override
 //                            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {

@@ -90,7 +90,7 @@ public class Signin extends AppCompatActivity {
                                 DatabaseReference myRef = db.getReference("message");
                                 myRef.setValue("Hello from sign in ");
                                 final SpotsDialog dialog = new SpotsDialog(Signin.this);
-                                dialog.show();
+                                //dialog.show();
                                 Intent homeIntent = new Intent(Signin.this,Home.class);
                                 Common.currentUser = user;
                                 startActivity(homeIntent);

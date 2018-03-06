@@ -10,41 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
-    <TextView
-        android:id="@+id/txtmanconetnthom3e"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/transparentBlack"
-        android:gravity="center"
-        android:paddingTop="80dp"
-        android:text="@string/EMPTY_LIST"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtmanconetnthome"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="10dp"
-            android:text="@string/Your_orders_from_Today"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:background="@color/transparentBlack"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:background="@color/transparentBlack"
+                android:paddingLeft="20dp"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:tint="@color/white"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/txtmanconetnthome"
+                android:layout_width="match_parent"
+                android:background="@color/transparentBlack"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Your_orders_from_Today"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
+        </LinearLayout>
 
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/listOrders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:background="@android:color/transparent"
-        android:paddingTop="80dp">
+            android:paddingTop="45dp">
 
     </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

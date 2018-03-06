@@ -312,8 +312,8 @@ public class OrderStatus extends AppCompatActivity {
 //                            Sender content = new Sender(token.getToken(),notification);
 
                             Map<String,String> datasend = new HashMap<>();
-                            datasend.put("title","By "+Common.currentUser.getName().toString()+" tap to check it out!!");
-                            datasend.put("message","Your order  "+key+"  was updated ");
+                            datasend.put("title","Your order  "+key+"  was updated ");
+                            datasend.put("message","By "+Common.currentUser.getName().toString()+" tap to check it out!!");
                             DataMessage dataMessage = new DataMessage(token.getToken(),datasend);
 
 

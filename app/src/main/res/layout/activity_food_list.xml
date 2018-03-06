@@ -15,8 +15,8 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
             android:background="@color/transparentBlack"
             android:gravity="center"
             android:paddingBottom="5dp"
@@ -38,7 +38,7 @@
             android:id="@+id/recycler_food"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:minHeight="200dp"
             android:scrollbars="vertical">
 
@@ -54,6 +54,18 @@
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="26dp"
         android:src="@drawable/ic_playlist_add_black_24dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparentBlack"
+            android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:background="@color/transparentBlack"
+            android:paddingLeft="20dp"
+            android:src="@drawable/ic_add_to_photos_black_24dp"
+            android:tint="@color/white"
+            android:layout_height="match_parent" />
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
@@ -66,5 +78,6 @@
             android:text="@string/add_food_using_red_button"
             android:textColor="@color/white"
             android:textSize="25sp" />
+        </LinearLayout>
 </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

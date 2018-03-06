@@ -64,7 +64,7 @@
     <string name="SecureCode">SECURE CoODE</string>
     <string name="Write_comment">Write Comment</string>
     <string name="Order_name">Order Name</string>
-    <string name="Details">Details Of Your Order</string>
+    <string name="Details">ALL ITEMS IN THE ORDER</string>
     <string name="product_name">Product Name</string>
     <string name="product_quantity">Product Quantity</string>
     <string name="product_price">Product Price</string>
@@ -73,7 +73,7 @@
     <string name="my_new_address">MY NEW ADDRESS</string>
     <string name="Your_cart">YOUR CART</string>
     <string name="SELECT_YOUR_FOOD">SELECT YOUR FOOD</string>
-    <string name="Your_orders_from_Today">RECENT ORDERS</string>
+    <string name="Your_orders_from_Today">ORDERS FROM ALL USERS</string>
     <string name="LONG_CLICK_TO_UPDATE">LONG CLICK TO UPDATE</string>
     <string name="LONG_CLICK_FOR_INFO">TAP FOR DIRECTIONS LONG CLICK FOR DETAILS</string>
     <string name="SETHIGHERRESOLUTION">SET RESOLUTION HIGHER</string>
@@ -92,7 +92,7 @@
     <string name="Please_enter_your_address">ENTER YOUR ADDRESS</string>
     <string name="repeat_new_passowrd">REPEAT NEW PASSOWRD</string>
     <string name="enter_new_password">ENTER NEW PASSWORD</string>
-    <string name="Please_select_a_category">SELECT CATEGORY</string>
+    <string name="Please_select_a_category">CATEGORY LIST ADD USING FAB</string>
     <string name="EMPTY_LIST">THIS SEEMS TO BE EMPTY</string>
     <string name="delete_user_data">DELETE USER DATA</string>
     <string name="_9769539742">9769539742</string>
@@ -119,7 +119,7 @@
     <string name="name_of_banner">NAME OF BANNER</string>
     <string name="Food_id">ENTER FOOD ID</string>
     <string name="foodname123">ENTER FOOD NAME</string>
-    <string name="banner_items">ITEMS IN CLIENT BANNER</string>
+    <string name="banner_items">EDIT ITEMS IN USER BANNER</string>
     <string name="banerid">FOOD ID ATTACHED TO BANNER</string>
     <string name="sendnotification">SEND NEWS</string>
     <string name="extra">extra</string>
@@ -128,11 +128,12 @@
     <string name="video_url">video url</string>
     <string name="add_recepe">ADD RECEPIE</string>
     <string name="add_quantity">add quantity</string>
-    <string name="add_food_using_red_button">ADD FOOD USING RED BUTTON</string>
+    <string name="add_food_using_red_button">ADD ITEMS TO CATEGORY USING RED BUTTON</string>
     <string name="add_title_of_message">ADD TITLE OF MESSAGE</string>
     <string name="add_body_of_message">ADD BODY OF MESSAGE</string>
     <string name="Send">SEND</string>
     <string name="TUTORIAL">TUTORIAL</string>
     <string name="SEARCH">SEARCH ALL</string>
+    <string name="search_all_food_at_once">SEARCH ALL FOOD AT ONCE</string>
 </resources>
 
