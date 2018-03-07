@@ -162,10 +162,11 @@ dependencies {
     implementation 'com.muddzdev:styleabletoast:1.0.8'
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
     implementation 'com.github.hotchemi:permissionsdispatcher:2.0.7'
-    implementation  'com.github.apl-devs:appintro:v4.2.3'
+    implementation 'com.github.apl-devs:appintro:v4.2.3'
 // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:3.2.2'
-
+    implementation 'com.felipecsl:gifimageview:2.2.0'
+    implementation 'commons-io:commons-io:2.6'
 // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
 

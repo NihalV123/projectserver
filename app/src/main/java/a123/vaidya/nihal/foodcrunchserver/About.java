@@ -22,10 +22,10 @@ public class About extends AppCompatActivity {
         View about = new AboutPage(this)
                 .isRTL(false)
                 //.setImage(R.drawable.box)
-                .setDescription("THIS IS  A DUMMY PROJECT \nCREATED BY NIHAL VAIDYA TYCS\n ROLL NO 518")
-                .addItem(new Element().setTitle("Verion 0.8"))
+                .setDescription("THIS PROJECT WAS CREATED BY \n  NIHAL VAIDYA TYCS ROLL NO 518\n SPECIAL THANKS TO MY MOM")
+                .addItem(new Element().setTitle("VERSION 0.8"))
                 .addItem(addsElement)
-                .addGroup("Connect with me")
+                .addGroup("CONNECT WITH US ")
                 .addEmail("nhlvcam@gmail.com")
                 .addWebsite("http://www.google.com")
                 .addFacebook("Nihal Vaidya ")
@@ -42,16 +42,16 @@ public class About extends AppCompatActivity {
 
     private Element createCopyRight() {
         Element copyright = new Element();
-        final String cpoyrightstring = String.format("Copyright free since %d by Nihal Vaidya", Calendar.getInstance().get(Calendar.YEAR));
+        final String cpoyrightstring = String.format("No Copyright all free since %d by Nihal Vaidya", Calendar.getInstance().get(Calendar.YEAR));
         copyright.setTitle(cpoyrightstring);
-     copyright.setIconDrawable(R.drawable.ic_child_care_black_24dp);
-     copyright.setGravity(Gravity.CENTER);
-     copyright.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             Toast.makeText(About.this,cpoyrightstring,Toast.LENGTH_LONG).show();
-         }
-     });
-     return copyright;
+        copyright.setIconDrawable(R.drawable.ic_child_care_black_24dp);
+        copyright.setGravity(Gravity.CENTER);
+        copyright.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(About.this,cpoyrightstring,Toast.LENGTH_LONG).show();
+            }
+        });
+        return copyright;
     }
 }
