@@ -3,7 +3,7 @@
     <string name="slogan">You must eat to live not live to eat.</string>
     <string name="Signup">no account ? SIGN UP !</string>
     <string name="Signin">SIGN IN and eat fresh</string>
-    <string name="enter_your_phone_number">Enter your Phone </string>
+    <string name="enter_your_phone_number">ENTER PHONE NO</string>
     <string name="_7208680470">7208680470</string>
     <string name="enter_your_name">ENTER YOUR NAME</string>
     <string name="enter_your_password">ENTER PASSWORD</string>
@@ -61,7 +61,7 @@
     <string name="title_activity_tracking_order">Map</string>
     <string name="refresh">REFRESH</string>
     <string name="RememberMe">REMEMBER ME</string>
-    <string name="SecureCode">SECURE CoODE</string>
+    <string name="SecureCode">SECURE CODE FOR PASSWD RESET</string>
     <string name="Write_comment">Write Comment</string>
     <string name="Order_name">Order Name</string>
     <string name="Details">ALL ITEMS IN THE ORDER</string>
@@ -86,7 +86,7 @@
     <string name="home_address">PRESET LOCATION</string>
     <string name="email_address">EMAIL ADDRESS</string>
     <string name="change_password">CHANGE PASSWORD</string>
-    <string name="enter_your_email_address">ENTER YOUR EMAIL ADDRESS</string>
+    <string name="enter_your_email_address">EMAIL ID FOR ACCOUNT DETAILS</string>
     <string name="nhlvcam">NHLVCAM@GMAIL.COM</string>
     <string name="enter_your_home_address">ENTER LOCATION ADDRESS</string>
     <string name="Please_enter_your_address">ENTER YOUR ADDRESS</string>

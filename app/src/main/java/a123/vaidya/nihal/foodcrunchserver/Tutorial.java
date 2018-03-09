@@ -18,11 +18,11 @@ public class Tutorial extends TutorialActivity {
                 .setDrawable(R.drawable.ic_search_black_24dp) // int top drawable
                 .setSummary("YOU CAN TYPE TO GET SUGGESTIONS OR CLICK ON RECENT SUGGESTIONS AND PRESS ENTER")
                 .build());
-        addFragment(new Step.Builder().setTitle("REFRESH BUTTON")
-                .setContent("YOU CAN REFRESH LAYOUT USING REFRESH BUTTON")
+        addFragment(new Step.Builder().setTitle("FORGOT PASSOWRD")
+                .setContent("YOU CAN RECOVER YOUR PASSWORD WITH YOUR SECURE CODE AND PHONE NUMBER")
                 .setBackgroundColor(R.color.about_instagram_color)  // int background color
-                .setDrawable(R.drawable.ic_refresh_black_24dp) // int top drawable
-                .setSummary("YOU CAN REFRESH WHEN ADDING OR REMOVING CATEGORIES OR WHEN IMAGE IS NOT BEING ETCHED FROM SERVER ")
+                .setDrawable(R.drawable.ic_security_black_24dp) // int top drawable
+                .setSummary("PASSOWRD IS MAPPED TO YOUR PHONE ONLY")
                 .build());
         addFragment(new Step.Builder().setTitle("ADD CATEGORY BUTTON")
                 .setContent("YOU CAN ADD NEW CATEGORY USING GREEN FLOATING ACTION BUTTON")
@@ -59,11 +59,11 @@ public class Tutorial extends TutorialActivity {
                 .setSummary("---YOU NEED NAME AND IMAGE WHICH USER CAN ONLY SEE ON THE BANNER AND A FOOD ID PRESENT IN DATABASE " +
                         "TO LINK THE SPECIAL FOOD ITEM TO THE DATABASE AND CLICK CREATE TO SUCCESSFULLY ADD OR UPDATE NEW BANNER ITEM\n---YOU CAN REMOVE BANNER ITEMS USING REMOVE BUTTON")
                 .build());
-        addFragment(new Step.Builder().setTitle("UPDATE EMAIL OPTION")
-                .setContent("YOU CAN CHANGE YOUR EMAIL USING THIS OPTION")
+        addFragment(new Step.Builder().setTitle("REMEMBER ME BUTTON")
+                .setContent("YOU CAN RE LOGIN IF THE APP IS CLOSED USING THIS BUTTON")
                        .setBackgroundColor(R.color.about_instagram_color)  // int background color
-                .setDrawable(R.drawable.ic_email_black_24dp) // int top drawable
-                .setSummary("YOU NEED TO PROVIDE A CORRECT EMAIL AND CLICK UPDATE FOR SUCCESSFULLY UPDATING EMAIL")
+                .setDrawable(R.drawable.ic_info_black_24dp) // int top drawable
+                .setSummary("YOU NEED TO REMAIN LOGGED IN BEFORE THE APP IS CLOSED AND BUTTON MUST BE TICKED FOR IT TO WORK PROPERLY")
                 .build());
         addFragment(new Step.Builder().setTitle("CHANGE PASSWORD OPTION")
                 .setContent("YOU CAN CHANGE YOUR PASSWORD USING THIS OPTION")

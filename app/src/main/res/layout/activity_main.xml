@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/slogan"
-            app:rtv_duration="2000"
+            app:rtv_duration="4000"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
     </LinearLayout>
