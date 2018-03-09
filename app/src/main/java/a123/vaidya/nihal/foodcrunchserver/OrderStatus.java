@@ -281,9 +281,9 @@ public class OrderStatus extends AppCompatActivity {
                             try {
                                 startActivity(Intent.createChooser(emailIntent, "Send mail..."));
                             } catch (android.content.ActivityNotFoundException ex) {
-                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT);
                             }
-                        }                                Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                        }                               // Toast.makeText(OrderStatus.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 
                     }
 

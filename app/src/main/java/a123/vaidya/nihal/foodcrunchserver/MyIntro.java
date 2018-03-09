@@ -28,7 +28,7 @@ public class MyIntro extends AppIntro2{
                 ,R.drawable.ic_child_care_big,
                 Color.parseColor("#4fd7ff")));
 
-        addSlide(AppIntro2Fragment.newInstance("FOOD CRUNCH SERVER","MANAGE YOURSELF"
+        addSlide(AppIntro2Fragment.newInstance("FOOD CRUNCH SERVER","ENOY THE EXPERIENCE!!"
                 ,R.drawable.ic_thumb_up_big,
                 Color.parseColor("#8c50e3")));
 
