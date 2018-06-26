@@ -1,23 +1,9 @@
 package a123.vaidya.nihal.foodcrunchserver;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-=======
-=======
->>>>>>> old2/master
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -30,33 +16,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> old2/master
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 
 public class Signup extends AppCompatActivity {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode;
-=======
     MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode,edtEmail,edtHomeAddress;
->>>>>>> old1/master
-=======
-    MaterialEditText edtNmae,edtPhone,edtPasswd,edtSecureCode,edtEmail,edtHomeAddress;
->>>>>>> old2/master
     Button BtnSignup;
     private FirebaseAuth mAuth;
     DrawerLayout drawer;
@@ -66,16 +35,6 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        edtNmae= findViewById(R.id.edtName);
-        edtPasswd= findViewById(R.id.edtPasswd);
-        edtSecureCode=findViewById(R.id.edtSecureCode);
-        edtPhone= findViewById(R.id.edtPhone);
-        BtnSignup = findViewById(R.id.btnSignup);
-=======
-=======
->>>>>>> old2/master
         edtNmae = findViewById(R.id.edtName);
         edtPasswd = findViewById(R.id.edtPasswd);
         edtSecureCode = findViewById(R.id.edtSecureCode);
@@ -83,10 +42,6 @@ public class Signup extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmails);
         BtnSignup = findViewById(R.id.btnSignup);
         edtHomeAddress= findViewById(R.id.edtShopAddress);
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersRef = rootRef.child("User");
@@ -103,17 +58,6 @@ public class Signup extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         //check if user doesnt exist in db
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
-                            DatabaseReference myRef = database.getReference("message");
-
-                            myRef.setValue("Hello from sign up");
-
-                            Toast.makeText(Signup.this, "Phone Number already registered!", Toast.LENGTH_SHORT).show();
-=======
-=======
->>>>>>> old2/master
                         if (dataSnapshot.child(edtPhone.getText().toString()).exists()&&
                                 (edtPasswd.getText().toString() != null) &&(edtNmae.getText().toString() != null)
                                 &&(edtSecureCode.getText().toString() != null)&&(edtPhone.getText().toString() != null)
@@ -123,28 +67,10 @@ public class Signup extends AppCompatActivity {
 
                             myRef.setValue("No from sign up");
                             Toast.makeText(Signup.this, "User cannot be added \nPlease fill all fields\n User already exists", Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
                         }
                         else
                         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            User user = new User(edtNmae.getText().toString(),edtPasswd.getText().toString(),edtSecureCode.getText().toString());
-                            table_user.child(edtPhone.getText().toString()).setValue(user);
-                            DatabaseReference myRef = database.getReference("message");
-
-                            myRef.setValue("everythink ok");
-                            Toast.makeText(Signup.this, "SIGN UP successfull welcome to the crew!", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-=======
-=======
->>>>>>> old2/master
                             Toast.makeText(Signup.this, "Select the way you want to be notified", Toast.LENGTH_SHORT).show();
                             User user = new User(edtNmae.getText().toString(), edtPasswd.getText().toString(),
                                     edtSecureCode.getText().toString(),
@@ -186,30 +112,12 @@ public class Signup extends AppCompatActivity {
                            // finish();
                         }
                            }
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-<<<<<<< HEAD
-<<<<<<< HEAD
-                }else
-                {
-                    Toast.makeText(Signup.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-            }
-        });
-
-=======
-=======
->>>>>>> old2/master
 
                 }else
                 {
@@ -222,10 +130,6 @@ public class Signup extends AppCompatActivity {
         });
 
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         //firebase debug
         mAuth =FirebaseAuth.getInstance();
 

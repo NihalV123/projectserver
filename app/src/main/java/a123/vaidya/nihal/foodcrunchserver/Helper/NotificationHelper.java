@@ -52,8 +52,6 @@ public class NotificationHelper extends ContextWrapper {
                 .setSound(sounddUri)
                 .setAutoCancel(false);
     }
-<<<<<<< HEAD
-=======
 
 
     @TargetApi(Build.VERSION_CODES.O)
@@ -69,5 +67,4 @@ public class NotificationHelper extends ContextWrapper {
     }
 
 
->>>>>>> old2/master
 }

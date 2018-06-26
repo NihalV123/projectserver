@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-=======
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
->>>>>>> old1/master
-    <item
-        android:id="@+id/refresh"
-        android:icon="@drawable/ic_refresh_black_24dp"
-        android:title="@string/refresh" />
-=======
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
@@ -28,5 +16,4 @@
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/TUTORIAL"
         app:showAsAction="always"/>
->>>>>>> old2/master
 </menu>

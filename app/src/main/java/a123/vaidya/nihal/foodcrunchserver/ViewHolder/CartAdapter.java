@@ -63,15 +63,7 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
 public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private List<Order> listData = new ArrayList<>();
-=======
     private List<Order> listData;
->>>>>>> old1/master
-=======
-    private List<Order> listData;
->>>>>>> old2/master
     private Context context;
 
     public CartAdapter(List<Order> listData, Context context) {

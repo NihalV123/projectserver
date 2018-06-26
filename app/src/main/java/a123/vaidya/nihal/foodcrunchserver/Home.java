@@ -10,68 +10,30 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-=======
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.app.AlertDialog;
->>>>>>> old1/master
-=======
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.app.AlertDialog;
->>>>>>> old2/master
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import android.util.Log;
->>>>>>> old1/master
-=======
-import android.util.Log;
->>>>>>> old2/master
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
->>>>>>> old1/master
-=======
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
->>>>>>> old2/master
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-=======
-=======
->>>>>>> old2/master
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,19 +46,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-import java.util.UUID;
-
-import a123.vaidya.nihal.foodcrunchserver.Common.Common;
-import a123.vaidya.nihal.foodcrunchserver.Interface.ItemClickListener;
-import a123.vaidya.nihal.foodcrunchserver.Model.Category;
-import a123.vaidya.nihal.foodcrunchserver.Model.Token;
-import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
-=======
-=======
->>>>>>> old2/master
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -112,24 +61,12 @@ import a123.vaidya.nihal.foodcrunchserver.Model.Token;
 import a123.vaidya.nihal.foodcrunchserver.Service.BackgroundSoundService;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
 import dmax.dialog.SpotsDialog;
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import info.hoang8f.widget.FButton;
 import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    TextView txtfullname;
-=======
     private TextView txtFullName,txtemail,txtPhone;
->>>>>>> old1/master
-=======
-    private TextView txtFullName,txtemail,txtPhone;
->>>>>>> old2/master
     MaterialEditText edtName;
     FButton btnUpload,btnSelect;
     Category newCategory;
@@ -142,15 +79,7 @@ public class Home extends AppCompatActivity
     DatabaseReference categories;
     FirebaseStorage storage;
     StorageReference storageReference;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
     SwipeRefreshLayout swipeRefreshLayout;
->>>>>>> old1/master
-=======
-    SwipeRefreshLayout swipeRefreshLayout;
->>>>>>> old2/master
     FirebaseRecyclerAdapter<Category,MenuViewHolder> adapter;
     RecyclerView recycler_menu;
     RecyclerView.LayoutManager layoutManager;
@@ -160,27 +89,11 @@ public class Home extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-=======
         Toolbar toolbar = findViewById(R.id.toolbar);
->>>>>>> old1/master
-=======
-        Toolbar toolbar = findViewById(R.id.toolbar);
->>>>>>> old2/master
         toolbar.setTitle("Menu Management");
         setSupportActionBar(toolbar);
 
         //firebase code
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        database = FirebaseDatabase.getInstance();
-        categories =database.getReference("Category");
-=======
-=======
->>>>>>> old2/master
         swipeRefreshLayout = findViewById(R.id.swipelayout1);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 android.R.color.holo_green_dark,
@@ -275,28 +188,10 @@ public class Home extends AppCompatActivity
 
             }
         };
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               showDialog();
-            }
-        });
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-=======
-=======
->>>>>>> old2/master
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -306,43 +201,16 @@ public class Home extends AppCompatActivity
         });
 
         drawer = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-=======
         NavigationView navigationView = findViewById(R.id.nav_view);
->>>>>>> old1/master
-=======
-        NavigationView navigationView = findViewById(R.id.nav_view);
->>>>>>> old2/master
         navigationView.setNavigationItemSelectedListener(this);
 
         //set name for user
         View headerView = navigationView.getHeaderView(0);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        txtfullname = (TextView)headerView.findViewById(R.id.txtFullName);
-        txtfullname.setText(Common.currentUser.getName());
-
-
-        //new view for server
-        recycler_menu = (RecyclerView)findViewById(R.id.recycler_menu);
-        recycler_menu.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recycler_menu.setLayoutManager(layoutManager);
-
-=======
-=======
->>>>>>> old2/master
         txtFullName = headerView.findViewById(R.id.txtFullName);
         txtemail = headerView.findViewById(R.id.txtEmail);
         txtPhone = headerView.findViewById(R.id.txtPhone);
@@ -359,10 +227,6 @@ public class Home extends AppCompatActivity
         LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(recycler_menu.getContext(),
                 R.anim.layout_fall_down);
         recycler_menu.setLayoutAnimation(controller);
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         if (Common.isConnectedToInternet(this)) {
 
             loadMenu();
@@ -374,13 +238,6 @@ public class Home extends AppCompatActivity
         else
         {
             Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            return;
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         }
 //        Intent services = new Intent(Home.this, ListenOrder.class);
 //        startService(services);
@@ -390,13 +247,6 @@ public class Home extends AppCompatActivity
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference tokens = db.getReference("Tokens");
         Token data = new Token(token,true); //false as this reads frm client
-<<<<<<< HEAD
-<<<<<<< HEAD
-        tokens.child(Common.currentUser.getPhone()).setValue(data);
-        Toast.makeText(Home.this,"Welcome !!!",Toast.LENGTH_LONG).show();
-=======
-=======
->>>>>>> old2/master
         try {
             tokens.child(Common.currentUser.getPhone()).setValue(data);
             Toast.makeText(Home.this,"Welcome ",Toast.LENGTH_LONG).show();
@@ -405,10 +255,6 @@ public class Home extends AppCompatActivity
         catch(Exception e){
             Toast.makeText(Home.this,"your phone no is missing",Toast.LENGTH_LONG).show();
         }
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     }
 
     private void showDialog() {
@@ -437,21 +283,9 @@ public class Home extends AppCompatActivity
                 uploadImage();   //select image from galary and save url
             }
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        alertDailog.setView(add_menu_layout);
-        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
-=======
         alertDailog.setCancelable(false);
         alertDailog.setView(add_menu_layout);
         alertDailog.setIcon(R.drawable.ic_add_to_photos_black_24dp);
->>>>>>> old1/master
-=======
-        alertDailog.setCancelable(false);
-        alertDailog.setView(add_menu_layout);
-        alertDailog.setIcon(R.drawable.ic_add_to_photos_black_24dp);
->>>>>>> old2/master
 
         //set button
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -480,72 +314,30 @@ public class Home extends AppCompatActivity
 
         if(saveUri != null)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             final SpotsDialog dialog = new SpotsDialog(Home.this);
             dialog.show();
 
->>>>>>> old1/master
-=======
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
-
->>>>>>> old2/master
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                           // dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
-=======
                             dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
->>>>>>> old1/master
-=======
-                            dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
->>>>>>> old2/master
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
 
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                  //set value of new category to get download link
-                                  newCategory = new Category(edtName.getText().toString(),uri.toString());
-=======
                                     //set value of new category to get download link
                                     newCategory = new Category(edtName.getText().toString(),uri.toString());
->>>>>>> old1/master
-=======
-                                    //set value of new category to get download link
-                                    newCategory = new Category(edtName.getText().toString(),uri.toString());
->>>>>>> old2/master
 
                                 }
                             });
                         }
 
                     })
-<<<<<<< HEAD
-<<<<<<< HEAD
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    // dialog.dismiss();
-                    Toast.makeText(Home.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
-                    Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
-                }
-            });
-=======
-=======
->>>>>>> old2/master
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -554,10 +346,6 @@ public class Home extends AppCompatActivity
                             Snackbar.make(drawer,"Something gone wrong check logs ",Snackbar.LENGTH_LONG).show();
                         }
                     });
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
 
 
@@ -572,15 +360,7 @@ public class Home extends AppCompatActivity
         if(requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             saveUri = data.getData();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            btnSelect.setText("IMAGE SELECTED!");
-=======
             btnSelect.setText("IMAGE SELECTED! ->>");
->>>>>>> old1/master
-=======
-            btnSelect.setText("IMAGE SELECTED! ->>");
->>>>>>> old2/master
         }
     }
 
@@ -593,44 +373,6 @@ public class Home extends AppCompatActivity
     }
 
     private void loadMenu() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        adapter= new FirebaseRecyclerAdapter<Category, MenuViewHolder>(
-                Category.class,
-                R.layout.menu_item,
-                MenuViewHolder.class,
-                categories
-        ) {
-            @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
-                viewHolder.txtMenuName.setText(model.getName());
-                Picasso.with(Home.this).load(model.getImage())
-                        .into(viewHolder.imageView);
-
-                viewHolder.setItemClickListener(new ItemClickListener() {
-                    @Override
-                    public void onClick(View v, int position, boolean isLongClick) {
-                        //start new category adding activity
-                        Intent foodList = new Intent(Home.this,FoodList.class);
-                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
-                        startActivity(foodList);
-
-                    }
-                });
-            }
-        };
-        adapter.notifyDataSetChanged();   // for refreshing data
-        recycler_menu.setAdapter(adapter);
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-=======
-=======
->>>>>>> old2/master
         //started from swipeview
         //keep it commented
 //        //new firebase code
@@ -714,10 +456,6 @@ public class Home extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -738,12 +476,6 @@ public class Home extends AppCompatActivity
         if (item.getItemId() == R.id.refresh)
         {
             loadMenu();
-<<<<<<< HEAD
-        }
-
-
-        return super.onOptionsItemSelected(item);
-=======
         }else if (item.getItemId() == R.id.menu_search)
         {
             startActivity(new Intent(Home.this,SearchActivity.class));
@@ -755,35 +487,10 @@ public class Home extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
 
->>>>>>> old2/master
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        if (id == R.id.nav_menu) {
-        }
-        //else if (id == R.id.nav_cart) {
-            //Intent cartIntent = new Intent (Home.this,Cart.class);
-            //startActivity(cartIntent); }
-         else if (id == R.id.nav_orders) {
-            Intent orderIntent = new Intent (Home.this,OrderStatus.class);
-            startActivity(orderIntent);
-        } else if (id == R.id.nav_logout) {
-            //delete remmbered user details
-            Paper.book().destroy();
-            Intent signIn = new Intent (Home.this,Signin.class);
-            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(signIn);
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-=======
-=======
->>>>>>> old2/master
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -854,41 +561,10 @@ public class Home extends AppCompatActivity
             }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    //code for update and delete
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-
-        if(item.getTitle().equals(Common.UPDATE))
-        {
-            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(),adapter.getItem(item.getOrder()));
-        }else  if(item.getTitle().equals(Common.DELETE))
-        {
-           deleteCategory(adapter.getRef(item.getOrder()).getKey());
-
-        }
-
-        return super.onContextItemSelected(item);
-    }
-
-    private void deleteCategory(String key) {
-        categories.child(key).removeValue();
-        Toast.makeText(this,"The category was  deleted",Toast.LENGTH_LONG).show();
-       Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
-        DatabaseReference foods = database.getReference("Foods");//get all list of food from database
-
-=======
-=======
->>>>>>> old2/master
     private void showChangeNameDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Home.this);
         alertDialog.setTitle("CHANGE NAME");
@@ -1093,30 +769,11 @@ public class Home extends AppCompatActivity
              Toast.makeText(Home.this,"Category was deleted",Toast.LENGTH_LONG).show();
        // Snackbar.make(drawer,"The Category "+ newCategory.getName() +" was deleted",Snackbar.LENGTH_LONG).show();
         DatabaseReference foods = database.getReference("Foods");//get all list of food from database
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         Query foodInCategory = foods.orderByChild("menuId").equalTo(key);
         foodInCategory.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapShot:dataSnapshot.getChildren() )
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                    postSnapShot.getRef().removeValue();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-=======
-=======
->>>>>>> old2/master
                     postSnapShot.getRef().removeValue();
             }
             @Override
@@ -1132,10 +789,6 @@ public class Home extends AppCompatActivity
                 });
         alertDialog.show();
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
     }
 
@@ -1144,14 +797,7 @@ public class Home extends AppCompatActivity
 
         AlertDialog.Builder alertDailog = new AlertDialog.Builder(Home.this);
         alertDailog.setTitle("Update the Category");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         alertDailog.setCancelable(false);
->>>>>>> old1/master
-=======
-        alertDailog.setCancelable(false);
->>>>>>> old2/master
         alertDailog.setMessage("Please fill all fields");
 
 
@@ -1182,15 +828,7 @@ public class Home extends AppCompatActivity
         });
 
         alertDailog.setView(add_menu_layout);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        alertDailog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
-=======
         alertDailog.setIcon(R.drawable.ic_playlist_add_black_24dp);
->>>>>>> old1/master
-=======
-        alertDailog.setIcon(R.drawable.ic_playlist_add_black_24dp);
->>>>>>> old2/master
 
         //set button
         alertDailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -1217,34 +855,16 @@ public class Home extends AppCompatActivity
 
         if(saveUri != null)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             final SpotsDialog dialog = new SpotsDialog(Home.this);
             dialog.show();
->>>>>>> old1/master
-=======
-            final SpotsDialog dialog = new SpotsDialog(Home.this);
-            dialog.show();
->>>>>>> old2/master
             String imageName = UUID.randomUUID().toString();
             final StorageReference imageFolder = storageReference.child("images/"+imageName);
             imageFolder.putFile(saveUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            // dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully Just a sec",Toast.LENGTH_LONG).show();
-=======
                             dialog.dismiss();
                             Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
->>>>>>> old1/master
-=======
-                            dialog.dismiss();
-                            Toast.makeText(Home.this,"Uploaded Successfully !!! Updating database",Toast.LENGTH_LONG).show();
->>>>>>> old2/master
                             Snackbar.make(drawer,"The Image was Uploaded",Snackbar.LENGTH_LONG).show();
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
@@ -1272,12 +892,4 @@ public class Home extends AppCompatActivity
         }
 
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> old1/master
-=======
-}
->>>>>>> old2/master

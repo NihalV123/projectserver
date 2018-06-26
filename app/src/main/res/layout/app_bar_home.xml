@@ -24,21 +24,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <TextView
-            android:id="@+id/txtmanconetnthome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:text="@string/LONG_CLICK_TO_UPDATE"
-            android:textColor="@color/colorAccent" />
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -51,15 +36,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:layout_marginBottom="26dp"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        android:layout_marginRight="26dp"
-=======
         android:layout_marginEnd="26dp"
->>>>>>> old1/master
-=======
-        android:layout_marginEnd="26dp"
->>>>>>> old2/master
         android:src="@drawable/ic_playlist_add_black_24dp" />
 
 

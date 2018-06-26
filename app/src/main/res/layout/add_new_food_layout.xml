@@ -8,15 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        android:layout_margin="20dp"
-=======
         android:layout_margin="2dp"
->>>>>>> old1/master
-=======
-        android:layout_margin="2dp"
->>>>>>> old2/master
         android:orientation="vertical">
         <!--<TextView-->
             <!--android:id="@+id/txtmanconesdstnthome"-->
@@ -36,19 +28,9 @@
             android:inputType="textPersonName"
             android:text=""
             android:textColor="@android:color/primary_text_light"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:textSize="20sp"
-=======
             android:textSize="10sp"
             app:met_minCharacters="1"
             app:met_maxCharacters="30"
->>>>>>> old1/master
-=======
-            android:textSize="10sp"
-            app:met_minCharacters="1"
-            app:met_maxCharacters="30"
->>>>>>> old2/master
             app:met_baseColor="@android:color/primary_text_light"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@android:color/primary_text_light"
@@ -61,21 +43,10 @@
             android:hint="@string/Description"
             android:inputType="textMultiLine"
             android:text=""
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="20sp"
-=======
-=======
->>>>>>> old2/master
             app:met_minCharacters="1"
             app:met_maxCharacters="127"
             android:textColor="@android:color/primary_text_light"
             android:textSize="10sp"
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
             app:met_baseColor="@android:color/primary_text_light"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@android:color/primary_text_light"
@@ -86,25 +57,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Price"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:inputType="number"
-            android:text=""
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="20sp"
-=======
-=======
->>>>>>> old2/master
             app:met_minCharacters="1"
             app:met_maxCharacters="7"
             android:inputType="number"
             android:text=""
             android:textColor="@android:color/primary_text_light"
             android:textSize="10sp"
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
             app:met_baseColor="@android:color/primary_text_light"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@android:color/primary_text_light"
@@ -115,35 +73,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Discount"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:inputType="number"
-            android:text=""
-            android:textColor="@android:color/primary_text_light"
-            android:textSize="20sp"
-=======
-=======
->>>>>>> old2/master
             app:met_minCharacters="1"
             app:met_maxCharacters="2"
             android:inputType="number"
             android:text=""
             android:textColor="@android:color/primary_text_light"
             android:textSize="10sp"
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
             app:met_baseColor="@android:color/primary_text_light"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@android:color/primary_text_light"
             app:met_singleLineEllipsis="true" />
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> old2/master
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtnutritionalvalue"
             android:layout_width="match_parent"
@@ -184,11 +124,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/add_recepe"
             app:met_minCharacters="1"
-<<<<<<< HEAD
-            app:met_maxCharacters="120"
-=======
             app:met_maxCharacters="1020"
->>>>>>> old2/master
             android:inputType="textMultiLine"
             android:text=""
             android:textColor="@android:color/primary_text_light"
@@ -215,10 +151,6 @@
             app:met_singleLineEllipsis="true" />
 
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -229,13 +161,6 @@
                 android:id="@+id/btnSelect"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
-                android:layout_alignParentBottom="true"
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
                 android:layout_margin="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -249,13 +174,6 @@
                 android:id="@+id/btnUpload"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
-                android:layout_alignParentBottom="true"
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
                 android:layout_margin="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"

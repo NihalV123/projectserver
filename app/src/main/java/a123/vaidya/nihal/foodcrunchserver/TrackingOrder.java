@@ -1,13 +1,6 @@
 package a123.vaidya.nihal.foodcrunchserver;
 
 import android.Manifest;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.app.ProgressDialog;
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -166,21 +159,9 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
 
         mservice.getGeoCode(address).enqueue(new Callback<String>() {
             @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-            public void onResponse(Call<String> call, Response<String> response) {
-                try{
-                    JSONObject jsonObject = new JSONObject(response.body().toString());
-=======
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 try{
                     JSONObject jsonObject = new JSONObject(response.body());
->>>>>>> old1/master
-=======
-            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                try{
-                    JSONObject jsonObject = new JSONObject(response.body());
->>>>>>> old2/master
                     String lat = ((JSONArray)jsonObject.get("results"))
                             .getJSONObject(0)
                             .getJSONObject("geometry")
@@ -206,21 +187,6 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
                             orderLocation.latitude+","+orderLocation.longitude)
                     .enqueue(new Callback<String>() {
                         @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            new ParserTask().execute(response.body().toString());
-                        }
-
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-
-                        }
-                    });
-                    ;
-=======
-=======
->>>>>>> old2/master
                         public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                             new ParserTask().execute(response.body());
                         }
@@ -230,10 +196,6 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
 
                         }
                     });
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -243,15 +205,7 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
             }
 
             @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-            public void onFailure(Call<String> call, Throwable t) {
-=======
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
->>>>>>> old1/master
-=======
-            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
->>>>>>> old2/master
 
             }
         });
@@ -387,15 +341,7 @@ public class TrackingOrder extends FragmentActivity implements OnMapReadyCallbac
             super.onPostExecute(lists);
             Toast.makeText(TrackingOrder.this,"All Done !!!",Toast.LENGTH_LONG).show();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            ArrayList points = null;
-=======
             ArrayList points;
->>>>>>> old1/master
-=======
-            ArrayList points;
->>>>>>> old2/master
             PolylineOptions lineOptions = null;
 
             for(int i=0;i<lists.size();i++) {

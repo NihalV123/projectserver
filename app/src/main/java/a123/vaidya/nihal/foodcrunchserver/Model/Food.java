@@ -2,16 +2,6 @@ package a123.vaidya.nihal.foodcrunchserver.Model;
 
 
 public class Food {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private String Name,Image,Description,Price,Discount,MenuId;
-
-    public Food() {
-    }
-
-=======
-=======
->>>>>>> old2/master
     private String FoodId,Name,Image,Description,Price,Discount,MenuId,Email,Video,Recepixes,rateValue;
     private Double Quantity;
     public Food() {
@@ -36,10 +26,6 @@ public class Food {
 
     }
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     public String getName() {
         return Name;
     }
@@ -48,11 +34,6 @@ public class Food {
         Name = name;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> old2/master
     public Double getQuantity() {
         return Quantity;
     }
@@ -69,10 +50,6 @@ public class Food {
         FoodId = foodId;
     }
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     public String getImage() {
         return Image;
     }
@@ -89,11 +66,6 @@ public class Food {
         Description = description;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> old2/master
     public String getRateValue() {
         return rateValue;
     }
@@ -102,10 +74,6 @@ public class Food {
         this.rateValue = rateValue;
     }
 
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     public String getPrice() {
         return Price;
     }
@@ -130,19 +98,6 @@ public class Food {
         MenuId = menuId;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public Food(String name, String image, String description, String price, String discount, String menuId) {
-        Name = name;
-        Image = image;
-        Description = description;
-        Price = price;
-        Discount = discount;
-        MenuId = menuId;
-
-=======
-=======
->>>>>>> old2/master
     public String getEmail() {
         return Email;
     }
@@ -165,9 +120,5 @@ public class Food {
 
     public void setRecepixes(String recepixes) {
         Recepixes = recepixes;
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     }
 }

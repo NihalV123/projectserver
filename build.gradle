@@ -9,15 +9,7 @@ buildscript {
         maven { url 'https://mave.google.com' }
     }
     dependencies {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha03'
-=======
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha04'
->>>>>>> old1/master
-=======
         classpath 'com.android.tools.build:gradle:3.2.0-alpha05'
->>>>>>> old2/master
         classpath 'com.google.gms:google-services:3.2.0'
 
 

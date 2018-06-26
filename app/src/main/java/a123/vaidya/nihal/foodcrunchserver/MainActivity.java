@@ -2,31 +2,16 @@ package a123.vaidya.nihal.foodcrunchserver;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-=======
-=======
 import android.content.SharedPreferences;
->>>>>>> old2/master
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Typeface;
-<<<<<<< HEAD
-=======
 import android.preference.PreferenceManager;
->>>>>>> old2/master
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,30 +26,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
->>>>>>> old1/master
-=======
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
->>>>>>> old2/master
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import dmax.dialog.SpotsDialog;
->>>>>>> old1/master
-=======
-import dmax.dialog.SpotsDialog;
->>>>>>> old2/master
 import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,12 +44,6 @@ public class MainActivity extends AppCompatActivity {
     TextView txtSlogan;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> old2/master
     //important for social logins search key in logcat for sha1
     private void printKeyHash() {
         try{
@@ -97,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
     //firebase init
     FirebaseDatabase database;
     DatabaseReference categories;
@@ -117,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
 //        btnTest2= findViewById(R.id.btntest2);
 //        btnTest3= findViewById(R.id.btntest3);
 //        btnTest4= findViewById(R.id.btntest4);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-        printKeyHash();
->>>>>>> old1/master
-=======
         printKeyHash();
 
         //app intro
@@ -144,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         thread.start();
->>>>>>> old2/master
 
         txtSlogan= findViewById(R.id.txtslogan);
         Typeface face = Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
@@ -153,59 +104,15 @@ public class MainActivity extends AppCompatActivity {
         Paper.init(this);
         BtnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                Intent Signup= new Intent(MainActivity.this,Signup.class);
-                startActivity(Signup);
-=======
-=======
->>>>>>> old2/master
                 final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
                 dialog.show();
                 Intent Signup= new Intent(MainActivity.this,Signup.class);
                 startActivity(Signup);
                 dialog.dismiss();
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
             }
         });
         BtnSignIn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                Intent Signin= new Intent(MainActivity.this,Signin.class);
-                startActivity(Signin);
-            }
-        });
-//        btnTest1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signup= new Intent(MainActivity.this,Signup.class);
-//                startActivity(Signup);
-//            }
-//        });
-//        btnTest2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signin= new Intent(MainActivity.this,Signin.class);
-//                startActivity(Signin);
-//            }
-//        });
-//        btnTest3.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signup= new Intent(MainActivity.this,Signup.class);
-//                startActivity(Signup);
-//            }
-//        });
-//        btnTest4.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent Signin= new Intent(MainActivity.this,Signin.class);
-//                startActivity(Signin);
-//            }
-//        });
-=======
-=======
->>>>>>> old2/master
                 final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
                 dialog.show();
                 Intent Signin= new Intent(MainActivity.this,Signin.class);
@@ -213,10 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         String user = Paper.book().read(Common.USER_KEY);
         String pwd = Paper.book().read(Common.PWD_KEY);
         if(user != null && pwd != null)
@@ -248,25 +151,12 @@ public class MainActivity extends AppCompatActivity {
                         if ((user.getPassword().equals(pwd))) {
                             DatabaseReference myRef = database.getReference("message");
                             myRef.setValue("Hello from sign in ");
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                            Intent homeIntent = new Intent(MainActivity.this, Home.class);
-                            Common.currentUser = user;
-                            startActivity(homeIntent);
-=======
-=======
->>>>>>> old2/master
                             final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
                             dialog.show();
                             Intent homeIntent = new Intent(MainActivity.this, Home.class);
                             Common.currentUser = user;
                             startActivity(homeIntent);
                             dialog.dismiss();
-<<<<<<< HEAD
->>>>>>> old1/master
-=======
->>>>>>> old2/master
 
                         } else {
                             DatabaseReference myRef = database.getReference("message");
@@ -288,13 +178,6 @@ public class MainActivity extends AppCompatActivity {
         }else
         {
             Toast.makeText(MainActivity.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            return;
-=======
->>>>>>> old1/master
-=======
->>>>>>> old2/master
         }
 
 
