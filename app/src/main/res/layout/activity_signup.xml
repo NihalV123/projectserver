@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_phone_number"
             android:inputType="phone"
+<<<<<<< HEAD
             android:text="@string/_7208680470"
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -33,6 +34,16 @@
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
+=======
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:gravity="center"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="13"
+            app:met_minCharacters="10"
+>>>>>>> old1/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
@@ -43,12 +54,57 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_name"
             android:inputType="textPersonName"
+<<<<<<< HEAD
             android:text="@string/nihal"
             android:textColor="@android:color/white"
             android:textSize="36sp"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
+=======
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="128"
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtShopAddress"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_name"
+            android:inputType="textPersonName"
+            android:text=""
+            android:visibility="gone"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="128"
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtEmails"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_email_address"
+            android:inputType="textEmailAddress"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="128"
+>>>>>>> old1/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
@@ -58,6 +114,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
+<<<<<<< HEAD
             android:text="@string/_11111111"
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -65,6 +122,16 @@
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
+=======
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:gravity="center"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="8"
+            app:met_maxCharacters="128"
+>>>>>>> old1/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
@@ -74,6 +141,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/SecureCode"
             android:inputType="text"
+<<<<<<< HEAD
             android:text="@string/_11111111"
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -81,6 +149,16 @@
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
+=======
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:gravity="center"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="8"
+            app:met_maxCharacters="128"
+>>>>>>> old1/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 

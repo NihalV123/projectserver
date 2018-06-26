@@ -10,10 +10,16 @@ public class Order {
     private String Quantity;
     private String Price;
     private String Discount;
+<<<<<<< HEAD
+=======
+    private String Image;
+    private String Email;
+>>>>>>> old1/master
 
     public Order() {
 
     }
+<<<<<<< HEAD
     public static String convertCodeToStatus(String code)
     {
         if (code.equals("0"))
@@ -24,11 +30,34 @@ public class Order {
             return "Shipped!!";
     }
     public Order(String productId, String productName,String quantity, String price, String discount) {
+=======
+
+    public Order(int id, String productId, String productName, String quantity, String price, String discount, String image, String email) {
+    }
+
+    public static String convertCodeToStatus(String code)
+    {
+        switch (code) {
+            case "0":
+                return "Placed";
+            case "1":
+                return "Your food is on the way ";
+            default:
+                return "Shipped!!";
+        }
+    }
+    public Order(String productId, String productName,String quantity, String price, String discount,String image,String email) {
+>>>>>>> old1/master
         ProductId = productId;
         ProductName = productName;
         Quantity = quantity;
         Price = price;
         Discount = discount;
+<<<<<<< HEAD
+=======
+        Image = image;
+        Email = email;
+>>>>>>> old1/master
     }
 
     public String getProductId() {
@@ -39,6 +68,25 @@ public class Order {
         ProductId = productId;
     }
 
+<<<<<<< HEAD
+=======
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+>>>>>>> old1/master
     public String getProductName() {
         return ProductName;
     }

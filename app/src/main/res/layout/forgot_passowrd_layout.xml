@@ -15,9 +15,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/edtPhone"
             android:hint="@string/enter_your_phone_number"
+<<<<<<< HEAD
             android:text="@string/_7208680470"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
+=======
+            android:text=""
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+>>>>>>> old1/master
             android:gravity="center"
             android:inputType="phone"
             app:met_baseColor="@color/colorPrimary"
@@ -33,9 +39,15 @@
             android:gravity="center"
             android:id="@+id/edtSecureCode"
             android:hint="@string/SecureCode"
+<<<<<<< HEAD
             android:text="@string/_11111111"
             android:textColor="@color/colorPrimary"
             android:textSize="36sp"
+=======
+            android:text=""
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+>>>>>>> old1/master
             android:inputType="text"
             app:met_baseColor="@color/colorPrimary"
             app:met_floatingLabel="highlight"

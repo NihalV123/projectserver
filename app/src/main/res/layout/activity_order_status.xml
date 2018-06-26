@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,6 +9,29 @@
     android:background="@drawable/background"
     tools:context="a123.vaidya.nihal.foodcrunchserver.OrderStatus">
 
+=======
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/swipe_order_list"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="a123.vaidya.nihal.foodcrunchserver.OrderStatus">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+    <TextView
+        android:id="@+id/txtmanconetnthom3e"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparentBlack"
+        android:gravity="center"
+        android:paddingTop="80dp"
+        android:text="@string/EMPTY_LIST"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+>>>>>>> old1/master
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +45,7 @@
             android:paddingTop="10dp"
             android:text="@string/Your_orders_from_Today"
             android:textColor="@color/white"
+<<<<<<< HEAD
             android:textSize="30dp" />
         <TextView
             android:id="@+id/txtmancocvnetnthome"
@@ -32,6 +57,9 @@
             android:textColor="@color/white"
             android:textSize="30dp" />
 
+=======
+            android:textSize="25sp" />
+>>>>>>> old1/master
 
 
     </LinearLayout>
@@ -42,7 +70,15 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:background="@android:color/transparent"
+<<<<<<< HEAD
         android:paddingTop="160dp">
 
     </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
+=======
+        android:paddingTop="80dp">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
+>>>>>>> old1/master

@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> old1/master
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/background"
     android:layout_height="match_parent"
     android:id="@+id/rootLayout"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="a123.vaidya.nihal.foodcrunchserver.FoodList">
+=======
+    tools:context="a123.vaidya.nihal.foodcrunchserver.FoodList">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/background"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="@color/transparentBlack"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/EMPTY_LIST"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+>>>>>>> old1/master
     <!--<com.mancj.materialsearchbar.MaterialSearchBar-->
         <!--android:id="@+id/searchBar"-->
         <!--android:layout_width="match_parent"-->
@@ -17,6 +43,7 @@
 
     <!--</com.mancj.materialsearchbar.MaterialSearchBar>-->
 
+<<<<<<< HEAD
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_food"
         android:layout_width="match_parent"
@@ -42,6 +69,19 @@
         android:textSize="30dp" />
 
     <com.github.clans.fab.FloatingActionButton
+=======
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_food"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:minHeight="200dp"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <com.github.clans.fab.FloatingActionButton
+>>>>>>> old1/master
         android:id="@+id/fab"
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -51,5 +91,22 @@
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="26dp"
         android:src="@drawable/ic_playlist_add_black_24dp" />
+<<<<<<< HEAD
 
 </RelativeLayout>
+=======
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/transparentBlack"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/add_food_using_red_button"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
+>>>>>>> old1/master

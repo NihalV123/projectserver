@@ -42,6 +42,11 @@
         android:gravity="bottom"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
+<<<<<<< HEAD
+=======
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+>>>>>>> old1/master
         android:weightSum="2">
 
         <info.hoang8f.widget.FButton

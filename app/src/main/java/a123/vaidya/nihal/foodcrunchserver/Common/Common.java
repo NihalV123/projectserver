@@ -7,7 +7,10 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+<<<<<<< HEAD
 import android.net.Uri;
+=======
+>>>>>>> old1/master
 
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
@@ -23,6 +26,7 @@ import a123.vaidya.nihal.foodcrunchserver.Remote.iGeoCoordinates;
 public class Common {
     public static User currentUser;
     public static Request currentRequest;
+<<<<<<< HEAD
 
     public static final String UPDATE = "UPDATE";
     public static final String DELETE = "DELETE";
@@ -35,6 +39,36 @@ public class Common {
             return "Your food is on the way ";
         else
             return "Shipped!!";
+=======
+    public static String topicName = "News";
+    public static String PHONE_TEXT = "userPhone";
+    public static final String UPDATE = "UPDATE";
+    public static final String DIRECTIONS = "DIRECTIONS";
+    public static final String DELETE = "DELETE";
+    public static final String DETAILS = "DETAILS";
+    //update and delete master witch
+    public static String convertCodeToStatus(String code)
+    {
+        switch (code) {
+            case "0":
+                return "Placed";
+            case "1":
+                return "Your food is on the way ";
+            default:
+                return "Shipped!!";
+        }
+    }
+    public static String convertstaffToStatus(String code)
+    {
+        switch (code) {
+            case "0":
+                return "Placed";
+            case "1":
+                return "Your food is on the way ";
+            default:
+                return "Shipped!!";
+        }
+>>>>>>> old1/master
     }
 
     public static final String baseUrl = "https://maps.googleapis.com";
@@ -79,9 +113,14 @@ public class Common {
             NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
             if(info != null)
             {
+<<<<<<< HEAD
                 for(int i =0; i<info.length;i++)
                 {
                     if(info[i].getState() == NetworkInfo.State.CONNECTED)
+=======
+                for (NetworkInfo anInfo : info) {
+                    if (anInfo.getState() == NetworkInfo.State.CONNECTED)
+>>>>>>> old1/master
                         return true;
 
                 }

@@ -2,9 +2,20 @@ package a123.vaidya.nihal.foodcrunchserver;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+=======
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+>>>>>>> old1/master
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,10 +30,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+<<<<<<< HEAD
+=======
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+>>>>>>> old1/master
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.Category;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.MenuViewHolder;
+<<<<<<< HEAD
+=======
+import dmax.dialog.SpotsDialog;
+>>>>>>> old1/master
 import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +54,26 @@ public class MainActivity extends AppCompatActivity {
     TextView txtSlogan;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+<<<<<<< HEAD
 
+=======
+    //important for social logins search key in logcat for sha1
+    private void printKeyHash() {
+        try{
+            PackageInfo info =getPackageManager().getPackageInfo("a123.vaidya.nihal.foodcrunchclient",
+                    PackageManager.GET_SIGNATURES);
+
+            for(Signature signature:info.signatures)
+            {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+>>>>>>> old1/master
     //firebase init
     FirebaseDatabase database;
     DatabaseReference categories;
@@ -50,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
 //        btnTest2= findViewById(R.id.btntest2);
 //        btnTest3= findViewById(R.id.btntest3);
 //        btnTest4= findViewById(R.id.btntest4);
+<<<<<<< HEAD
 
+=======
+        printKeyHash();
+>>>>>>> old1/master
 
         txtSlogan= findViewById(R.id.txtslogan);
         Typeface face = Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
@@ -59,12 +103,21 @@ public class MainActivity extends AppCompatActivity {
         Paper.init(this);
         BtnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent Signup= new Intent(MainActivity.this,Signup.class);
                 startActivity(Signup);
+=======
+                final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                dialog.show();
+                Intent Signup= new Intent(MainActivity.this,Signup.class);
+                startActivity(Signup);
+                dialog.dismiss();
+>>>>>>> old1/master
             }
         });
         BtnSignIn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent Signin= new Intent(MainActivity.this,Signin.class);
                 startActivity(Signin);
             }
@@ -93,6 +146,15 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(Signin);
 //            }
 //        });
+=======
+                final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                dialog.show();
+                Intent Signin= new Intent(MainActivity.this,Signin.class);
+                startActivity(Signin);
+                dialog.dismiss();
+            }
+        });
+>>>>>>> old1/master
         String user = Paper.book().read(Common.USER_KEY);
         String pwd = Paper.book().read(Common.PWD_KEY);
         if(user != null && pwd != null)
@@ -124,10 +186,19 @@ public class MainActivity extends AppCompatActivity {
                         if ((user.getPassword().equals(pwd))) {
                             DatabaseReference myRef = database.getReference("message");
                             myRef.setValue("Hello from sign in ");
+<<<<<<< HEAD
 
                             Intent homeIntent = new Intent(MainActivity.this, Home.class);
                             Common.currentUser = user;
                             startActivity(homeIntent);
+=======
+                            final SpotsDialog dialog = new SpotsDialog(MainActivity.this);
+                            dialog.show();
+                            Intent homeIntent = new Intent(MainActivity.this, Home.class);
+                            Common.currentUser = user;
+                            startActivity(homeIntent);
+                            dialog.dismiss();
+>>>>>>> old1/master
 
                         } else {
                             DatabaseReference myRef = database.getReference("message");
@@ -149,7 +220,10 @@ public class MainActivity extends AppCompatActivity {
         }else
         {
             Toast.makeText(MainActivity.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
             return;
+=======
+>>>>>>> old1/master
         }
 
 

@@ -17,20 +17,31 @@ public class DirectionJSONParser {
      */
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
 
+<<<<<<< HEAD
         List<List<HashMap<String, String>>> routes = new ArrayList<List<HashMap<String, String>>>();
         JSONArray jRoutes = null;
         JSONArray jLegs = null;
         JSONArray jSteps = null;
+=======
+        List<List<HashMap<String, String>>> routes = new ArrayList<>();
+        JSONArray jRoutes;
+        JSONArray jLegs;
+        JSONArray jSteps;
+>>>>>>> old1/master
 
         try {
 
             jRoutes = jObject.getJSONArray("routes");
 
+<<<<<<< HEAD
             /** Traversing all routes */
+=======
+>>>>>>> old1/master
             for (int i = 0; i < jRoutes.length(); i++) {
                 jLegs = ((JSONObject) jRoutes.get(i)).getJSONArray("legs");
                 List path = new ArrayList<HashMap<String, String>>();
 
+<<<<<<< HEAD
                 /** Traversing all legs */
                 for (int j = 0; j < jLegs.length(); j++) {
                     jSteps = ((JSONObject) jLegs.get(j)).getJSONArray("steps");
@@ -44,6 +55,18 @@ public class DirectionJSONParser {
                         /** Traversing all points */
                         for (int l = 0; l < list.size(); l++) {
                             HashMap<String, String> hm = new HashMap<String, String>();
+=======
+                for (int j = 0; j < jLegs.length(); j++) {
+                    jSteps = ((JSONObject) jLegs.get(j)).getJSONArray("steps");
+
+                    for (int k = 0; k < jSteps.length(); k++) {
+                        String polyline;
+                        polyline = (String) ((JSONObject) ((JSONObject) jSteps.get(k)).get("polyline")).get("points");
+                        List list = decodePoly(polyline);
+
+                        for (int l = 0; l < list.size(); l++) {
+                            HashMap<String, String> hm = new HashMap<>();
+>>>>>>> old1/master
                             hm.put("lat", Double.toString(((LatLng) list.get(l)).latitude));
                             hm.put("lng", Double.toString(((LatLng) list.get(l)).longitude));
                             path.add(hm);
@@ -55,7 +78,11 @@ public class DirectionJSONParser {
 
         } catch (JSONException e) {
             e.printStackTrace();
+<<<<<<< HEAD
         } catch (Exception e) {
+=======
+        } catch (Exception ignored) {
+>>>>>>> old1/master
         }
 
         return routes;

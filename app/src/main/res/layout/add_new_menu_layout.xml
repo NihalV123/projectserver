@@ -15,10 +15,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtName"
+<<<<<<< HEAD
             android:hint="@string/Category_name"
             android:text=""
             android:textColor="@android:color/primary_text_light"
             android:textSize="40sp"
+=======
+            app:met_minCharacters="1"
+            app:met_maxCharacters="30"
+            android:hint="@string/Category_name"
+            android:text=""
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="24sp"
+>>>>>>> old1/master
             android:inputType="textPersonName"
             app:met_baseColor="@android:color/primary_text_light"
             app:met_floatingLabel="highlight"
@@ -39,7 +48,10 @@
                 android:textColor="@android:color/white"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:layout_alignParentBottom="true"
+=======
+>>>>>>> old1/master
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/SelectImage"
@@ -54,7 +66,10 @@
                 android:textColor="@android:color/white"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:layout_alignParentBottom="true"
+=======
+>>>>>>> old1/master
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/UploadImage"
