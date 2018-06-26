@@ -2,6 +2,7 @@ package a123.vaidya.nihal.foodcrunchserver;
 
 import android.os.Bundle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,8 @@ import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.OrderDetailsAdapter;
 import a123.vaidya.nihal.foodcrunchserver.Model.Request;
 =======
+=======
+>>>>>>> old2/master
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +28,10 @@ import com.twitter.sdk.android.core.TwitterConfig;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.ViewHolder.OrderDetailsAdapter;
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
 public class OrderDetail extends AppCompatActivity {
 
@@ -33,15 +39,20 @@ public class OrderDetail extends AppCompatActivity {
     String order_id_value ="";
     RecyclerView listFood;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     SwipeRefreshLayout swipeRefreshLayout;
 >>>>>>> old1/master
+=======
+    SwipeRefreshLayout swipeRefreshLayout;
+>>>>>>> old2/master
     RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
+<<<<<<< HEAD
 <<<<<<< HEAD
         order_id = (TextView)findViewById(R.id.order_id);
         order_phone = (TextView)findViewById(R.id.order_phone);
@@ -55,6 +66,8 @@ public class OrderDetail extends AppCompatActivity {
         listFood.setLayoutManager(layoutManager);
 
 =======
+=======
+>>>>>>> old2/master
         order_id = findViewById(R.id.order_id);
         order_phone = findViewById(R.id.order_phone);
         order_address = findViewById(R.id.order_address);
@@ -114,7 +127,10 @@ public class OrderDetail extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
         if(getIntent()!=null)
             order_id_value = getIntent().getStringExtra("OrderId");
         //set  values
@@ -124,18 +140,24 @@ public class OrderDetail extends AppCompatActivity {
         order_address.setText("Shipping Address : "+Common.currentRequest.getAddress());
         comment_details.setText("Comments : "+Common.currentRequest.getComment());
 <<<<<<< HEAD
+<<<<<<< HEAD
         //order_status.setText(Common.currentRequest.getStatus());
 
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
         OrderDetailsAdapter adapter = new OrderDetailsAdapter(Common.currentRequest.getFoods());
         adapter.notifyDataSetChanged();
         listFood.setAdapter(adapter);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     }
 }

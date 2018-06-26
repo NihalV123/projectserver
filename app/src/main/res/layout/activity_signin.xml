@@ -27,20 +27,30 @@
             android:hint="@string/enter_your_phone_number"
             android:inputType="phone"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:text="@string/_7208680470"
 =======
             android:text="@string/_9769539742"
 >>>>>>> old1/master
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+            android:text=""
+>>>>>>> old2/master
             android:textColor="@android:color/white"
             android:textSize="36sp"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
+<<<<<<< HEAD
 <<<<<<< HEAD
             app:met_maxCharacters="11"
 =======
             app:met_minCharacters="10"
             app:met_maxCharacters="12"
 >>>>>>> old1/master
+=======
+            app:met_minCharacters="10"
+            app:met_maxCharacters="12"
+>>>>>>> old2/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
@@ -49,19 +59,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+<<<<<<< HEAD
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
             android:text="@string/_11111111"
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+            android:hint="@string/enter_your_password"
+            android:inputType="textPassword"
+            android:text=""
+>>>>>>> old2/master
             android:textColor="@android:color/white"
             android:textSize="36sp"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
+<<<<<<< HEAD
 <<<<<<< HEAD
             app:met_maxCharacters="11"
 =======
             app:met_minCharacters="8"
             app:met_maxCharacters="128"
 >>>>>>> old1/master
+=======
+            app:met_minCharacters="8"
+            app:met_maxCharacters="128"
+>>>>>>> old2/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 

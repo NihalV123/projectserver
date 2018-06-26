@@ -7,10 +7,24 @@ import android.widget.Toast;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+<<<<<<< HEAD
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
 import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
 import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+=======
+import java.util.HashMap;
+import java.util.Map;
+
+import a123.vaidya.nihal.foodcrunchserver.Common.Common;
+import a123.vaidya.nihal.foodcrunchserver.Model.DataMessage;
+import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Notification;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+import a123.vaidya.nihal.foodcrunchserver.Model.Token;
+>>>>>>> old2/master
 import a123.vaidya.nihal.foodcrunchserver.Remote.APIService;
 import info.hoang8f.widget.FButton;
 import retrofit2.Call;
@@ -37,6 +51,7 @@ public class SendMessage extends AppCompatActivity {
         btnsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 //create notification message
                 Notification notification = new Notification(edtTitle.getText().toString(),edtMessage.getText().toString());
                 Sender toTopic =new Sender();
@@ -59,6 +74,39 @@ public class SendMessage extends AppCompatActivity {
 
                             }
                         });
+=======
+                //create new stylee notification message
+//                Token serverToken = postSnapShot.getValue(Token.class);
+                Map<String,String> datasend = new HashMap<>();
+                DataMessage toTopic =new DataMessage();
+                toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
+                datasend.put("title","FOOD CRUNCH : "+edtMessage.getText().toString());
+                datasend.put("message",edtTitle.getText().toString()+"  TAP TO LOG IN");
+                DataMessage dataMessage = new DataMessage(  toTopic.to ,datasend);
+
+//old style notificstion
+              //  Notification notification = new Notification(edtTitle.getText().toString()+"  TAP TO LOG IN","FOOD CRUNCH : "+edtMessage.getText().toString());
+              //  Sender toTopic =new Sender();
+               // toTopic.to = new StringBuilder("/topics/").append(Common.topicName).toString();
+               // toTopic.notification = notification;
+
+//                mservice.sendNotification(datasend)
+//                        .enqueue(new Callback<MyResponse>() {
+//                            @Override
+//                            public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+//                                if(response.isSuccessful())
+//                                {
+//                                    Toast.makeText(SendMessage.this,"MESSAGE SENT",Toast.LENGTH_LONG).show();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<MyResponse> call, Throwable t) {
+//                                Toast.makeText(SendMessage.this,"UNFORTUNATELY MESSAGE WAS NOT SENT!!!",Toast.LENGTH_LONG).show();
+//
+//                            }
+//                        });
+>>>>>>> old2/master
             }
         });
 

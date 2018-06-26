@@ -8,7 +8,10 @@
     android:padding="15dp"
     tools:context="a123.vaidya.nihal.foodcrunchserver.Cart">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> old2/master
     <TextView
         android:id="@+id/txtmanconetnthom3e"
         android:layout_width="match_parent"
@@ -19,7 +22,10 @@
         android:text="@string/EMPTY_LIST"
         android:textColor="@color/white"
         android:textSize="25sp" />
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -32,10 +38,14 @@
             android:text="@string/Your_cart"
             android:textColor="@color/white"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:textSize="30dp" />
 =======
             android:textSize="25sp" />
 >>>>>>> old1/master
+=======
+            android:textSize="25sp" />
+>>>>>>> old2/master
 
     </LinearLayout>
 
@@ -78,10 +88,14 @@
 
                 <ImageView
 <<<<<<< HEAD
+<<<<<<< HEAD
                     android:layout_width="wrap_content"
 =======
                     android:layout_width="0dp"
 >>>>>>> old1/master
+=======
+                    android:layout_width="0dp"
+>>>>>>> old2/master
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:contentDescription="@string/todo"

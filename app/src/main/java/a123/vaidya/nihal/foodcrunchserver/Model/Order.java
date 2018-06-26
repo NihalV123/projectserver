@@ -11,14 +11,20 @@ public class Order {
     private String Price;
     private String Discount;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private String Image;
     private String Email;
 >>>>>>> old1/master
+=======
+    private String Image;
+    private String Email;
+>>>>>>> old2/master
 
     public Order() {
 
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     public static String convertCodeToStatus(String code)
     {
@@ -31,6 +37,8 @@ public class Order {
     }
     public Order(String productId, String productName,String quantity, String price, String discount) {
 =======
+=======
+>>>>>>> old2/master
 
     public Order(int id, String productId, String productName, String quantity, String price, String discount, String image, String email) {
     }
@@ -47,17 +55,25 @@ public class Order {
         }
     }
     public Order(String productId, String productName,String quantity, String price, String discount,String image,String email) {
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
         ProductId = productId;
         ProductName = productName;
         Quantity = quantity;
         Price = price;
         Discount = discount;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Image = image;
         Email = email;
 >>>>>>> old1/master
+=======
+        Image = image;
+        Email = email;
+>>>>>>> old2/master
     }
 
     public String getProductId() {
@@ -69,7 +85,10 @@ public class Order {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> old2/master
     public String getImage() {
         return Image;
     }
@@ -86,7 +105,10 @@ public class Order {
         Email = email;
     }
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     public String getProductName() {
         return ProductName;
     }

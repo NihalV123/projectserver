@@ -1,13 +1,25 @@
 package a123.vaidya.nihal.foodcrunchserver.Remote;
 
+<<<<<<< HEAD
 import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
 import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+=======
+import a123.vaidya.nihal.foodcrunchserver.Model.DataMessage;
+import a123.vaidya.nihal.foodcrunchserver.Model.MyResponse;
+//import a123.vaidya.nihal.foodcrunchserver.Model.Sender;
+>>>>>>> old2/master
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface APIService {
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> old2/master
     @Headers(
             {
                     "Content-Type:application/json",
@@ -15,7 +27,15 @@ public interface APIService {
             }
 
     )
+<<<<<<< HEAD
     @POST("fcm/send")
     Call<MyResponse> sendNotification(@Body Sender body);
+=======
+
+
+    @POST("fcm/send")
+    Call<MyResponse> sendNotification(@Body DataMessage body);
+
+>>>>>>> old2/master
 
 }

@@ -17,16 +17,22 @@ class MyViewHolder extends RecyclerView.ViewHolder{
     public MyViewHolder(View itemView) {
         super(itemView);
 <<<<<<< HEAD
+<<<<<<< HEAD
         name = (TextView)itemView.findViewById(R.id.product_name);
         quantity = (TextView)itemView.findViewById(R.id.product_quantitiy);
         price = (TextView)itemView.findViewById(R.id.product_price);
         discount = (TextView)itemView.findViewById(R.id.product_discount);
 =======
+=======
+>>>>>>> old2/master
         name = itemView.findViewById(R.id.product_name);
         quantity = itemView.findViewById(R.id.product_quantitiy);
         price = itemView.findViewById(R.id.product_price);
         discount = itemView.findViewById(R.id.product_discount);
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
     }
 }
@@ -39,10 +45,14 @@ public class OrderDetailsAdapter  extends RecyclerView.Adapter<MyViewHolder>{
                 .inflate(R.layout.order_detail_layout,parent,false);
         return new MyViewHolder(itemView);
 <<<<<<< HEAD
+<<<<<<< HEAD
     };
 =======
     }
 >>>>>>> old1/master
+=======
+    }
+>>>>>>> old2/master
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {

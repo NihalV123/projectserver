@@ -3,6 +3,7 @@
     <string name="slogan">You must eat to live not live to eat.</string>
     <string name="Signup">no account ? SIGN UP !</string>
     <string name="Signin">SIGN IN and eat fresh</string>
+<<<<<<< HEAD
     <string name="enter_your_phone_number">Enter your Phone </string>
     <string name="_7208680470">7208680470</string>
 <<<<<<< HEAD
@@ -12,6 +13,12 @@
     <string name="enter_your_name">ENTER YOUR NAME</string>
     <string name="enter_your_password">ENTER PASSWORD</string>
 >>>>>>> old1/master
+=======
+    <string name="enter_your_phone_number">ENTER PHONE NO</string>
+    <string name="_7208680470">7208680470</string>
+    <string name="enter_your_name">ENTER YOUR NAME</string>
+    <string name="enter_your_password">ENTER PASSWORD</string>
+>>>>>>> old2/master
     <string name="_11111111">11111111</string>
     <string name="test1">sign in with   .   .   .google</string>
     <string name="test2">sign in with facebook</string>
@@ -23,17 +30,22 @@
     <string name="test8">test8</string>
     <string name="title_activity_home">Home</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="forget_pwd"><u>Forget Password??!</u></string>
 
 =======
     <string name="forget_pwd"><u>FOGOT YOUR PASSWORD ??</u></string>
 >>>>>>> old1/master
+=======
+    <string name="forget_pwd"><u>FOGOT YOUR PASSWORD ??</u></string>
+>>>>>>> old2/master
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="food_crunch">Food Crunch</string>
     <string name="name_of_food">Name of Food</string>
     <string name="name_of_menu">Name of Menu</string>
     <string name="nihal">Nihal</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <string name="menu">Menu</string>
     <string name="cart">Cart</string>
@@ -45,6 +57,8 @@
     <string name="total">Total :</string>
     <string name="place_order">Place Order</string>
 =======
+=======
+>>>>>>> old2/master
     <string name="menu">MENU</string>
     <string name="cart">CART</string>
     <string name="orders">ORDERS</string>
@@ -54,7 +68,10 @@
     <string name="action_settings">SETTINGS</string>
     <string name="total">Total :</string>
     <string name="place_order">PLACE ORDER</string>
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     <string name="food_01">Food 01</string>
     <string name="_90000">90000</string>
     <string name="todo">TODO</string>
@@ -63,9 +80,12 @@
     <string name="description">description</string>
     <string name="_11111">11111</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="b_604_mai_bhuvan_dadi_seth_rd_malad_west_mumbai_maharashtra">B/604,Mai Bhuvan Dadi Seth Rd Malad West Mumbai Maharashtra</string>
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     <string name="status">status</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -75,16 +95,21 @@
     <string name="Select">SELECT</string>
     <string name="Upload">UPLOAD</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="enter_the_name">Enter The Name</string>
 =======
     <string name="enter_the_name">ENTER THE NAME</string>
 >>>>>>> old1/master
+=======
+    <string name="enter_the_name">ENTER THE NAME</string>
+>>>>>>> old2/master
     <string name="enter_Category_name">ENTER CATEGORY NAME</string>
     <string name="Category_name">Category Name</string>
     <string name="Food_name">Food Name</string>
     <string name="Description">Description</string>
     <string name="Price">Price</string>
     <string name="Discount">Discount in %</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <string name="UploadImage">Upload Image</string>
     <string name="SelectImage"><![CDATA[Select Image ->]]></string>
@@ -94,17 +119,26 @@
     <string name="RememberMe">Remember Me</string>
     <string name="SecureCode">Secure Code</string>
 =======
+=======
+>>>>>>> old2/master
     <string name="UploadImage">UPLOAD IMAGE</string>
     <string name="SelectImage"><![CDATA[SELECT IMAGE ->]]></string>
     <string name="ordersreport">ORDER REPORT</string>
     <string name="title_activity_tracking_order">Map</string>
     <string name="refresh">REFRESH</string>
     <string name="RememberMe">REMEMBER ME</string>
+<<<<<<< HEAD
     <string name="SecureCode">SECURE CoODE</string>
 >>>>>>> old1/master
     <string name="Write_comment">Write Comment</string>
     <string name="Order_name">Order Name</string>
     <string name="Details">Details Of Your Order</string>
+=======
+    <string name="SecureCode">SECURE CODE FOR PASSWD RESET</string>
+    <string name="Write_comment">Write Comment</string>
+    <string name="Order_name">Order Name</string>
+    <string name="Details">ALL ITEMS IN THE ORDER</string>
+>>>>>>> old2/master
     <string name="product_name">Product Name</string>
     <string name="product_quantity">Product Quantity</string>
     <string name="product_price">Product Price</string>
@@ -113,12 +147,19 @@
     <string name="my_new_address">MY NEW ADDRESS</string>
     <string name="Your_cart">YOUR CART</string>
     <string name="SELECT_YOUR_FOOD">SELECT YOUR FOOD</string>
+<<<<<<< HEAD
     <string name="Your_orders_from_Today">RECENT ORDERS</string>
     <string name="LONG_CLICK_TO_UPDATE">LONG CLICK TO UPDATE</string>
     <string name="LONG_CLICK_FOR_INFO">TAP FOR DIRECTIONS LONG CLICK FOR DETAILS</string>
     <string name="SETHIGHERRESOLUTION">SET RESOLUTION HIGHER</string>
 <<<<<<< HEAD
 =======
+=======
+    <string name="Your_orders_from_Today">ORDERS FROM ALL USERS</string>
+    <string name="LONG_CLICK_TO_UPDATE">LONG CLICK TO UPDATE</string>
+    <string name="LONG_CLICK_FOR_INFO">TAP FOR DIRECTIONS LONG CLICK FOR DETAILS</string>
+    <string name="SETHIGHERRESOLUTION">SET RESOLUTION HIGHER</string>
+>>>>>>> old2/master
     <string name="DIRECTIONS">DIRECTION</string>
     <string name="DETAILS">DETAILS</string>
     <string name="REMOVE">REMOVE</string>
@@ -128,13 +169,21 @@
     <string name="home_address">PRESET LOCATION</string>
     <string name="email_address">EMAIL ADDRESS</string>
     <string name="change_password">CHANGE PASSWORD</string>
+<<<<<<< HEAD
     <string name="enter_your_email_address">ENTER YOUR EMAIL ADDRESS</string>
+=======
+    <string name="enter_your_email_address">EMAIL ID FOR ACCOUNT DETAILS</string>
+>>>>>>> old2/master
     <string name="nhlvcam">NHLVCAM@GMAIL.COM</string>
     <string name="enter_your_home_address">ENTER LOCATION ADDRESS</string>
     <string name="Please_enter_your_address">ENTER YOUR ADDRESS</string>
     <string name="repeat_new_passowrd">REPEAT NEW PASSOWRD</string>
     <string name="enter_new_password">ENTER NEW PASSWORD</string>
+<<<<<<< HEAD
     <string name="Please_select_a_category">SELECT CATEGORY</string>
+=======
+    <string name="Please_select_a_category">CATEGORY LIST ADD USING FAB</string>
+>>>>>>> old2/master
     <string name="EMPTY_LIST">THIS SEEMS TO BE EMPTY</string>
     <string name="delete_user_data">DELETE USER DATA</string>
     <string name="_9769539742">9769539742</string>
@@ -144,7 +193,11 @@
     <string name="enter_your_email_addressil">enter email</string>
     <string name="enter_your_message">enter your emssage</string>
     <string name="double_press">double press in case of non response fromserver</string>
+<<<<<<< HEAD
     <string name="GORCERYLIST">TO DO LIST</string>
+=======
+    <string name="GORCERYLIST">NOTE : TO DO LIST CLEARED ON BACK PRESS AND ADD USING +</string>
+>>>>>>> old2/master
     <string name="CLEARLIST">clear list</string>
     <string name="delete">delete</string>
     <string name="chanhe_email_address">UPDATE EMAIL</string>
@@ -161,7 +214,11 @@
     <string name="name_of_banner">NAME OF BANNER</string>
     <string name="Food_id">ENTER FOOD ID</string>
     <string name="foodname123">ENTER FOOD NAME</string>
+<<<<<<< HEAD
     <string name="banner_items">ITEMS IN CLIENT BANNER</string>
+=======
+    <string name="banner_items">EDIT ITEMS IN USER BANNER</string>
+>>>>>>> old2/master
     <string name="banerid">FOOD ID ATTACHED TO BANNER</string>
     <string name="sendnotification">SEND NEWS</string>
     <string name="extra">extra</string>
@@ -170,10 +227,20 @@
     <string name="video_url">video url</string>
     <string name="add_recepe">ADD RECEPIE</string>
     <string name="add_quantity">add quantity</string>
+<<<<<<< HEAD
     <string name="add_food_using_red_button">ADD FOOD USING RED BUTTON</string>
     <string name="add_title_of_message">ADD TITLE OF MESSAGE</string>
     <string name="add_body_of_message">ADD BODY OF MESSAGE</string>
     <string name="Send">SEND</string>
 >>>>>>> old1/master
+=======
+    <string name="add_food_using_red_button"> ANY CHANGES WILL AFFECT ALL THE USERS </string>
+    <string name="add_title_of_message">ADD TITLE OF MESSAGE</string>
+    <string name="add_body_of_message">ADD BODY OF MESSAGE</string>
+    <string name="Send">SEND</string>
+    <string name="TUTORIAL">TUTORIAL</string>
+    <string name="SEARCH">SEARCH ALL</string>
+    <string name="search_all_food_at_once">SEARCH ALL FOOD AT ONCE</string>
+>>>>>>> old2/master
 </resources>
 

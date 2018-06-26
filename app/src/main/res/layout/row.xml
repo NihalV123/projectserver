@@ -13,6 +13,7 @@
         android:text="@string/example"
         android:textColor="@color/white"
         android:textSize="20sp" />
+<<<<<<< HEAD
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_alignParentEnd="true"
@@ -28,11 +29,33 @@
             android:text="@string/delete"
             android:onClick="deleteTask"
             android:textColor="@android:color/white"
+=======
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true">
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btndelete2"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center"
+            android:onClick="deleteTask"
+            android:text="@string/delete"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@color/fbutton_color_orange"
+>>>>>>> old2/master
             app:shadowColor="@android:color/black"
             app:shadowHeight="5dp" />
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> old2/master
     </android.support.v7.widget.LinearLayoutCompat>
 
 </RelativeLayout>

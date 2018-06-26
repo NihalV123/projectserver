@@ -12,10 +12,13 @@ public class Request {
     private String address;
     private String total;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String comment;
     private String status;
     private List<Order>foods;
 =======
+=======
+>>>>>>> old2/master
     private String status;
     private String comment;
     private String email;
@@ -23,11 +26,15 @@ public class Request {
     private String paymentState;
     private List<Order> foods;
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
     public Request() {
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public Request(String phone, String name, String address, String total,String comment,String status, List<Order> foods) {
         this.phone = phone;
@@ -39,6 +46,8 @@ public class Request {
         this.status = "0";
         //0 is placed 1 is shiping 2 is shipped
 =======
+=======
+>>>>>>> old2/master
     public Request(String phone, String name, String address, String total, String status, String comment, String email, String latlng, String paymentState, List<Order> foods) {
         this.phone = phone;
         this.name = name;
@@ -50,7 +59,10 @@ public class Request {
         this.latlng = latlng;
         this.paymentState = paymentState;
         this.foods = foods;
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     }
 
     public String getPhone() {
@@ -70,6 +82,7 @@ public class Request {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public String getComment() {
         return comment;
     }
@@ -80,6 +93,8 @@ public class Request {
 
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     public String getAddress() {
         return address;
     }
@@ -96,6 +111,7 @@ public class Request {
         this.total = total;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public List<Order> getFoods() {
         return foods;
@@ -114,21 +130,29 @@ public class Request {
             return "Shipped!!";
     }
 =======
+=======
+>>>>>>> old2/master
     public String getStatus() {
         return status;
     }
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     public void setStatus(String status) {
         this.status = status;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public void setFoods(List<Order> foods) {
         this.foods = foods;
     }
 }
 =======
+=======
+>>>>>>> old2/master
     public String getComment() {
         return comment;
     }
@@ -168,5 +192,9 @@ public class Request {
     public void setFoods(List<Order> foods) {
         this.foods = foods;
     }
+<<<<<<< HEAD
 }
 >>>>>>> old1/master
+=======
+}
+>>>>>>> old2/master

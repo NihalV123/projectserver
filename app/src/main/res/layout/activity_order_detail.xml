@@ -107,6 +107,7 @@
 
     <LinearLayout
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:id="@+id/order_info2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -131,6 +132,8 @@
 
         </android.support.v7.widget.RecyclerView>
 =======
+=======
+>>>>>>> old2/master
     android:id="@+id/order_info2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -139,6 +142,7 @@
     android:layout_marginTop="-10dp"
     android:orientation="vertical">
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/txtdetail"
         android:layout_width="wrap_content"
@@ -147,6 +151,17 @@
         android:text="@string/Details"
         android:textColor="@color/white"
         android:textSize="25sp" />
+=======
+        <TextView
+            android:id="@+id/txtdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparentBlack"
+            android:padding="10sp"
+            android:text="@string/Details"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+>>>>>>> old2/master
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
@@ -159,7 +174,10 @@
 
             </android.support.v7.widget.RecyclerView>
         </android.support.v4.widget.SwipeRefreshLayout>
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     </LinearLayout>
 
 </RelativeLayout>

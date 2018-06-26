@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,6 +11,8 @@
     tools:context="a123.vaidya.nihal.foodcrunchserver.OrderStatus">
 
 =======
+=======
+>>>>>>> old2/master
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
+<<<<<<< HEAD
     <TextView
         android:id="@+id/txtmanconetnthom3e"
         android:layout_width="match_parent"
@@ -65,11 +69,39 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+=======
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparentBlack"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:background="@color/transparentBlack"
+                android:paddingLeft="20dp"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:tint="@color/white"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/txtmanconetnthome"
+                android:layout_width="match_parent"
+                android:background="@color/transparentBlack"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Your_orders_from_Today"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+>>>>>>> old2/master
         android:id="@+id/listOrders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:background="@android:color/transparent"
+<<<<<<< HEAD
 <<<<<<< HEAD
         android:paddingTop="160dp">
 
@@ -82,3 +114,10 @@
 </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
 >>>>>>> old1/master
+=======
+            android:paddingTop="45dp">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
+>>>>>>> old2/master

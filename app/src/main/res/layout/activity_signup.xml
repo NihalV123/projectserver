@@ -22,10 +22,15 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtPhone"
+<<<<<<< HEAD
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+>>>>>>> old2/master
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_phone_number"
             android:inputType="phone"
+<<<<<<< HEAD
 <<<<<<< HEAD
             android:text="@string/_7208680470"
             android:textColor="@android:color/white"
@@ -35,6 +40,8 @@
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
 =======
+=======
+>>>>>>> old2/master
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -43,17 +50,25 @@
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="13"
             app:met_minCharacters="10"
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtName"
             android:gravity="center"
+<<<<<<< HEAD
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+>>>>>>> old2/master
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_name"
             android:inputType="textPersonName"
+<<<<<<< HEAD
 <<<<<<< HEAD
             android:text="@string/nihal"
             android:textColor="@android:color/white"
@@ -62,6 +77,8 @@
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"
 =======
+=======
+>>>>>>> old2/master
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -77,6 +94,10 @@
             android:id="@+id/edtShopAddress"
             android:gravity="center"
             android:layout_width="match_parent"
+<<<<<<< HEAD
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+>>>>>>> old2/master
             android:layout_height="wrap_content"
             android:hint="@string/enter_your_name"
             android:inputType="textPersonName"
@@ -98,13 +119,20 @@
             android:hint="@string/enter_your_email_address"
             android:inputType="textEmailAddress"
             android:text=""
+<<<<<<< HEAD
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+>>>>>>> old2/master
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_minCharacters="1"
             app:met_maxCharacters="128"
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
@@ -115,32 +143,6 @@
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
 <<<<<<< HEAD
-            android:text="@string/_11111111"
-            android:textColor="@android:color/white"
-            android:textSize="36sp"
-            android:gravity="center"
-            app:met_baseColor="@android:color/white"
-            app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
-=======
-            android:text=""
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:gravity="center"
-            app:met_baseColor="@android:color/white"
-            app:met_floatingLabel="highlight"
-            app:met_minCharacters="8"
-            app:met_maxCharacters="128"
->>>>>>> old1/master
-            app:met_primaryColor="@android:color/white"
-            app:met_singleLineEllipsis="true" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtSecureCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/SecureCode"
-            android:inputType="text"
 <<<<<<< HEAD
             android:text="@string/_11111111"
             android:textColor="@android:color/white"
@@ -153,12 +155,57 @@
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="24sp"
+=======
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+>>>>>>> old2/master
             android:gravity="center"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_minCharacters="8"
             app:met_maxCharacters="128"
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
+            app:met_primaryColor="@android:color/white"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtSecureCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/SecureCode"
+            android:inputType="text"
+<<<<<<< HEAD
+<<<<<<< HEAD
+            android:text="@string/_11111111"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:gravity="center"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="11"
+=======
+=======
+>>>>>>> old2/master
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:gravity="center"
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+<<<<<<< HEAD
+            app:met_minCharacters="8"
+            app:met_maxCharacters="128"
+>>>>>>> old1/master
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+            app:met_minCharacters="8"
+            app:met_maxCharacters="128"
+>>>>>>> old2/master
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 

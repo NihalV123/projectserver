@@ -8,15 +8,22 @@ public class User {
     private String IsStaff;
     private String secureCode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private String HomeAddress;
     private String Email;
     private String Extra;
 >>>>>>> old1/master
+=======
+    private String HomeAddress;
+    private String Email;
+    private String Extra;
+>>>>>>> old2/master
 
     public User (){
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public User (String name, String password,String secureCode) {
 =======
@@ -24,16 +31,27 @@ public class User {
             //,String extra
                 ) {
 >>>>>>> old1/master
+=======
+    public User (String name, String password,String secureCode,String homeAddress,String email
+            //,String extra
+                ) {
+>>>>>>> old2/master
         Name = name;
         IsStaff="true";
         Password = password;
         this.secureCode = secureCode;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         HomeAddress = homeAddress;
         Email = email;
        // Extra= extra;
 >>>>>>> old1/master
+=======
+        HomeAddress = homeAddress;
+        Email = email;
+       // Extra= extra;
+>>>>>>> old2/master
     }
 
     public String getSecureCode() {
@@ -41,7 +59,10 @@ public class User {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> old2/master
     public String getExtra() {
         return Extra;
     }
@@ -66,7 +87,10 @@ public class User {
         HomeAddress = homeAddress;
     }
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     public void setSecureCode(String secureCode) {
         this.secureCode = secureCode;
     }

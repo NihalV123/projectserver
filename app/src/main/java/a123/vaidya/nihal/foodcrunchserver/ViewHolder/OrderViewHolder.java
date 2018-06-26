@@ -2,6 +2,7 @@ package a123.vaidya.nihal.foodcrunchserver.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.TextView;
@@ -12,12 +13,18 @@ import android.view.View;
 import android.widget.TextView;
 
 >>>>>>> old1/master
+=======
+import android.view.View;
+import android.widget.TextView;
+
+>>>>>>> old2/master
 import a123.vaidya.nihal.foodcrunchserver.R;
 
 /**
  * Created by nnnn on 28/12/2017.
  */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener ,
         //View.OnLongClickListener,
@@ -26,6 +33,8 @@ public class OrderViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public TextView txtOrderId,txtOrderStatus,txtOrderPhonw,txtOrderAddress,txtOrderComment;
     private ItemClickListener itemClickListener;
 =======
+=======
+>>>>>>> old2/master
 public class OrderViewHolder extends RecyclerView.ViewHolder
 //        implements
 //        View.OnClickListener {
@@ -37,12 +46,16 @@ public class OrderViewHolder extends RecyclerView.ViewHolder
     public android.widget.Button btnEdit,btnRemove,btnDirections,btnDetails;
     //private ItemClickListener itemClickListener;
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
 
     public OrderViewHolder(View itemView) {
         super(itemView);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         txtOrderId =(TextView)itemView.findViewById(R.id.order_id);
         txtOrderStatus=(TextView)itemView.findViewById(R.id.order_status);
@@ -78,6 +91,8 @@ public class OrderViewHolder extends RecyclerView.ViewHolder
 //        return true;
 //    }
 =======
+=======
+>>>>>>> old2/master
         txtOrderId = itemView.findViewById(R.id.order_id);
         txtOrderStatus= itemView.findViewById(R.id.order_status);
         txtOrderPhonw= itemView.findViewById(R.id.order_phone);
@@ -121,5 +136,8 @@ public class OrderViewHolder extends RecyclerView.ViewHolder
 
 //    }
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 }

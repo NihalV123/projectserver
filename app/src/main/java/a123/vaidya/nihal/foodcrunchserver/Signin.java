@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.support.v7.app.AlertDialog;
 =======
 import android.app.AlertDialog;
 >>>>>>> old1/master
+=======
+import android.app.AlertDialog;
+>>>>>>> old2/master
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,16 +26,22 @@ import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.rey.material.widget.CheckBox;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.rey.material.widget.TextView;
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 =======
+=======
+>>>>>>> old2/master
 
 import a123.vaidya.nihal.foodcrunchserver.Common.Common;
 import a123.vaidya.nihal.foodcrunchserver.Model.User;
 import dmax.dialog.SpotsDialog;
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 import io.paperdb.Paper;
 
 public class Signin extends AppCompatActivity {
@@ -55,12 +65,17 @@ public class Signin extends AppCompatActivity {
         edtPhone= findViewById(R.id.edtPhone);
         BtnSignin = findViewById(R.id.btnSignin);
 <<<<<<< HEAD
+<<<<<<< HEAD
         remember_button =(CheckBox)findViewById(R.id.remember_button);
         txtForgetPwd = (android.widget.TextView) findViewById(R.id.forget_password_txt);
 =======
         remember_button = findViewById(R.id.remember_button);
         txtForgetPwd = findViewById(R.id.forget_password_txt);
 >>>>>>> old1/master
+=======
+        remember_button = findViewById(R.id.remember_button);
+        txtForgetPwd = findViewById(R.id.forget_password_txt);
+>>>>>>> old2/master
 
         Paper.init(this);
         db =  FirebaseDatabase.getInstance();
@@ -73,16 +88,22 @@ public class Signin extends AppCompatActivity {
         });
         BtnSignin.setOnClickListener(new View.OnClickListener() {
 <<<<<<< HEAD
+<<<<<<< HEAD
             public void onClick(View v) {
                     signinUser(edtPhone.getText().toString(),edtPasswd.getText().toString());
 
                 };
 =======
+=======
+>>>>>>> old2/master
                 public void onClick(View v) {
                     signinUser(edtPhone.getText().toString(),edtPasswd.getText().toString());
 
                 }
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
         });
 
@@ -90,9 +111,12 @@ public class Signin extends AppCompatActivity {
     private void signinUser(String phone, String password) {
         final String localphone = phone;
 <<<<<<< HEAD
+<<<<<<< HEAD
         final String localpassword = password;
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
         if (Common.isConnectedToInternet(getBaseContext())) {
             //save user name and password
@@ -102,6 +126,7 @@ public class Signin extends AppCompatActivity {
                 Paper.book().write(Common.PWD_KEY,edtPasswd.getText().toString());
             }
             users.addValueEventListener(new ValueEventListener() {
+<<<<<<< HEAD
 <<<<<<< HEAD
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,6 +157,8 @@ public class Signin extends AppCompatActivity {
                         myRef.setValue("user doesnt exist from sign in ");
                         Toast.makeText(Signin.this, "User Doesnt exist Please SIGN UP", Toast.LENGTH_SHORT).show();
 =======
+=======
+>>>>>>> old2/master
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     //check if user doesnt exist in db
@@ -147,7 +174,11 @@ public class Signin extends AppCompatActivity {
                                 DatabaseReference myRef = db.getReference("message");
                                 myRef.setValue("Hello from sign in ");
                                 final SpotsDialog dialog = new SpotsDialog(Signin.this);
+<<<<<<< HEAD
                                 dialog.show();
+=======
+                                //dialog.show();
+>>>>>>> old2/master
                                 Intent homeIntent = new Intent(Signin.this,Home.class);
                                 Common.currentUser = user;
                                 startActivity(homeIntent);
@@ -164,11 +195,15 @@ public class Signin extends AppCompatActivity {
                             Toast.makeText(Signin.this, "User Doesnt exist Please SIGN UP", Toast.LENGTH_SHORT).show();
                         }
 
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
                     }
 
                 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             }
 
@@ -182,6 +217,8 @@ public class Signin extends AppCompatActivity {
             Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
             return;
 =======
+=======
+>>>>>>> old2/master
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
@@ -190,7 +227,10 @@ public class Signin extends AppCompatActivity {
         }else
         {
             Toast.makeText(Signin.this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
         }
     }
     private void showForgetPwdDailog() {
@@ -202,12 +242,17 @@ public class Signin extends AppCompatActivity {
         builder.setView(forget_view);
         builder.setIcon(R.drawable.ic_security_black_24dp);
 <<<<<<< HEAD
+<<<<<<< HEAD
         final MaterialEditText edtPhone = (MaterialEditText)forget_view.findViewById(R.id.edtPhone);
         final MaterialEditText edtSecureCode = (MaterialEditText)forget_view.findViewById(R.id.edtSecureCode);
 =======
         final MaterialEditText edtPhone = forget_view.findViewById(R.id.edtPhone);
         final MaterialEditText edtSecureCode = forget_view.findViewById(R.id.edtSecureCode);
 >>>>>>> old1/master
+=======
+        final MaterialEditText edtPhone = forget_view.findViewById(R.id.edtPhone);
+        final MaterialEditText edtSecureCode = forget_view.findViewById(R.id.edtSecureCode);
+>>>>>>> old2/master
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -242,9 +287,13 @@ public class Signin extends AppCompatActivity {
 
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
 
 
 =======
 }
 >>>>>>> old1/master
+=======
+}
+>>>>>>> old2/master

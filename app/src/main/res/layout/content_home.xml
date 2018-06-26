@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 =======
+=======
+>>>>>>> old2/master
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/swipelayout1"
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="a123.vaidya.nihal.foodcrunchserver.Home"
     tools:showIn="@layout/app_bar_home">
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     <android.support.v7.widget.RecyclerView
@@ -28,6 +35,8 @@
 
 </android.support.constraint.ConstraintLayout>
 =======
+=======
+>>>>>>> old2/master
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,7 +71,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+<<<<<<< HEAD
 
+=======
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparentBlack"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:background="@color/transparentBlack"
+
+                android:src="@drawable/ic_view_module_black_24dp"
+                android:tint="@color/white"
+                android:layout_height="match_parent" />
+>>>>>>> old2/master
             <TextView
                 android:id="@+id/txtmanconetnthome"
                 android:layout_width="match_parent"
@@ -73,9 +97,16 @@
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
+<<<<<<< HEAD
 
+=======
+        </LinearLayout>
+>>>>>>> old2/master
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master

@@ -18,29 +18,39 @@ public class DirectionJSONParser {
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         List<List<HashMap<String, String>>> routes = new ArrayList<List<HashMap<String, String>>>();
         JSONArray jRoutes = null;
         JSONArray jLegs = null;
         JSONArray jSteps = null;
 =======
+=======
+>>>>>>> old2/master
         List<List<HashMap<String, String>>> routes = new ArrayList<>();
         JSONArray jRoutes;
         JSONArray jLegs;
         JSONArray jSteps;
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
 
         try {
 
             jRoutes = jObject.getJSONArray("routes");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /** Traversing all routes */
 =======
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
             for (int i = 0; i < jRoutes.length(); i++) {
                 jLegs = ((JSONObject) jRoutes.get(i)).getJSONArray("legs");
                 List path = new ArrayList<HashMap<String, String>>();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 /** Traversing all legs */
                 for (int j = 0; j < jLegs.length(); j++) {
@@ -56,6 +66,8 @@ public class DirectionJSONParser {
                         for (int l = 0; l < list.size(); l++) {
                             HashMap<String, String> hm = new HashMap<String, String>();
 =======
+=======
+>>>>>>> old2/master
                 for (int j = 0; j < jLegs.length(); j++) {
                     jSteps = ((JSONObject) jLegs.get(j)).getJSONArray("steps");
 
@@ -66,7 +78,10 @@ public class DirectionJSONParser {
 
                         for (int l = 0; l < list.size(); l++) {
                             HashMap<String, String> hm = new HashMap<>();
+<<<<<<< HEAD
 >>>>>>> old1/master
+=======
+>>>>>>> old2/master
                             hm.put("lat", Double.toString(((LatLng) list.get(l)).latitude));
                             hm.put("lng", Double.toString(((LatLng) list.get(l)).longitude));
                             path.add(hm);
@@ -79,10 +94,14 @@ public class DirectionJSONParser {
         } catch (JSONException e) {
             e.printStackTrace();
 <<<<<<< HEAD
+<<<<<<< HEAD
         } catch (Exception e) {
 =======
         } catch (Exception ignored) {
 >>>>>>> old1/master
+=======
+        } catch (Exception ignored) {
+>>>>>>> old2/master
         }
 
         return routes;

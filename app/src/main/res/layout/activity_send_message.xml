@@ -11,11 +11,16 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+        android:padding="5dp"
+>>>>>>> old2/master
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:weightSum="2">
 
+<<<<<<< HEAD
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtTitle"
@@ -24,6 +29,16 @@
             android:gravity="center"
             android:hint="@string/add_title_of_message"
             android:inputType="text"
+=======
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edtMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+            android:hint="@string/add_title_of_message"
+            android:inputType="textMultiLine"
+>>>>>>> old2/master
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -34,12 +49,21 @@
             app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+<<<<<<< HEAD
             android:id="@+id/edtMessage"
+=======
+            android:id="@+id/edtTitle"
+>>>>>>> old2/master
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="@string/add_body_of_message"
+<<<<<<< HEAD
             android:inputType="textMultiLine"
+=======
+            app:met_textColorHint="@color/fbutton_color_nephritis"
+            android:inputType="text"
+>>>>>>> old2/master
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="36sp"
@@ -49,6 +73,7 @@
             app:met_primaryColor="@android:color/white"
             app:met_singleLineEllipsis="true" />
 
+<<<<<<< HEAD
         <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
@@ -81,6 +106,8 @@
         <!--</LinearLayout>-->
 
 
+=======
+>>>>>>> old2/master
     </LinearLayout>
 
 
