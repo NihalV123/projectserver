@@ -5,13 +5,13 @@
     android:minHeight="200dp"
     android:layout_margin="2dp"
     app:cardCornerRadius="25dp"
-    android:background="@drawable/background"
+    android:background="@color/fbutton_color_green_sea"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/linearLayout3"
-        android:background="@drawable/background"
+        android:background="@color/fbutton_color_green_sea"
         android:minHeight="200dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/food_crunch"
             android:scaleType="centerCrop"
-            android:src="@drawable/background" />
+            android:src="@color/fbutton_color_green_sea" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/food_name"

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/fbutton_color_green_sea"
     android:id="@+id/rootLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="a123.vaidya.nihal.foodcrunchserver.SearchActivity">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@drawable/background"
+        android:background="@color/fbutton_color_green_sea"
         android:layout_height="match_parent">
 
         <com.mancj.materialsearchbar.MaterialSearchBar

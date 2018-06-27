@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="a123.vaidya.nihal.foodcrunchserver">
+    package="a123.vaidya.nihal.foodcrunchserver"
+    android:installLocation="auto"
+    android:versionCode="2"
+    android:versionName="one" >
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use

@@ -38,7 +38,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="@string/_11111"
+                    android:text=""
                     android:textAllCaps="true"
                     android:textStyle="bold" />
 
@@ -100,7 +100,7 @@
                 android:id="@+id/btnEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
 
                 android:layout_weight="2"
                 android:text="@string/edit"
@@ -113,7 +113,7 @@
                 android:id="@+id/btnRemove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
 
                 android:layout_weight="2"
                 android:text="@string/REMOVE"
@@ -126,7 +126,7 @@
                 android:id="@+id/btnDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
 
                 android:layout_weight="2"
                 android:text="@string/DETAILS"
@@ -139,7 +139,7 @@
                 android:id="@+id/btnDirections"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
 
                 android:layout_weight="2"
                 android:text="@string/DIRECTIONS"

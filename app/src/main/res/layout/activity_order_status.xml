@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:id="@+id/swipe_order_list"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/fbutton_color_green_sea"
     tools:context="a123.vaidya.nihal.foodcrunchserver.OrderStatus">
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@color/fbutton_color_green_sea">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:background="@color/transparentBlack"
-                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
                 android:src="@drawable/ic_access_time_black_24dp"
                 android:tint="@color/white"
                 android:layout_height="match_parent" />
@@ -35,13 +36,11 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-        android:id="@+id/listOrders"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-            android:paddingTop="45dp">
+            android:id="@+id/listOrders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
 
-    </android.support.v7.widget.RecyclerView>
-</RelativeLayout>
+        </android.support.v7.widget.RecyclerView>
+</LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -63,10 +63,10 @@
                 android:icon="@drawable/ic_bookmark_black_24dp"
                 android:title="@string/shopping_list" />
 
-            <item
-                android:id="@+id/nav_sendnotification"
-                android:icon="@drawable/ic_notifications_active_black_24dp"
-                android:title="@string/sendnotification" />
+            <!--<item-->
+                <!--android:id="@+id/nav_sendnotification"-->
+                <!--android:icon="@drawable/ic_notifications_active_black_24dp"-->
+                <!--android:title="@string/sendnotification" />-->
 
             <item
                 android:id="@+id/nav_send_login_details"

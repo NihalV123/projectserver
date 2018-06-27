@@ -79,7 +79,7 @@ public class BannerActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_banner);
         recyclerView.setHasFixedSize(true);
-        textView = findViewById(R.id.textView3);
+
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 

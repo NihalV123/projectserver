@@ -517,13 +517,13 @@ public class Home extends AppCompatActivity
                 dialog.dismiss();
                 break;
             }
-            case R.id.nav_sendnotification:{
-                //final SpotsDialog dialog = new SpotsDialog(Home.this);
-                Intent aboutnoti = new Intent(Home.this, SendMessage.class);
-                startActivity(aboutnoti);
-                //dialog.dismiss();
-                break;
-            }
+//            case R.id.nav_sendnotification:{
+//                //final SpotsDialog dialog = new SpotsDialog(Home.this);
+//                Intent aboutnoti = new Intent(Home.this, SendMessage.class);
+//                startActivity(aboutnoti);
+//                //dialog.dismiss();
+//                break;
+//            }
             case R.id.nav_password: {
                 showChangePasswordDialog();
                 break;

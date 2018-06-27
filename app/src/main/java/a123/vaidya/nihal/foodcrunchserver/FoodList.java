@@ -114,7 +114,7 @@ public class FoodList extends AppCompatActivity {
         });
         recyclerView = findViewById(R.id.recycler_food);
         recyclerView.setHasFixedSize(true);
-        textView = findViewById(R.id.textView3);
+
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 

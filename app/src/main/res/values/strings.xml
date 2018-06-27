@@ -4,10 +4,8 @@
     <string name="Signup">no account ? SIGN UP !</string>
     <string name="Signin">SIGN IN and eat fresh</string>
     <string name="enter_your_phone_number">ENTER PHONE NO</string>
-    <string name="_7208680470">7208680470</string>
     <string name="enter_your_name">ENTER YOUR NAME</string>
     <string name="enter_your_password">ENTER PASSWORD</string>
-    <string name="_11111111">11111111</string>
     <string name="test1">sign in with   .   .   .google</string>
     <string name="test2">sign in with facebook</string>
     <string name="test3">sign in with linkedin</string>
@@ -23,7 +21,6 @@
     <string name="food_crunch">Food Crunch</string>
     <string name="name_of_food">Name of Food</string>
     <string name="name_of_menu">Name of Menu</string>
-    <string name="nihal">Nihal</string>
     <string name="menu">MENU</string>
     <string name="cart">CART</string>
     <string name="orders">ORDERS</string>
@@ -34,18 +31,12 @@
     <string name="total">Total :</string>
     <string name="place_order">PLACE ORDER</string>
     <string name="food_01">Food 01</string>
-    <string name="_90000">90000</string>
     <string name="todo">TODO</string>
-    <string name="_50">50</string>
-    <string name="_9000">9000</string>
     <string name="description">description</string>
-    <string name="_11111">11111</string>
     <string name="status">status</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="_100">100</string>
-    <string name="_0">0</string>
     <string name="Select">SELECT</string>
     <string name="Upload">UPLOAD</string>
     <string name="enter_the_name">ENTER THE NAME</string>
@@ -95,7 +86,6 @@
     <string name="Please_select_a_category">CATEGORY LIST ADD USING FAB</string>
     <string name="EMPTY_LIST">THIS SEEMS TO BE EMPTY</string>
     <string name="delete_user_data">DELETE USER DATA</string>
-    <string name="_9769539742">9769539742</string>
     <string name="welcome">WELCOME</string>
     <string name="all_orders">ALL ORDERS</string>
     <string name="resend_login_details">RESEND LOGIN</string>
@@ -112,7 +102,6 @@
     <string name="about">ABOUT</string>
     <string name="ALLORDERS">ALL ORDERS</string>
     <string name="example">example</string>
-    <string name="_9619662497">9769539742</string>
     <string name="enter_youruser_name">ENTER USER NAME</string>
     <string name="BANNER">BANNER</string>
     <string name="title_activity_banner">BannerActivity</string>
@@ -135,5 +124,7 @@
     <string name="TUTORIAL">TUTORIAL</string>
     <string name="SEARCH">SEARCH ALL</string>
     <string name="search_all_food_at_once">SEARCH ALL FOOD AT ONCE</string>
+    <string name="h100">100</string>
+
 </resources>
 

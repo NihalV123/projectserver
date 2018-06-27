@@ -104,14 +104,14 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:contentDescription="@string/todo"
-                    android:src="@drawable/ic_action_name" />
+                    android:src="@color/fbutton_color_green_sea" />
 
                 <TextView
                     android:id="@+id/food_price"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="9"
-                    android:text="@string/_100"
+                    android:text="@string/h100"
                     android:textColor="@color/colorPrimary"
                     android:textSize="25sp"
                     android:textStyle="bold" />
